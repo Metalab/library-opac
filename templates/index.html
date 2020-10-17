@@ -30,9 +30,28 @@
                 {% for book in books %}
                   {% if (book.category == category) and (book.location == location) %}
                     <div class="listItem {{category}}">
-                      <h4 class="title is-6">
+                      <h4 class="title is-5">
                         {{book.name}}
                       </h4>
+                      {% if (book.authorFirstName) and (book.authorLastName) %}
+                        <p>
+                          Von: <strong>{{book.authorFirstName}} {{book.authorLastName}}</strong>
+                        </p>
+                      {% endif %}
+                      <p>
+                        Medientyp: {{book.mediaType}}<br>
+                        Auleihbar? {{book.isLendable}}<br>
+                        Lieferung zur Hauptstelle? {{book.isMetalabPickupPossible}}
+                      </p>
+                      {% if book.isbn %}
+                        ISBN: {{book.isbn}}<br>
+                      {% endif %}
+                      {% if book.issn %}
+                        ISSN: {{book.issn}}<br>
+                      {% endif %}
+                      {% if book.issn %}
+                        Barcode: {{book.barcode}}
+                      {% endif %}
                     </div>
                   {% endif %}
                 {% endfor %}
