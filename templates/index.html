@@ -29,13 +29,13 @@
               <div class="booksContainer"><!-- booksContainer start -->
                 {% for book in books %}
                   {% if (book.category == category) and (book.location == location) %}
-                    <div class="listItem {{category}}">
+                    <div class="listItem">
                       <h4 class="title is-5">
                         {{book.name}}
                       </h4>
                       {% if (book.authorFirstName) and (book.authorLastName) %}
                         <p>
-                          Von: <strong><a href="http://gnd.eurospider.com/s?q={{book.authorFirstName}}+{{book.authorLastName}}" target="_blank">
+                          Von: <strong><a href="http://gnd.eurospider.com/s?q={{book.authorFirstName | urlencode}}+{{book.authorLastName | urlencode}}" target="_blank">
                             {{book.authorFirstName}} {{book.authorLastName}}
                           </a></strong>
                         </p>
