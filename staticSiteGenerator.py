@@ -7,6 +7,8 @@ import chromalog
 import argparse
 import sys
 import os
+import datetime
+from jinja2 import Environment, FileSystemLoader
 
 # CLI Parameter
 parser = argparse.ArgumentParser("staticSiteGenerator.py")
@@ -29,6 +31,8 @@ sourceFile = args["source"] if args["source"] else "/tmp/library-media-inventory
 workDir = os.path.dirname(os.path.realpath(__file__))
 
 logger.info("Source file {0}".format(sourceFile))
+
+jinja2Env = Environment(loader=FileSystemLoader('templates'))
 
 #### End of config stuff ####
 
@@ -66,3 +70,19 @@ for record in sortedRecords: # Loop through all records
 
 logger.debug(recordsToWrite)
 logger.info("Locations: {0}".format(recordsToWrite.keys()))
+
+templateVars = {
+  "locations": recordsToWrite.keys(),
+  "firstLocation": list(recordsToWrite.keys())[0],
+  "generationTime": datetime.datetime.now().astimezone().replace(microsecond=0).isoformat()
+}
+
+# Write the OPAC itself
+indexTemplate = jinja2Env.get_template("index.html")
+with open(workDir + "/upload/index.html", "w") as indexWriter:
+    indexWriter.write(indexTemplate.render(templateVars))
+
+# We also need to have filter.js in a template because it uses variables from the csv
+filterTemplate = jinja2Env.get_template("js/filter.js")
+with open(workDir + "/upload/js/filter.js", "w") as filterWriter:
+    filterWriter.write(filterTemplate.render(templateVars))
