@@ -1,38 +1,25 @@
-<!DOCTYPE html>
-<html lang="de">
+<header class="screenOnly">
+  <nav class="navbar is-fixed-top" aria-label="Hauptmenü">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="img/logo.png" height="28" alt="Metalab Library Logo">
+      </a>
 
-<head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" media="screen" href="css/bulma.css">
-  <link rel="stylesheet" media="screen" href="css/featherlight.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>
-    Export
-  </title>
-</head>
+      <a role="button" id="navbar-burger" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="mainNav">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
 
-<body onload="redirectOrUpdateVisible()" onhashchange="redirectOrUpdateVisible();" class="has-navbar-fixed-top">
-  <header class="screenOnly">
-    <nav class="navbar is-fixed-top" aria-label="Hauptmenü">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-          <img src="img/cyber-perikarp-logo.png" height="28" alt="Cyber Perikarp Logo">
-        </a>
-
-        <a role="button" id="navbar-burger" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="mainNav">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-
-      <div id="mainNav" class="navbar-menu">
-        <div class="navbar-start">
+    <div id="mainNav" class="navbar-menu">
+      <div class="navbar-start">
+        {% for menuItem in locations %}
           <a class="navbar-item" href="#Bund">
-            Bund
+            {{menuItem.name}}
           </a>
-        </div>
+        {% endfor %}
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
+</header>

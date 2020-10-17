@@ -37,3 +37,32 @@ with open(sourceFile, newline='') as csvFileReader:
     sortedRecords = sorted(readFile, key = lambda tup: (tup["location"], tup["category"], tup["name"]))
 
 logger.debug(sortedRecords)
+
+# Here we build a nested dictionary in the form
+# location 1
+# -> category 1
+#   -> Item
+#   -> Item
+# -> category 2
+#   -> Item
+#   -> Item
+# location 2
+# -> category 1
+#   -> Item
+#   -> Item
+# -> category 2
+#   -> Item
+#   -> Item
+
+recordsToWrite = {}
+for record in sortedRecords: # Loop through all records
+    if not record["location"] in recordsToWrite: # ... if we don't have the location (branch office)
+        recordsToWrite[record["location"]] = {} # ... add it do the dict
+
+    if not record["category"] in recordsToWrite[record["location"]]: # now we do the same with the categories
+        recordsToWrite[record["location"]][record["category"]] = {}
+
+    recordsToWrite[record["location"]][record["category"]][id] = record # And now we add the record to the dict
+
+logger.debug(recordsToWrite)
+logger.info("Locations: {0}".format(recordsToWrite.keys()))
