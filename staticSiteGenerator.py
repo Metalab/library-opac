@@ -38,43 +38,35 @@ jinja2Env = Environment(loader=FileSystemLoader('templates'))
 
 with open(sourceFile, newline='') as csvFileReader:
     readFile = csv.DictReader(csvFileReader)
-    sortedRecords = sorted(readFile, key = lambda tup: (tup["location"], tup["category"], tup["name"]))
+    books = sorted(readFile, key = lambda tup: (tup["location"], tup["category"], tup["name"]))
 
-logger.debug(sortedRecords)
+logger.debug("Books: {0}".format(books))
 
 # Here we build a nested dictionary in the form
-# location 1
-# -> category 1
-#   -> Item
-#   -> Item
-# -> category 2
-#   -> Item
-#   -> Item
-# location 2
-# -> category 1
-#   -> Item
-#   -> Item
-# -> category 2
-#   -> Item
-#   -> Item
+# -> location 1
+#   -> category 1
+#   -> category 2
+# -> location 2
+#   -> category 1
+#   -> category 2
 
 recordsToWrite = {}
-for record in sortedRecords: # Loop through all records
+for record in books: # Loop through all records
     if not record["location"] in recordsToWrite: # ... if we don't have the location (branch office)
         recordsToWrite[record["location"]] = {} # ... add it do the dict
 
     if not record["category"] in recordsToWrite[record["location"]]: # now we do the same with the categories
         recordsToWrite[record["location"]][record["category"]] = {}
 
-    recordsToWrite[record["location"]][record["category"]][id] = record # And now we add the record to the dict
-
-logger.debug(recordsToWrite)
+logger.debug("Records: {0}".format(recordsToWrite))
 logger.info("Locations: {0}".format(recordsToWrite.keys()))
 
 templateVars = {
   "locations": recordsToWrite.keys(),
   "firstLocation": list(recordsToWrite.keys())[0],
-  "generationTime": datetime.datetime.now().astimezone().replace(microsecond=0).isoformat()
+  "generationTime": datetime.datetime.now().astimezone().replace(microsecond=0).isoformat(),
+  "records": recordsToWrite,
+  "books": books
 }
 
 # Write the OPAC itself

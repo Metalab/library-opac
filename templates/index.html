@@ -14,7 +14,20 @@
   <body onload="redirectOrUpdateVisible()" onhashchange="redirectOrUpdateVisible();" class="has-navbar-fixed-top">
     {% include "_menu.html" %}
     <div id="mainContainer">
+      {% for location, categories in records.items() %}
+        <h2>{{location}}</h2>
 
+        {% for category in categories%}
+          <h3>{{category}}</h3>
+
+          {% for book in books %}
+            {% if book.category == category %}
+                 <p>{{book}}</p>
+            {% endif %}
+
+          {% endfor %}
+        {% endfor %}
+      {% endfor %}
     </div>
   </body>
   {% include "_footer.html" %}
