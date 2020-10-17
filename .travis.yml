@@ -14,7 +14,7 @@ before_script:
   - /tmp/go/bin/csvlint /tmp/library-media-inventory/inventory.csv
 
 script:
-  - mkdir upload
+  - mkdir -p upload/js
   - ./staticSiteGenerator.py
   - rsync -avP ./static/ ./upload/
 
