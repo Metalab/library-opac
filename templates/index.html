@@ -15,18 +15,31 @@
     {% include "_menu.html" %}
     <div id="mainContainer">
       {% for location, categories in records.items() %}
-        <h2>{{location}}</h2>
+        <div class="locationContainer filter" id="{{location | replace(" ", "")}}"><!-- locationContainer start -->
+          <h2 class="strong title is-3">
+            {{location}}
+          </h2>
 
-        {% for category in categories%}
-          <h3>{{category}}</h3>
+          {% for category in categories%}
+            <div class="categoryContainer {{category | replace(" ", "")}}"><!-- categoryContainer start -->
+              <h3 class="strong subtitle is-4">
+                {{category}}
+              </h3>
 
-          {% for book in books %}
-            {% if book.category == category %}
-                 <p>{{book}}</p>
-            {% endif %}
-
+              <div class="booksContainer"><!-- booksContainer start -->
+                {% for book in books %}
+                  {% if book.category == category %}
+                    <div class="listItem {{category}}">
+                      <h4 class="title is-6">
+                        {{book.name}}
+                      </h4>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div><!-- booksContainer end -->
+            </div><!-- categoryContainer end -->
           {% endfor %}
-        {% endfor %}
+        </div><!-- locationContainer end -->
       {% endfor %}
     </div>
   </body>
