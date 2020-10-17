@@ -35,4 +35,4 @@ deploy:
   target_branch: gh-pages
   committer_from_gh: true
   on:
-    branch: master
+    branch: main
