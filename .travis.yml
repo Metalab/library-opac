@@ -14,11 +14,11 @@ before_script:
   - /tmp/go/bin/csvlint /tmp/library-media-inventory/inventory.csv
 
 script:
+  - mkdir upload
   - ./staticSiteGenerator.py
   - rsync -avP ./static/ ./upload/
 
 before_deploy:
-  - mkdir upload
   - echo "bibliothek.metalab.ac.at" > upload/CNAME
   - ./minify.sh # Minify html, css and js
 
