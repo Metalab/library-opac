@@ -35,7 +35,9 @@
                       </h4>
                       {% if (book.authorFirstName) and (book.authorLastName) %}
                         <p>
-                          Von: <strong>{{book.authorFirstName}} {{book.authorLastName}}</strong>
+                          Von: <strong><a href="http://gnd.eurospider.com/s?q={{book.authorFirstName}}+{{book.authorLastName}}" target="_blank">
+                            {{book.authorFirstName}} {{book.authorLastName}}
+                          </a></strong>
                         </p>
                       {% endif %}
                       <p>
@@ -44,12 +46,16 @@
                         Lieferung zur Hauptstelle? {{book.isMetalabPickupPossible}}
                       </p>
                       {% if book.isbn %}
-                        ISBN: {{book.isbn}}<br>
+                        ISBN: <a href="https://www.justbooks.de/search/?isbn={{book.isbn}}&new_used=*&destination=at&currency=EUR&mode=basic&st=sr&ac=qr" target="_blank">
+                          {{book.isbn}}
+                        </a><br>
                       {% endif %}
                       {% if book.issn %}
-                        ISSN: {{book.issn}}<br>
+                        ISSN: <a href="https://portal.issn.org/resource/ISSN/{{book.issn}}" target="_blank">
+                          {{book.issn}}
+                        </a><br>
                       {% endif %}
-                      {% if book.issn %}
+                      {% if book.barcode %}
                         Barcode: {{book.barcode}}
                       {% endif %}
                     </div>
