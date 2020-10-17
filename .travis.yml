@@ -13,13 +13,11 @@ before_script:
   - /tmp/go/bin/csvlint /tmp/library-media-inventory/inventory.csv
 
 script:
-  - cd $TRAVIS_BUILD_DIR
   - ./update.sh
   - ./staticSiteGenerator.py
   - rsync -avP ./static/ ./upload/
 
 before_deploy:
-  - cd $TRAVIS_BUILD_DIR
   - mkdir upload
   - echo "bibliothek.metalab.ac.at" > upload/CNAME
   - ./minify.sh # Minify html, css and js
