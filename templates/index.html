@@ -20,7 +20,7 @@
             {{location}}
           </h2>
 
-          {% for category in categories%}
+          {% for category in categories %}
             <div class="categoryContainer {{category | replace(" ", "")}}"><!-- categoryContainer start -->
               <h3 class="strong subtitle is-4">
                 {{category}}
@@ -28,7 +28,7 @@
 
               <div class="booksContainer"><!-- booksContainer start -->
                 {% for book in books %}
-                  {% if book.category == category %}
+                  {% if (book.category == category) and (book.location == location) %}
                     <div class="listItem {{category}}">
                       <h4 class="title is-6">
                         {{book.name}}
