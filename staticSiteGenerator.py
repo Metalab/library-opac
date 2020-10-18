@@ -38,9 +38,9 @@ jinja2Env = Environment(loader=FileSystemLoader('templates'))
 
 with open(sourceFile, newline='') as csvFileReader:
     readFile = csv.DictReader(csvFileReader)
-    books = sorted(readFile, key = lambda tup: (tup["location"], tup["category"], tup["authorLastName"], tup["name"]))
+    media = sorted(readFile, key = lambda tup: (tup["location"], tup["category"], tup["authorLastName"], tup["name"]))
 
-logger.debug("Books: {0}".format(books))
+logger.debug("Media: {0}".format(media))
 
 # Here we build a nested dictionary in the form
 # -> location 1
@@ -51,7 +51,7 @@ logger.debug("Books: {0}".format(books))
 #   -> category 2
 
 recordsToWrite = {}
-for record in books: # Loop through all records
+for record in media: # Loop through all records
     if not record["location"] in recordsToWrite: # ... if we don't have the location (branch office)
         recordsToWrite[record["location"]] = {} # ... add it do the dict
 
@@ -66,7 +66,7 @@ templateVars = {
   "firstLocation": list(recordsToWrite.keys())[0],
   "generationTime": datetime.datetime.now().astimezone().replace(microsecond=0).isoformat(),
   "records": recordsToWrite,
-  "books": books
+  "media": media
 }
 
 # Write the OPAC itself

@@ -21,7 +21,7 @@ p {
   margin: 5px 0 10px 0;
 }
 
-/* Book headings */
+/* Medium headings */
 .h4 {
   line-height: 1.2;
   margin-left: 0px;
@@ -76,7 +76,7 @@ a:visited {
   padding: 15px;
 }
 
-.booksContainer {
+.mediaContainer {
   width: 100%;
   display: inline-grid;
   overflow: hidden;
@@ -101,7 +101,7 @@ a:visited {
     display: block;
   }
 
-  .booksContainer {
+  .mediaContainer {
     grid-template-columns: 50% 50%;
   }
 
@@ -124,7 +124,7 @@ a:visited {
     margin-left: 1px;
   }
 
-  .booksContainer {
+  .mediaContainer {
     padding-top: 10px;
     border-top: 2px black solid;
   }
@@ -132,13 +132,13 @@ a:visited {
 
 /* Responsive */
 @media screen and (min-width: 1080px) {
-  .booksContainer {
+  .mediaContainer {
     grid-template-columns: 25% 25% 25% 25%;
   }
 }
 
 @media screen and (max-width: 1080px) {
-  .booksContainer {
+  .mediaContainer {
     grid-template-columns: 50% 50%;
   }
 }
@@ -150,7 +150,7 @@ a:visited {
 }
 
 @media screen and (max-width: 760px) {
-  .booksContainer {
+  .mediaContainer {
     grid-template-columns: 100%;
   }
 
