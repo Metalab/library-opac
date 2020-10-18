@@ -42,9 +42,9 @@
                       {% endif %}
                       <p>
                         Medientyp: {{book.mediaType}}<br>
-                        Entlehnbar? {{book.isLendable}}<br>
+                        Entlehnbar? <span class="{{book.isLendable}}">{{book.isLendable}}</span><br>
                         {% if book.isMetalabPickupPossible %}
-                          Lieferung zur Hauptstelle? {{book.isMetalabPickupPossible}}
+                          Lieferung zur Hauptstelle? <span class="{{book.isMetalabPickupPossible}}">{{book.isMetalabPickupPossible}}</span>
                         {% endif %}
                       </p>
                       {% if book.isbn %}

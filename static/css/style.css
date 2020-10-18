@@ -60,6 +60,14 @@ a:visited {
   color: red !important;
 }
 
+.Ja {
+  color: darkgreen;
+}
+
+.Nein {
+  color: red;
+}
+
 /* Grid */
 .listItem {
   page-break-inside: avoid;
