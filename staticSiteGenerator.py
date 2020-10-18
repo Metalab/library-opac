@@ -38,7 +38,7 @@ jinja2Env = Environment(loader=FileSystemLoader('templates'))
 
 with open(sourceFile, newline='') as csvFileReader:
     readFile = csv.DictReader(csvFileReader)
-    books = sorted(readFile, key = lambda tup: (tup["location"], tup["category"], tup["name"]))
+    books = sorted(readFile, key = lambda tup: (tup["location"], tup["category"], tup["authorLastName"], tup["name"]))
 
 logger.debug("Books: {0}".format(books))
 
