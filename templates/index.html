@@ -43,7 +43,9 @@
                       <p>
                         Medientyp: {{book.mediaType}}<br>
                         Entlehnbar? {{book.isLendable}}<br>
-                        Lieferung zur Hauptstelle? {{book.isMetalabPickupPossible}}
+                        {% if book.isMetalabPickupPossible %}
+                          Lieferung zur Hauptstelle? {{book.isMetalabPickupPossible}}
+                        {% endif %}
                       </p>
                       {% if book.isbn %}
                         ISBN: <a href="https://www.justbooks.de/search/?isbn={{book.isbn}}&new_used=*&destination=at&currency=EUR&mode=basic&st=sr&ac=qr" target="_blank">
