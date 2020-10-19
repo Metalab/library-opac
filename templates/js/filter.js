@@ -35,5 +35,6 @@ function redirectOrUpdateVisible() {
 
     // Save active location (we need that later if a button in the menu is clicked)
     oldVisible = decodedHash;
+    window.scrollTo(0, 0);
   }
 }
