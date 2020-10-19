@@ -37,12 +37,12 @@
                         <p>
                           Von: <strong><a href="http://gnd.eurospider.com/s?q={{medium.authorFirstName | urlencode}}+{{medium.authorLastName | urlencode}}" target="_blank">
                             {{medium.authorFirstName}} {{medium.authorLastName}}
-                          </a></strong>
+                          </a></strong><br>
                           {% if medium.publisher %}
                             Herausgeber: {{medium.publisher}}<br>
                           {% endif %}
                           {% if medium.year %}
-                            Jahr: {{medium.year}}<br>
+                            Jahr: {{medium.year}}
                           {% endif %}
                         </p>
                       {% endif %}
