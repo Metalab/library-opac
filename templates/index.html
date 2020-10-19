@@ -55,7 +55,7 @@
                       </p>
                       {% if medium.isbn %}
                         ISBN: <a href="https://www.justbooks.de/search/?isbn={{medium.isbn}}&new_used=*&destination=at&currency=EUR&mode=basic&st=sr&ac=qr" target="_blank">
-                          {{medium.isbn}}
+                          {{isbnFormatFunction(medium.isbn)}}
                         </a><br>
                       {% endif %}
                       {% if medium.issn %}

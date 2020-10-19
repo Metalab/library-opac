@@ -8,7 +8,16 @@ import argparse
 import sys
 import os
 import datetime
+from stdnum import isbn
 from jinja2 import Environment, FileSystemLoader
+
+def isbnFormatFunction(isbnToFormat):
+    try:
+        tmp = isbn.format(isbnToFormat)
+    except:
+        tmp = isbnToFormat
+
+    return tmp
 
 # CLI Parameter
 parser = argparse.ArgumentParser("staticSiteGenerator.py")
@@ -66,7 +75,8 @@ templateVars = {
   "firstLocation": list(recordsToWrite.keys())[0],
   "generationTime": datetime.datetime.now().astimezone().replace(microsecond=0).isoformat(),
   "records": recordsToWrite,
-  "media": media
+  "media": media,
+  "isbnFormatFunction": isbnFormatFunction
 }
 
 # Write the OPAC itself
