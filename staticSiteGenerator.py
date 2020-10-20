@@ -12,9 +12,10 @@ from stdnum import isbn
 from jinja2 import Environment, FileSystemLoader
 
 def isbnFormatFunction(isbnToFormat):
-    try:
+    if isbn.is_valid(isbnToFormat):
         tmp = isbn.format(isbnToFormat)
-    except:
+    else:
+        logger.error("Malformed ISBN: {0}".format(isbnToFormat))
         tmp = isbnToFormat
 
     return tmp
