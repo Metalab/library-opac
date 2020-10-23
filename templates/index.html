@@ -60,7 +60,7 @@
                       {% endif %}
                       {% if medium.issn %}
                         ISSN: <a href="https://portal.issn.org/resource/ISSN/{{medium.issn}}" target="_blank">
-                          {{medium.issn}}
+                          {{issnFormatFunction(medium.issn)}}
                         </a><br>
                       {% endif %}
                       {% if medium.barcode %}

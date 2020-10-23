@@ -8,7 +8,7 @@ import argparse
 import sys
 import os
 import datetime
-from stdnum import isbn
+from stdnum import isbn, issn
 from jinja2 import Environment, FileSystemLoader
 from locale import strxfrm
 
@@ -18,6 +18,15 @@ def isbnFormatFunction(isbnToFormat):
     else:
         logger.error("Malformed ISBN: {0}".format(isbnToFormat))
         tmp = isbnToFormat
+
+    return tmp
+
+def issnFormatFunction(issnToFormat):
+    if issn.is_valid(issnToFormat):
+        tmp = issn.format(issnToFormat)
+    else:
+        logger.error("Malformed ISSN: {0}".format(issnToFormat))
+        tmp = issnToFormat
 
     return tmp
 
@@ -82,7 +91,8 @@ templateVars = {
   "generationTime": datetime.datetime.now().astimezone().replace(microsecond=0).isoformat(),
   "records": recordsToWrite,
   "media": media,
-  "isbnFormatFunction": isbnFormatFunction
+  "isbnFormatFunction": isbnFormatFunction,
+  "issnFormatFunction": issnFormatFunction
 }
 
 # Write the OPAC itself
