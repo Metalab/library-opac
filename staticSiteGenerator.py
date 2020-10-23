@@ -46,9 +46,13 @@ jinja2Env = Environment(loader=FileSystemLoader('templates'))
 
 #### End of config stuff ####
 
-with open(sourceFile, newline='') as csvFileReader:
-    readFile = csv.DictReader(csvFileReader)
-    media = sorted(readFile, key = lambda tup: (tup["location"], tup["category"], tup["name"]))
+try:
+    with open(sourceFile, newline='') as csvFileReader:
+        readFile = csv.DictReader(csvFileReader)
+        media = sorted(readFile, key = lambda tup: (tup["location"], tup["category"], tup["name"]))
+except:
+    logger.critical("Can't read library.csv!")
+    exit(1)
 
 logger.debug("Media: {0}".format(media))
 
