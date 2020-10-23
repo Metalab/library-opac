@@ -51,7 +51,7 @@ try:
     with open(sourceFile, newline='') as csvFileReader:
         readFile = csv.DictReader(csvFileReader)
         media = sorted(readFile, key = lambda tup: (strxfrm(tup["location"]), strxfrm(tup["category"]), strxfrm(tup["name"])))
-except:
+except FileNotFoundError:
     logger.critical("Can't read library.csv!")
     exit(1)
 
