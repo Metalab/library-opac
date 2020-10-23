@@ -72,7 +72,7 @@ logger.debug("Records: {0}".format(recordsToWrite))
 logger.info("Locations: {0}".format(recordsToWrite.keys()))
 
 templateVars = {
-  "locations": recordsToWrite.keys(),
+  "locations": sorted(recordsToWrite.keys(), reverse=True),
   "firstLocation": list(recordsToWrite.keys())[0],
   "generationTime": datetime.datetime.now().astimezone().replace(microsecond=0).isoformat(),
   "records": recordsToWrite,
