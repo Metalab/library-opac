@@ -78,7 +78,7 @@ logger.info("Locations: {0}".format(recordsToWrite.keys()))
 
 templateVars = {
   "locations": sorted(recordsToWrite.keys(), reverse=True),
-  "firstLocation": list(recordsToWrite.keys())[0],
+  "firstLocation": list(sorted(recordsToWrite.keys(), reverse=True))[0],
   "generationTime": datetime.datetime.now().astimezone().replace(microsecond=0).isoformat(),
   "records": recordsToWrite,
   "media": media,
