@@ -10,6 +10,7 @@ import os
 import datetime
 from stdnum import isbn
 from jinja2 import Environment, FileSystemLoader
+from locale import strxfrm
 
 def isbnFormatFunction(isbnToFormat):
     if isbn.is_valid(isbnToFormat):
@@ -49,7 +50,7 @@ jinja2Env = Environment(loader=FileSystemLoader('templates'))
 try:
     with open(sourceFile, newline='') as csvFileReader:
         readFile = csv.DictReader(csvFileReader)
-        media = sorted(readFile, key = lambda tup: (tup["location"], tup["category"], tup["name"]))
+        media = sorted(readFile, key = lambda tup: (strxfrm(tup["location"]), strxfrm(tup["category"]), strxfrm(tup["name"])))
 except:
     logger.critical("Can't read library.csv!")
     exit(1)
