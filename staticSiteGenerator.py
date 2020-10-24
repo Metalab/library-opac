@@ -52,7 +52,7 @@ workDir = os.path.dirname(os.path.realpath(__file__))
 
 logger.info("Source file {0}".format(sourceFile))
 
-jinja2Env = Environment(loader=FileSystemLoader('templates'))
+jinja2Env = Environment(loader=FileSystemLoader('templates'), autoescape=True)
 
 #### End of config stuff ####
 
