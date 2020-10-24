@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="de">
-
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-      Metalab Library OPAC
+      Metalab Library OPAC - {% block title %}{% endblock %}
     </title>
   </head>
 
-  <body onload="redirectOrUpdateVisible()" onhashchange="redirectOrUpdateVisible();" class="has-navbar-fixed-top">
+  <body class="has-navbar-fixed-top">
     {% include "_menu.html" %}
     <div id="mainContainer">
-      {% for location, categories in records.items() %}
+      {% for categories in records.items() %}
         <div class="locationContainer filter" id="{{location | replace(" ", "")}}"><!-- locationContainer start -->
           <h2 class="strong title is-3">
             {{location}}
