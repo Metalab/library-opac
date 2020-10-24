@@ -30,6 +30,15 @@ def issnFormatFunction(issnToFormat):
 
     return tmp
 
+def generateLogoUrl(locationForLogoCheck):
+    tmp = locationForLogoCheck.replace(" ", "")
+
+    if os.path.isfile("static/img/aussenstellen/{0}.png".format(tmp)):
+        return "img/aussenstellen/{0}.png".format(tmp)
+    else:
+        logger.info("No Logo for {0}!".format(locationForLogoCheck))
+        return "img/aussenstellen/nologo.png"
+
 # CLI Parameter
 parser = argparse.ArgumentParser("staticSiteGenerator.py")
 parser.add_argument("--loglevel", help="DEBUG, INFO, ERROR, CRITICAL")
@@ -102,6 +111,7 @@ indexTemplate = jinja2Env.get_template("index.html")
 with open(workDir + "/upload/index.html", "w") as indexWriter:
     indexWriter.write(indexTemplate.render({
         "locations": sorted(recordsToWrite.keys(), reverse=True),
+        "logoUrl": generateLogoUrl
     }))
 
 # Write the locations
