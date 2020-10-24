@@ -21,6 +21,12 @@ p {
   margin: 5px 0 10px 0;
 }
 
+.mainLogo {
+  height: 200px;
+  margin: 0 auto 0 auto;
+  display: block;
+}
+
 /* Medium headings */
 .h4 {
   line-height: 1.2;
