@@ -22,10 +22,11 @@
             <div class="tile is-child">
               <a href="locations_{{location | replace(" ", "")}}.html">
                 <img src="{{logoUrl(location)}}" alt="{{location}} Logo">
+
+                <h2>
+                  {{location}}
+                </h2>
               </a>
-              <h2>
-                {{location}}
-              </h2>
             </div>
           </div>
         {% endfor %}
