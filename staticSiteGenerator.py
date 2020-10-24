@@ -7,10 +7,10 @@ import chromalog
 import argparse
 import sys
 import os
-import datetime
 from stdnum import isbn, issn
 from jinja2 import Environment, FileSystemLoader
 from locale import strxfrm
+from pathlib import Path
 
 def isbnFormatFunction(isbnToFormat):
     if isbn.is_valid(isbnToFormat):
@@ -36,7 +36,7 @@ def generateLogoUrl(locationForLogoCheck):
     if os.path.isfile("static/img/aussenstellen/{0}.png".format(tmp)):
         return "img/aussenstellen/{0}.png".format(tmp)
     else:
-        logger.info("No Logo for {0}!".format(locationForLogoCheck))
+        logger.error("No Logo for {0}!".format(locationForLogoCheck))
         return "img/aussenstellen/nologo.png"
 
 # CLI Parameter
@@ -96,26 +96,27 @@ logger.debug("Records: {0}".format(recordsToWrite))
 # Reverse Locations as a quick fix for issue #1
 reversedLocations = sorted(recordsToWrite.keys(), reverse=True)
 
-templateVars = {
-  "locations": reversedLocations,
-  "firstLocation": list(reversedLocations)[0],
-  "generationTime": datetime.datetime.now().astimezone().replace(microsecond=0).isoformat(),
-  "records": recordsToWrite,
-  "media": media,
-  "isbnFormatFunction": isbnFormatFunction,
-  "issnFormatFunction": issnFormatFunction
-}
-
 # Write the Index Page
+
 indexTemplate = jinja2Env.get_template("index.html")
-with open(workDir + "/upload/index.html", "w") as indexWriter:
+with open("{0}/upload/index.html".format(workDir), "w") as indexWriter:
     indexWriter.write(indexTemplate.render({
         "locations": sorted(recordsToWrite.keys(), reverse=True),
         "logoUrl": generateLogoUrl
     }))
 
 # Write the locations
+locationTemplate = jinja2Env.get_template("_location_boilerplate.html")
 for location in reversedLocations:
     logger.info("Writing location: {0}".format(location))
-
     destFile = "upload/location_{0}.html".format(location.replace(" ", ""))
+
+    with open("{0}/{1}".format(workDir, destFile), "w") as locationWriter:
+        locationWriter.write(locationTemplate.render({
+            "locations": reversedLocations,
+            "firstLocation": list(reversedLocations)[0],
+            "records": recordsToWrite,
+            "media": media,
+            "isbnFormatFunction": isbnFormatFunction,
+            "issnFormatFunction": issnFormatFunction
+        }))
