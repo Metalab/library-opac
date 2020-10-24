@@ -15,7 +15,7 @@ before_script:
 
 script:
   - mkdir -p upload/js
-  - sass static/sass/all.sass static/style.css
+  - sass static/sass/all.scss static/style.css
   - rsync -avP --delete --exclude "sass" ./static/ ./upload/
   - ./staticSiteGenerator.py
 
