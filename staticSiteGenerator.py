@@ -83,11 +83,12 @@ for record in media: # Loop through all records
         recordsToWrite[record["location"]][record["category"]] = {}
 
 logger.debug("Records: {0}".format(recordsToWrite))
-logger.info("Locations: {0}".format(recordsToWrite.keys()))
+
+reversedLocations = sorted(recordsToWrite.keys(), reverse=True)
 
 templateVars = {
-  "locations": sorted(recordsToWrite.keys(), reverse=True),
-  "firstLocation": list(sorted(recordsToWrite.keys(), reverse=True))[0],
+  "locations": reversedLocations,
+  "firstLocation": list(reversedLocations)[0],
   "generationTime": datetime.datetime.now().astimezone().replace(microsecond=0).isoformat(),
   "records": recordsToWrite,
   "media": media,
@@ -95,12 +96,9 @@ templateVars = {
   "issnFormatFunction": issnFormatFunction
 }
 
-# Write the OPAC itself
+# Write the Index Page
 indexTemplate = jinja2Env.get_template("index.html")
 with open(workDir + "/upload/index.html", "w") as indexWriter:
-    indexWriter.write(indexTemplate.render(templateVars))
-
-# We also need to have filter.js in a template because it uses variables from the csv
-filterTemplate = jinja2Env.get_template("js/filter.js")
-with open(workDir + "/upload/js/filter.js", "w") as filterWriter:
-    filterWriter.write(filterTemplate.render(templateVars))
+    indexWriter.write(indexTemplate.render({
+        "locations": sorted(recordsToWrite.keys(), reverse=True),
+    }))

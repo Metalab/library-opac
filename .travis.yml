@@ -14,7 +14,6 @@ before_script:
   - /tmp/go/bin/csvlint /tmp/library-media-inventory/inventory.csv
 
 script:
-  - mkdir -p upload/js
   - sass static/sass/all.scss static/style.css
   - rsync -avP --delete --exclude "sass" ./static/ ./upload/
   - ./staticSiteGenerator.py
