@@ -1,11 +1,6 @@
 a {
   &:link {
-    color: darkblue;
     text-decoration: none;
-  }
-
-  &:visited {
-    color: darkcyan;
   }
 }
 
@@ -25,4 +20,12 @@ a {
 
 .Nein {
   color: red;
+}
+
+.shadow {
+  box-shadow: inset 5px 5px 5px 0px rgba(0,0,0,0.5);
+
+  p {
+    background-color: rgba(0, 0, 0, 0) !important;
+  }
 }

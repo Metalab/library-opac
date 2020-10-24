@@ -16,6 +16,20 @@
         Metalab Library OPAC
       </h1>
       <img src="img/library.png" alt="Metalab Library Logo" class="mainLogo">
+      <div class="tile is-ancestor">
+        {% for location in locations %}
+          <div class="card tile is-parent location">
+            <div class="tile is-child">
+              <a href="{{location | replace(" ", "")}}.html">
+                <img src="img/aussenstellen/{{location | replace(" ", "")}}.png" alt="{{location}} Logo">
+              </a>
+              <h2>
+                {{location}}
+              </p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
     </div>
   </body>
   {% include "_footer.html" %}

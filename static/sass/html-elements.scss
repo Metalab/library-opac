@@ -31,8 +31,14 @@ footer {
   position: fixed;
   right: 0;
   z-index: 30;
+  background-color: $footer-background-color;
 
   p {
     margin-left: 10px;
   }
+}
+
+*::selection {
+  color: white;
+  background-color: black;
 }

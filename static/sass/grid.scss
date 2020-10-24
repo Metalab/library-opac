@@ -19,3 +19,21 @@
 .show {
   display: block;
 }
+
+.card {
+  border-radius: 5px;
+  // height: 300px;
+  border: 1px solid black;
+  width: 250px;
+
+  img {
+    margin: auto;
+    display: block;
+    padding-top: 5px;
+    height: 250px;
+  }
+
+  p {
+    text-align: center;
+  }
+}
