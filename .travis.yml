@@ -15,8 +15,8 @@ before_script:
 
 script:
   - mkdir -p upload/js
-  - ./staticSiteGenerator.py
   - rsync -avP --delete ./static/ ./upload/
+  - ./staticSiteGenerator.py
 
 before_deploy:
   - echo "bibliothek.metalab.ac.at" > upload/CNAME
