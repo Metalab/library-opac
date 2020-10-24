@@ -1,0 +1,28 @@
+a {
+  &:link {
+    color: darkblue;
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: darkcyan;
+  }
+}
+
+.activeMenuItem {
+  background: darkgrey !important;
+  color: black !important;
+  border-radius: 5px !important;
+}
+
+.important {
+  color: red !important;
+}
+
+.Ja {
+  color: darkgreen;
+}
+
+.Nein {
+  color: red;
+}
