@@ -11,15 +11,25 @@ a {
 }
 
 .important {
-  color: red !important;
+  color: $red !important;
 }
 
 .Ja {
-  color: darkgreen;
+  color: $green;
+
+  &::selection {
+    color: $white;
+    background-color: $green;
+  }
 }
 
 .Nein {
-  color: red;
+  color: $red;
+
+  &::selection {
+    color: $white;
+    background-color: $red;
+  }
 }
 
 .shadow {
