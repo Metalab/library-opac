@@ -29,3 +29,20 @@ p {
   color: white;
   background-color: black;
 }
+
+footer {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 30;
+  background-color: $footer-background-color;
+
+  .is-pulled-left {
+    margin-left: 15px;
+  }
+
+  .is-pulled-right {
+    margin-right: 15px;
+  }
+}
