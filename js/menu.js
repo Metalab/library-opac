@@ -1,1 +1,1 @@
-$(document).ready(function(){$(window).width()<1024&&$("#mainNav").addClass("show"),$("#navbar-burger").click(function(){$("#navbar-burger").toggleClass("is-active"),$("#mainNav").toggleClass("show")}),$(".navbar-item").click(function(){$("#mainNav").removeClass("show")})});
+$(document).ready(function(){$("#navbar-burger").click(function(){$("#navbar-burger").toggleClass("is-active"),$("#mainNav").toggleClass("is-block")}),$(".navbar-item").click(function(){$("#mainNav").removeClass("is-block")})});
