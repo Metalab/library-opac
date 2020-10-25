@@ -19,10 +19,11 @@
         </h2>
 
         {% for category in categories %}
-          <div class="categoryContainer {{category | replace(" ", "")}}"><!-- categoryContainer start -->
+          <div class="categoryContainer" id="{{category | replace(" ", "")}}"><!-- categoryContainer start -->
             <h3 class="strong subtitle is-4">
               {{category}}
             </h3>
+            <a name="{{category | replace(" ", "")}}" class="is-hidden"></a>
             <div class="mediaContainer"><!-- mediaContainer start -->
               {% for medium in media %}
                 {% if (medium.category == category) and (medium.location == location) %}
