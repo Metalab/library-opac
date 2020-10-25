@@ -122,6 +122,7 @@ for location in reversedLocations:
             "logoUrl": generateLogoUrl,
             "location": location,
             "media": media,
+            "categories": locationsAndCategories[location],
             "isbnFormatFunction": isbnFormatFunction,
             "issnFormatFunction": issnFormatFunction,
             "generationTime": generationTime
