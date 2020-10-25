@@ -23,7 +23,7 @@
               {% for locationTmp, categories in locationsAndCategories.items() %}
                 {% if locationTmp == menuLocation %}
                   {% for category in categories %}
-                    <a class="navbar-link navbar-item" href="#{{category | replace(" ", "")}}">
+                    <a class="navbar-link navbar-item" href="location_{{menuLocation | replace(" ", "")}}.html#{{category | replace(" ", "")}}">
                       {{category}}
                     </a>
                   {% endfor %}
