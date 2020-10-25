@@ -11,25 +11,16 @@
   overflow: hidden;
 }
 
-/* Filter */
-.filter {
-  display: none;
-}
-
-.show {
-  display: block;
-}
-
 .card {
-  img {
-    margin: auto;
-    display: block;
-    padding-top: 5px;
-    height: 250px;
-    border-radius: 5px;
-  }
-
   p {
     text-align: center;
   }
+}
+
+.logo {
+  margin: auto;
+  display: block;
+  padding-top: 5px;
+  height: 250px;
+  border-radius: 5px;
 }

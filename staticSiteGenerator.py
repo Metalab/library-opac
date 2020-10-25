@@ -83,25 +83,24 @@ logger.debug("Media: {0}".format(media))
 #   -> category 1
 #   -> category 2
 
-recordsToWrite = {}
+locationsAndCategories = {}
 for record in media: # Loop through all records
-    if not record["location"] in recordsToWrite: # ... if we don't have the location (branch offices)
-        recordsToWrite[record["location"]] = {} # ... add it do the dict
+    if not record["location"] in locationsAndCategories: # ... if we don't have the location (branch offices)
+        locationsAndCategories[record["location"]] = {} # ... add it do the dict
 
-    if not record["category"] in recordsToWrite[record["location"]]: # now we do the same with the categories
-        recordsToWrite[record["location"]][record["category"]] = {}
+    if not record["category"] in locationsAndCategories[record["location"]]: # now we do the same with the categories
+        locationsAndCategories[record["location"]][record["category"]] = {}
 
-logger.debug("Records: {0}".format(recordsToWrite))
+logger.debug("Records: {0}".format(locationsAndCategories))
 
 # Reverse Locations as a quick fix for issue #1
-reversedLocations = sorted(recordsToWrite.keys(), reverse=True)
+reversedLocations = sorted(locationsAndCategories.keys(), reverse=True)
 
 # Write the Index Page
-
 indexTemplate = jinja2Env.get_template("index.html")
 with open("{0}/upload/index.html".format(workDir), "w") as indexWriter:
     indexWriter.write(indexTemplate.render({
-        "locations": sorted(recordsToWrite.keys(), reverse=True),
+        "locations": reversedLocations,
         "logoUrl": generateLogoUrl
     }))
 
@@ -114,8 +113,8 @@ for location in reversedLocations:
     with open("{0}/{1}".format(workDir, destFile), "w") as locationWriter:
         locationWriter.write(locationTemplate.render({
             "locations": reversedLocations,
-            "firstLocation": list(reversedLocations)[0],
-            "records": recordsToWrite,
+            "logoUrl": generateLogoUrl,
+            "location": location,
             "media": media,
             "isbnFormatFunction": isbnFormatFunction,
             "issnFormatFunction": issnFormatFunction
