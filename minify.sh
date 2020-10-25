@@ -8,3 +8,5 @@ find upload/js/ -type f \
 find upload/ -type f \
     -name "*.html" ! -name "*.html.*" \
     -exec minify {} --type html -o {} \;
+
+uglifycss upload/style.css --output upload/style.css
