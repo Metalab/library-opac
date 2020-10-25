@@ -15,9 +15,22 @@
     <div id="mainNav" class="navbar-menu">
       <div class="navbar-start">
         {% for menuLocation in locations %}
-          <a class="navbar-item {% if location == menuLocation %}active{% else %}not-active{% endif %}" href="location_{{menuLocation | replace(" ", "")}}.html">
-            {{menuLocation}}
-          </a>
+          <div class="navbar-item has-dropdown {% if location == menuLocation %}active{% else %}not-active{% endif %}">
+            <a class="navbar-link" href="location_{{menuLocation | replace(" ", "")}}.html">
+              {{menuLocation}}
+            </a>
+            <div class="navbar-dropdown">
+              {% for locationTmp, categories in locationsAndCategories.items() %}
+                {% if locationTmp == menuLocation %}
+                  {% for category in categories %}
+                    <a class="navbar-link navbar-item" href="#{{category | replace(" ", "")}}">
+                      {{category}}
+                    </a>
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
         {% endfor %}
         <span class="navbar-item is-hidden-desktop">
           <hr>
