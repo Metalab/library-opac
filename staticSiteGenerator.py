@@ -7,6 +7,8 @@ import chromalog
 import argparse
 import sys
 import os
+import datetime
+import pytz
 from stdnum import isbn, issn
 from jinja2 import Environment, FileSystemLoader
 from locale import strxfrm
@@ -96,12 +98,16 @@ logger.debug("Records: {0}".format(locationsAndCategories))
 # Reverse Locations as a quick fix for issue #1
 reversedLocations = sorted(locationsAndCategories.keys(), reverse=True)
 
+# Generation Time
+generationTime = datetime.datetime.now().astimezone(pytz.timezone("Europe/Vienna")).replace(microsecond=0).isoformat()
+
 # Write the Index Page
 indexTemplate = jinja2Env.get_template("index.html")
 with open("{0}/upload/index.html".format(workDir), "w") as indexWriter:
     indexWriter.write(indexTemplate.render({
         "locations": reversedLocations,
-        "logoUrl": generateLogoUrl
+        "logoUrl": generateLogoUrl,
+        "generationTime": generationTime,
     }))
 
 # Write the locations
@@ -117,5 +123,6 @@ for location in reversedLocations:
             "location": location,
             "media": media,
             "isbnFormatFunction": isbnFormatFunction,
-            "issnFormatFunction": issnFormatFunction
+            "issnFormatFunction": issnFormatFunction,
+            "generationTime": generationTime
         }))
