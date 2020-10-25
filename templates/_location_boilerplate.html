@@ -45,9 +45,31 @@
                     {% endif %}
                     <p>
                       Medientyp: {{medium.mediaType}}<br>
-                      Entlehnbar? <span class="{{medium.isLendable}}">{{medium.isLendable}}</span><br>
-                      {% if medium.isMetalabPickupPossible %}
-                        Lieferung zur Hauptstelle? <span class="{{medium.isMetalabPickupPossible}}">{{medium.isMetalabPickupPossible}}</span>
+                      {% if medium.isLendable.lower() == "ja" %}
+                        <span class="tag is-success">
+                          Entlehnbar
+                        </span>
+                      {% else %}
+                        <span class="tag is-danger">
+                          Nicht Entlehnbar
+                        </span>
+                      {% endif %}
+                      {% if medium.isMetalabPickupPossible.lower() == "ja" %}
+                          <span class="tag is-success">
+                            Lieferung zur Hauptstelle
+                          </span>
+                        {% elif (medium.isMetalabPickupPossible.lower() == "nein") or ((medium.isLendable.lower() == "nein") and (medium.location.lower() | replace(" ", "") != "hauptstellemetalab")) %}
+                          <span class="tag is-danger">
+                            Keine Lieferung zur Hauptstelle
+                          </span>
+                        {% elif medium.location.lower() | replace(" ", "") == "hauptstellemetalab" %}
+                          <span class="tag is-info">
+                            Medium in Hauptstelle vorhanden
+                          </span>
+                        {% else %}
+                          <span class="tag is-warning">
+                             Lieferung an die Hauptstelle fraglich
+                          </span>
                       {% endif %}
                     </p>
                     {% if medium.isbn %}
