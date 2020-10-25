@@ -12,7 +12,7 @@
   <body class="has-navbar-fixed-top">
     {% include "_menu.html" %}
     <div id="mainContainer">
-      <h1>
+      <h1 class="title">
         Metalab Library OPAC
       </h1>
       <img src="img/library.png" alt="Metalab Library Logo" class="mainLogo">
@@ -21,9 +21,9 @@
           <div class="card tile is-parent location">
             <div class="tile is-child">
               <a href="location_{{location | replace(" ", "")}}.html">
-                <img src="{{logoUrl(location)}}" alt="{{location}} Logo - For license information see img/aussenstellen/licenses.txt" class="logo">
+                <img src="{{logoUrl(location)}}" alt="{{location}} Logo - Lizenzen der Bilder: img/aussenstellen/licenses.txt" class="logo">
 
-                <h2>
+                <h2 class="subtitle">
                   {{location}}
                 </h2>
               </a>
