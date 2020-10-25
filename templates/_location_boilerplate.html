@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      Metalab Library OPAC - {{location}}
+    </title>
+  </head>
+
+  <body class="has-navbar-fixed-top">
+    {% include "_menu.html" %}
+    <div id="mainContainer">
+      <div class="locationContainer" id="{{location | replace(" ", "")}}"><!-- locationContainer start -->
+        <h2 class="strong title is-3">
+          {{location}}
+          <img src="{{logoUrl(location)}}" alt="{{location}} Logo - For license information see img/aussenstellen/licenses.txt" class="logo">
+        </h2>
+
+        {% for category in categories %}
+          <div class="categoryContainer {{category | replace(" ", "")}}"><!-- categoryContainer start -->
+            <h3 class="strong subtitle is-4">
+              {{category}}
+            </h3>
+            <div class="mediaContainer"><!-- mediaContainer start -->
+              {% for medium in media %}
+                {% if (medium.category == category) and (medium.location == location) %}
+                  <div class="listItem">
+                    <h4 class="title is-5">
+                      {{medium.name}}
+                    </h4>
+                    {% if (medium.authorFirstName) and (medium.authorLastName) %}
+                      <p>
+                        Von: <strong><a href="http://gnd.eurospider.com/s?q={{medium.authorFirstName | urlencode}}+{{medium.authorLastName | urlencode}}" target="_blank">
+                          {{medium.authorFirstName}} {{medium.authorLastName}}
+                        </a></strong><br>
+                        {% if medium.publisher %}
+                          Herausgeber: {{medium.publisher}}<br>
+                        {% endif %}
+                        {% if medium.year %}
+                          Jahr: {{medium.year}}
+                        {% endif %}
+                      </p>
+                    {% endif %}
+                    <p>
+                      Medientyp: {{medium.mediaType}}<br>
+                      Entlehnbar? <span class="{{medium.isLendable}}">{{medium.isLendable}}</span><br>
+                      {% if medium.isMetalabPickupPossible %}
+                        Lieferung zur Hauptstelle? <span class="{{medium.isMetalabPickupPossible}}">{{medium.isMetalabPickupPossible}}</span>
+                      {% endif %}
+                    </p>
+                    {% if medium.isbn %}
+                      ISBN: <a href="https://www.justbooks.de/search/?isbn={{medium.isbn}}&new_used=*&destination=at&currency=EUR&mode=basic&st=sr&ac=qr" target="_blank">
+                        {{isbnFormatFunction(medium.isbn)}}
+                      </a><br>
+                    {% endif %}
+                    {% if medium.issn %}
+                      ISSN: <a href="https://portal.issn.org/resource/ISSN/{{medium.issn}}" target="_blank">
+                        {{issnFormatFunction(medium.issn)}}
+                      </a><br>
+                    {% endif %}
+                    {% if medium.barcode %}
+                      Barcode: {{medium.barcode}}
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div><!-- mediaContainer end -->
+          </div>
+        {% endfor %}
+
+      </div><!-- locationContainer end -->
+    </div><!-- mainContainer end -->
+  </body>
+  {% include "_footer.html" %}
+</html>

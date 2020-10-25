@@ -8,9 +8,11 @@ import argparse
 import sys
 import os
 import datetime
+import pytz
 from stdnum import isbn, issn
 from jinja2 import Environment, FileSystemLoader
 from locale import strxfrm
+from pathlib import Path
 
 def isbnFormatFunction(isbnToFormat):
     if isbn.is_valid(isbnToFormat):
@@ -29,6 +31,15 @@ def issnFormatFunction(issnToFormat):
         tmp = issnToFormat
 
     return tmp
+
+def generateLogoUrl(locationForLogoCheck):
+    tmp = locationForLogoCheck.replace(" ", "")
+
+    if os.path.isfile("static/img/aussenstellen/{0}.png".format(tmp)):
+        return "img/aussenstellen/{0}.png".format(tmp)
+    else:
+        logger.error("No Logo for {0}!".format(locationForLogoCheck))
+        return "img/aussenstellen/nologo.png"
 
 # CLI Parameter
 parser = argparse.ArgumentParser("staticSiteGenerator.py")
@@ -52,7 +63,7 @@ workDir = os.path.dirname(os.path.realpath(__file__))
 
 logger.info("Source file {0}".format(sourceFile))
 
-jinja2Env = Environment(loader=FileSystemLoader('templates'))
+jinja2Env = Environment(loader=FileSystemLoader('templates'), autoescape=True)
 
 #### End of config stuff ####
 
@@ -74,33 +85,45 @@ logger.debug("Media: {0}".format(media))
 #   -> category 1
 #   -> category 2
 
-recordsToWrite = {}
+locationsAndCategories = {}
 for record in media: # Loop through all records
-    if not record["location"] in recordsToWrite: # ... if we don't have the location (branch office)
-        recordsToWrite[record["location"]] = {} # ... add it do the dict
+    if not record["location"] in locationsAndCategories: # ... if we don't have the location (branch offices)
+        locationsAndCategories[record["location"]] = {} # ... add it do the dict
 
-    if not record["category"] in recordsToWrite[record["location"]]: # now we do the same with the categories
-        recordsToWrite[record["location"]][record["category"]] = {}
+    if not record["category"] in locationsAndCategories[record["location"]]: # now we do the same with the categories
+        locationsAndCategories[record["location"]][record["category"]] = {}
 
-logger.debug("Records: {0}".format(recordsToWrite))
-logger.info("Locations: {0}".format(recordsToWrite.keys()))
+logger.debug("Records: {0}".format(locationsAndCategories))
 
-templateVars = {
-  "locations": sorted(recordsToWrite.keys(), reverse=True),
-  "firstLocation": list(sorted(recordsToWrite.keys(), reverse=True))[0],
-  "generationTime": datetime.datetime.now().astimezone().replace(microsecond=0).isoformat(),
-  "records": recordsToWrite,
-  "media": media,
-  "isbnFormatFunction": isbnFormatFunction,
-  "issnFormatFunction": issnFormatFunction
-}
+# Reverse Locations as a quick fix for issue #1
+reversedLocations = sorted(locationsAndCategories.keys(), reverse=True)
 
-# Write the OPAC itself
+# Generation Time
+generationTime = datetime.datetime.now().astimezone(pytz.timezone("Europe/Vienna")).replace(microsecond=0).isoformat()
+
+# Write the Index Page
 indexTemplate = jinja2Env.get_template("index.html")
-with open(workDir + "/upload/index.html", "w") as indexWriter:
-    indexWriter.write(indexTemplate.render(templateVars))
+with open("{0}/upload/index.html".format(workDir), "w") as indexWriter:
+    indexWriter.write(indexTemplate.render({
+        "locations": reversedLocations,
+        "logoUrl": generateLogoUrl,
+        "generationTime": generationTime,
+    }))
 
-# We also need to have filter.js in a template because it uses variables from the csv
-filterTemplate = jinja2Env.get_template("js/filter.js")
-with open(workDir + "/upload/js/filter.js", "w") as filterWriter:
-    filterWriter.write(filterTemplate.render(templateVars))
+# Write the locations
+locationTemplate = jinja2Env.get_template("_location_boilerplate.html")
+for location in reversedLocations:
+    logger.info("Writing location: {0}".format(location))
+    destFile = "upload/location_{0}.html".format(location.replace(" ", ""))
+
+    with open("{0}/{1}".format(workDir, destFile), "w") as locationWriter:
+        locationWriter.write(locationTemplate.render({
+            "locations": reversedLocations,
+            "logoUrl": generateLogoUrl,
+            "location": location,
+            "media": media,
+            "categories": locationsAndCategories[location],
+            "isbnFormatFunction": isbnFormatFunction,
+            "issnFormatFunction": issnFormatFunction,
+            "generationTime": generationTime
+        }))

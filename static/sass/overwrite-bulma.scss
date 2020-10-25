@@ -1,0 +1,11 @@
+$navbar-background-color: hsl(0, 0%, 90%);
+$footer-background-color: $navbar-background-color;
+
+$link: darkblue;
+$text: black;
+
+.tile {
+  &.is-ancestor {
+    margin-top: 0.75rem !important;
+  }
+}

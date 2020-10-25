@@ -7,20 +7,20 @@ install:
   - sudo apt-get install -y golang-go rsync minify npm > /dev/null
   - export GOPATH=/tmp/go && go get github.com/Clever/csvlint/cmd/csvlint > /dev/null
   - pip install -r requirements.txt > /dev/null
-  - npm install --global uglify-js uglifycss > /dev/null
+  - npm install --global uglify-js uglifycss sass > /dev/null
 
 before_script:
   - ./update.sh
   - /tmp/go/bin/csvlint /tmp/library-media-inventory/inventory.csv
 
 script:
-  - mkdir -p upload/js
-  - rsync -avP --delete ./static/ ./upload/
+  - sass static/sass/all.scss static/style.css
+  - rsync -avP --delete --exclude "sass" ./static/ ./upload/
   - ./staticSiteGenerator.py
 
 before_deploy:
   - echo "bibliothek.metalab.ac.at" > upload/CNAME
-  - ./minify.sh # Minify html, css and js
+  - ./minify.sh # Minify html and js
 
 deploy:
   provider: pages

@@ -1,8 +1,8 @@
 <header class="screenOnly">
-  <nav class="navbar is-fixed-top" aria-label="Hauptmenü">
+  <nav class="navbar is-fixed-top is-transparent" aria-label="Hauptmenü">
     <div class="navbar-brand">
-      <a class="navbar-item" target="_blank" href="/">
-        <img src="img/logo.svg" height="28" alt="Metalab Library Logo">
+      <a class="navbar-item" href="/">
+        <img src="img/metalab.svg" alt="Metalab Library Logo">
       </a>
 
       <a role="button" id="navbar-burger" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="mainNav">
@@ -14,11 +14,15 @@
 
     <div id="mainNav" class="navbar-menu">
       <div class="navbar-start">
-        {% for location in locations %}
-          <a class="navbar-item" href="#{{location | replace(" ", "")}}">
-            {{location}}
+        {% for menuLocation in locations %}
+          <a class="navbar-item {% if location == menuLocation %}active{% else %}not-active{% endif %}" href="location_{{menuLocation | replace(" ", "")}}.html">
+            {{menuLocation}}
           </a>
         {% endfor %}
+        <span class="navbar-item is-hidden-desktop">
+          <hr>
+          Mit dem Stand vom: {{generationTime}}
+        </span>
       </div>
     </div>
   </nav>
