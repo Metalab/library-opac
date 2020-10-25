@@ -91,12 +91,12 @@ for record in media: # Loop through all records
         locationsAndCategories[record["location"]] = {} # ... add it do the dict
 
     if not record["category"] in locationsAndCategories[record["location"]]: # now we do the same with the categories
-        locationsAndCategories[record["location"]][record["category"]] = {}
+        locationsAndCategories[record["location"]][record["category"]] = []
 
 logger.debug("Records: {0}".format(locationsAndCategories))
 
 # Reverse Locations as a quick fix for issue #1
-reversedLocations = sorted(locationsAndCategories.keys(), reverse=True)
+reversedLocations = sorted(locationsAndCategories, reverse=True)
 
 # Generation Time
 generationTime = datetime.datetime.now().astimezone(pytz.timezone("Europe/Vienna")).replace(microsecond=0).isoformat()
@@ -108,6 +108,7 @@ with open("{0}/upload/index.html".format(workDir), "w") as indexWriter:
         "locations": reversedLocations,
         "logoUrl": generateLogoUrl,
         "generationTime": generationTime,
+        "locationsAndCategories": locationsAndCategories
     }))
 
 # Write the locations
@@ -122,6 +123,7 @@ for location in reversedLocations:
             "logoUrl": generateLogoUrl,
             "location": location,
             "media": media,
+            "locationsAndCategories": locationsAndCategories,
             "categories": locationsAndCategories[location],
             "isbnFormatFunction": isbnFormatFunction,
             "issnFormatFunction": issnFormatFunction,

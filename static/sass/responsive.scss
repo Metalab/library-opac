@@ -50,6 +50,13 @@
   }
 }
 
+@media screen and (min-width: 1080px) {
+  .navbar-dropdown {
+    max-height: 512px;
+    overflow: auto;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .desktopOnly {
     display: none;

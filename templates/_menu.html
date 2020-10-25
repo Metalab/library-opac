@@ -1,5 +1,5 @@
 <header class="screenOnly">
-  <nav class="navbar is-fixed-top is-transparent" aria-label="Hauptmenü">
+  <nav class="navbar is-fixed-top is-transparent" role="navigation" aria-label="dropdown navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
         <img src="img/metalab.svg" alt="Metalab Library Logo">
@@ -15,9 +15,22 @@
     <div id="mainNav" class="navbar-menu">
       <div class="navbar-start">
         {% for menuLocation in locations %}
-          <a class="navbar-item {% if location == menuLocation %}active{% else %}not-active{% endif %}" href="location_{{menuLocation | replace(" ", "")}}.html">
-            {{menuLocation}}
-          </a>
+          <div class="navbar-item has-dropdown is-hoverable {% if location == menuLocation %}active{% else %}not-active{% endif %}">
+            <a class="navbar-link" href="location_{{menuLocation | replace(" ", "")}}.html">
+              {{menuLocation}}
+            </a>
+            <div class="navbar-dropdown">
+              {% for locationTmp, categories in locationsAndCategories.items() %}
+                {% if locationTmp == menuLocation %}
+                  {% for category in categories %}
+                    <a class="navbar-item" href="location_{{menuLocation | replace(" ", "")}}.html#{{category | replace(" ", "")}}">
+                      {{category}}
+                    </a>
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
         {% endfor %}
         <span class="navbar-item is-hidden-desktop">
           <hr>
