@@ -1,5 +1,18 @@
-.mainLogo {
+#mainLogo {
   height: 200px;
   margin: 0 auto 0 auto;
   display: block;
+}
+
+.rotate {
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }

@@ -129,3 +129,13 @@ for location in reversedLocations:
             "issnFormatFunction": issnFormatFunction,
             "generationTime": generationTime
         }))
+
+# 404 Page
+notfoundTemplate = jinja2Env.get_template("404.html")
+with open("{0}/upload/404.html".format(workDir), "w") as notFoundWriter:
+    notFoundWriter.write(notfoundTemplate.render({
+        "locations": reversedLocations,
+        "logoUrl": generateLogoUrl,
+        "generationTime": generationTime,
+        "locationsAndCategories": locationsAndCategories
+    }))
