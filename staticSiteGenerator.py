@@ -19,13 +19,15 @@ def numberFormatFunction(stringToFormat, type):
     if type.lower() == "isbn":
         if isbn.is_valid(stringToFormat):
             tmp = isbn.format(stringToFormat)
+            logger.debug("OK ISBN: {0}".format(tmp))
         else:
             logger.error("Malformed ISBN: {0}".format(stringToFormat))
             tmp = stringToFormat
 
-    else:
+    elif type.lower() == "issn":
         if issn.is_valid(stringToFormat):
             tmp = issn.format(stringToFormat)
+            logger.debug("OK ISSN: {0}".format(tmp))
         else:
             logger.error("Malformed ISSN: {0}".format(stringToFormat))
             tmp = stringToFormat
