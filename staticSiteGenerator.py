@@ -9,6 +9,7 @@ import sys
 import os
 import datetime
 import pytz
+import json
 from stdnum import isbn, issn
 from jinja2 import Environment, FileSystemLoader
 from locale import strxfrm
@@ -146,3 +147,7 @@ with open("{0}/upload/404.html".format(workDir), "w") as notFoundWriter:
         "locationsAndCategories": locationsAndCategories,
         "libraryName": libraryName
     }))
+
+# Write media json
+with open("upload/media.json", "w") as mediaJsonWriter:
+    json.dump(media, mediaJsonWriter)
