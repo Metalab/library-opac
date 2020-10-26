@@ -23,7 +23,7 @@ def numberFormatFunction(stringToFormat, type):
             logger.error("Malformed ISBN: {0}".format(stringToFormat))
             tmp = stringToFormat
 
-    elif type.lower() == "issn":
+    else:
         if issn.is_valid(stringToFormat):
             tmp = issn.format(stringToFormat)
         else:
