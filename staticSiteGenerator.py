@@ -107,19 +107,22 @@ reversedLocations = sorted(locationsAndCategories, reverse=True)
 # Generation Time
 generationTime = datetime.datetime.now().astimezone(pytz.timezone("Europe/Vienna")).replace(microsecond=0).isoformat()
 
+# Shared Template vars
+sharedTemplateVars = {
+    "locations": reversedLocations,
+    "logoUrl": generateLogoUrl,
+    "generationTime": generationTime,
+    "locationsAndCategories": locationsAndCategories,
+    "libraryName": libraryName
+}
+
 # Write the templates
 for templateFile in [x for x in os.listdir(workDir + "/templates") if (os.path.splitext(x)[1] == ".html" and x[0] != "_")]:
     logger.info("Writing Page: {0}".format(templateFile))
 
     template = jinja2Env.get_template(templateFile)
     with open("{0}/upload/{1}".format(workDir, templateFile), "w") as templateWriter:
-        templateWriter.write(template.render({
-            "locations": reversedLocations,
-            "logoUrl": generateLogoUrl,
-            "generationTime": generationTime,
-            "locationsAndCategories": locationsAndCategories,
-            "libraryName": libraryName
-        }))
+        templateWriter.write(template.render(sharedTemplateVars))
 
 # Write the locations
 locationTemplate = jinja2Env.get_template("_location_boilerplate.html")
@@ -127,18 +130,15 @@ for location in reversedLocations:
     logger.info("Writing location: {0}".format(location))
     destFile = "upload/location_{0}.html".format(location.replace(" ", ""))
 
+    templateVars = {
+        "location": location,
+        "media": media,
+        "categories": locationsAndCategories[location],
+        "numberFormatFunction": numberFormatFunction
+    }
+
     with open("{0}/{1}".format(workDir, destFile), "w") as locationWriter:
-        locationWriter.write(locationTemplate.render({
-            "locations": reversedLocations,
-            "logoUrl": generateLogoUrl,
-            "location": location,
-            "media": media,
-            "locationsAndCategories": locationsAndCategories,
-            "categories": locationsAndCategories[location],
-            "numberFormatFunction": numberFormatFunction,
-            "generationTime": generationTime,
-            "libraryName": libraryName
-        }))
+        locationWriter.write(locationTemplate.render({**sharedTemplateVars, **templateVars}))
 
 # Write media json
 with open("upload/media.json", "w") as mediaJsonWriter:
