@@ -15,21 +15,20 @@ from jinja2 import Environment, FileSystemLoader
 from locale import strxfrm
 from pathlib import Path
 
-def isbnFormatFunction(isbnToFormat):
-    if isbn.is_valid(isbnToFormat):
-        tmp = isbn.format(isbnToFormat)
-    else:
-        logger.error("Malformed ISBN: {0}".format(isbnToFormat))
-        tmp = isbnToFormat
+def numberFormatFunction(stringToFormat, type):
+    if type.lower() == "isbn":
+        if isbn.is_valid(stringToFormat):
+            tmp = isbn.format(stringToFormat)
+        else:
+            logger.error("Malformed ISBN: {0}".format(stringToFormat))
+            tmp = stringToFormat
 
-    return tmp
-
-def issnFormatFunction(issnToFormat):
-    if issn.is_valid(issnToFormat):
-        tmp = issn.format(issnToFormat)
-    else:
-        logger.error("Malformed ISSN: {0}".format(issnToFormat))
-        tmp = issnToFormat
+    elif type.lower() == "issn":
+        if issn.is_valid(stringToFormat):
+            tmp = issn.format(stringToFormat)
+        else:
+            logger.error("Malformed ISSN: {0}".format(stringToFormat))
+            tmp = stringToFormat
 
     return tmp
 
@@ -131,8 +130,7 @@ for location in reversedLocations:
             "media": media,
             "locationsAndCategories": locationsAndCategories,
             "categories": locationsAndCategories[location],
-            "isbnFormatFunction": isbnFormatFunction,
-            "issnFormatFunction": issnFormatFunction,
+            "numberFormatFunction": numberFormatFunction,
             "generationTime": generationTime,
             "libraryName": libraryName
         }))

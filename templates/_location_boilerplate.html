@@ -81,14 +81,14 @@
                     {% if medium.isbn %}
                       <p>
                           ISBN: <a href="https://www.justbooks.de/search/?isbn={{medium.isbn}}&new_used=*&destination=at&currency=EUR&mode=basic&st=sr&ac=qr" target="_blank">
-                          {{isbnFormatFunction(medium.isbn)}}
+                          {{numberFormatFunction(medium.isbn, "isbn")}}
                         </a>
                       </p>
                     {% endif %}
                     {% if medium.issn %}
                       <p>
                         ISSN: <a href="https://portal.issn.org/resource/ISSN/{{medium.issn}}" target="_blank">
-                          {{issnFormatFunction(medium.issn)}}
+                          {{numberFormatFunction(medium.issn, "issn")}}
                         </a>
                       </p>
                     {% endif %}
