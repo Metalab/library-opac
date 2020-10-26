@@ -45,6 +45,7 @@ def generateLogoUrl(locationForLogoCheck):
 parser = argparse.ArgumentParser("staticSiteGenerator.py")
 parser.add_argument("--loglevel", help="DEBUG, INFO, ERROR, CRITICAL")
 parser.add_argument("--source", help="Path to inventory.csv. Default /tmp/library-media-inventory/inventory.csv")
+parser.add_argument("--name", help="Library Name. Defaults to 'Metalab Library'")
 
 args = vars(parser.parse_args())
 
@@ -55,8 +56,11 @@ logger = logging.getLogger()
 
 logger.debug(args)
 
-# Source file
+# Defaults
 sourceFile = args["source"] if args["source"] else "/tmp/library-media-inventory/inventory.csv"
+libraryName = args["name"] if args["name"] else "Metalab Library"
+
+logger.info("Library Name: {0}".format(libraryName))
 
 # Current folder
 workDir = os.path.dirname(os.path.realpath(__file__))
@@ -108,7 +112,8 @@ with open("{0}/upload/index.html".format(workDir), "w") as indexWriter:
         "locations": reversedLocations,
         "logoUrl": generateLogoUrl,
         "generationTime": generationTime,
-        "locationsAndCategories": locationsAndCategories
+        "locationsAndCategories": locationsAndCategories,
+        "libraryName": libraryName
     }))
 
 # Write the locations
@@ -127,7 +132,8 @@ for location in reversedLocations:
             "categories": locationsAndCategories[location],
             "isbnFormatFunction": isbnFormatFunction,
             "issnFormatFunction": issnFormatFunction,
-            "generationTime": generationTime
+            "generationTime": generationTime,
+            "libraryName": libraryName
         }))
 
 # 404 Page
@@ -137,5 +143,6 @@ with open("{0}/upload/404.html".format(workDir), "w") as notFoundWriter:
         "locations": reversedLocations,
         "logoUrl": generateLogoUrl,
         "generationTime": generationTime,
-        "locationsAndCategories": locationsAndCategories
+        "locationsAndCategories": locationsAndCategories,
+        "libraryName": libraryName
     }))
