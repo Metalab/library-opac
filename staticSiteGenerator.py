@@ -107,16 +107,19 @@ reversedLocations = sorted(locationsAndCategories, reverse=True)
 # Generation Time
 generationTime = datetime.datetime.now().astimezone(pytz.timezone("Europe/Vienna")).replace(microsecond=0).isoformat()
 
-# Write the Index Page
-indexTemplate = jinja2Env.get_template("index.html")
-with open("{0}/upload/index.html".format(workDir), "w") as indexWriter:
-    indexWriter.write(indexTemplate.render({
-        "locations": reversedLocations,
-        "logoUrl": generateLogoUrl,
-        "generationTime": generationTime,
-        "locationsAndCategories": locationsAndCategories,
-        "libraryName": libraryName
-    }))
+# Write the templates
+for templateFile in [x for x in os.listdir(workDir + "/templates") if (os.path.splitext(x)[1] == ".html" and x[0] != "_")]:
+    logger.info("Writing Page: {0}".format(templateFile))
+
+    template = jinja2Env.get_template(templateFile)
+    with open("{0}/upload/{1}".format(workDir, templateFile), "w") as templateWriter:
+        templateWriter.write(template.render({
+            "locations": reversedLocations,
+            "logoUrl": generateLogoUrl,
+            "generationTime": generationTime,
+            "locationsAndCategories": locationsAndCategories,
+            "libraryName": libraryName
+        }))
 
 # Write the locations
 locationTemplate = jinja2Env.get_template("_location_boilerplate.html")
@@ -136,17 +139,6 @@ for location in reversedLocations:
             "generationTime": generationTime,
             "libraryName": libraryName
         }))
-
-# 404 Page
-notfoundTemplate = jinja2Env.get_template("404.html")
-with open("{0}/upload/404.html".format(workDir), "w") as notFoundWriter:
-    notFoundWriter.write(notfoundTemplate.render({
-        "locations": reversedLocations,
-        "logoUrl": generateLogoUrl,
-        "generationTime": generationTime,
-        "locationsAndCategories": locationsAndCategories,
-        "libraryName": libraryName
-    }))
 
 # Write media json
 with open("upload/media.json", "w") as mediaJsonWriter:
