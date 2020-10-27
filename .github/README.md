@@ -16,3 +16,5 @@ sass static/sass/all.scss static/style.css
 rsync -avP --delete --exclude "sass" ./static/ ./upload/
 ./staticSiteGenerator.py
 ```
+
+Note that this will not minify any of the generated content and is only wise to use for development!
