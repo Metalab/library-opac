@@ -1,94 +1,74 @@
-<!DOCTYPE html>
-<html lang="de">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-      {{libraryName}} OPAC - {{location}}
-    </title>
-  </head>
+{% extends "_page_boilerplate.html" %}
+{% block title %}{{location}}{% endblock %}
+{% block content %}
+  <img src="{{logoUrl(location)}}" alt="{{location}} Logo - Lizenzen der Bilder: img/aussenstellen/licenses.txt" class="logo">
 
-  <body class="has-navbar-fixed-top">
-    {% include "_menu.html" %}
-    <div id="mainContainer">
-      <div class="locationContainer" id="{{location | replace(" ", "")}}"><!-- locationContainer start -->
-        <h2 class="strong title is-3">
-          {{location}}
-          <img src="{{logoUrl(location)}}" alt="{{location}} Logo - Lizenzen der Bilder: img/aussenstellen/licenses.txt" class="logo">
-        </h2>
-
-        {% for category in categories %}
-          <div class="categoryContainer is-anchor" id="{{category | replace(" ", "")}}"><!-- categoryContainer start -->
-            <h3 class="strong subtitle is-4">
-              {{category}}
-            </h3>
-            <div class="mediaContainer"><!-- mediaContainer start -->
-              {% for medium in media %}
-                {% if (medium.category == category) and (medium.location == location) %}
-                  <div class="listItem">
-                    <h4 class="title is-5">
-                      {{medium.name}}
-                    </h4>
-                    {% if (medium.authorFirstName) and (medium.authorLastName) %}
-                      <p>
-                        Von: <strong><a href="http://gnd.eurospider.com/s?q={{medium.authorFirstName | urlencode}}+{{medium.authorLastName | urlencode}}" target="_blank">
-                          {{medium.authorFirstName}} {{medium.authorLastName}}
-                        </a></strong><br>
-                        {% if medium.publisher %}
-                          Herausgeber: {{medium.publisher}}<br>
-                        {% endif %}
-                        {% if medium.year %}
-                          Jahr: {{medium.year}}
-                        {% endif %}
-                      </p>
-                    {% endif %}
-                    <p>
-                      Medientyp: {{medium.mediaType}}<br>
-                      <span class="tags has-addons">
-                        <span class="tag">Entlehnbar?</span>
-                        {% if medium.isLendable.lower() == "ja" %}
-                          <span class="tag is-success">Ja</span>
-                        {% else %}
-                          <span class="tag is-danger">Nein</span>
-                        {% endif %}
-                      </span>
-                      <span class="tags has-addons">
-                        <span class="tag">Lieferung zur Hauptstelle?</span>
-                        {% if medium.isMetalabPickupPossible.lower() == "ja" %}
-                          <span class="tag is-success">Ja</span>
-                        {% elif (medium.isMetalabPickupPossible.lower() == "nein") or ((medium.isLendable.lower() == "nein") and (medium.location.lower() | replace(" ", "") != "hauptstellemetalab")) %}
-                          <span class="tag is-danger">Nein</span>
-                        {% elif medium.location.lower() | replace(" ", "") == "hauptstellemetalab" %}
-                          <span class="tag is-info">Am Standort</span>
-                        {% else %}
-                          <span class="tag is-warning">Fraglich</span>
-                        {% endif %}
-                      </span>
-                    </p>
-                    {% if medium.isbn %}
-                      <p>
-                          ISBN: <a href="https://www.justbooks.de/search/?isbn={{medium.isbn}}&new_used=*&destination=at&currency=EUR&mode=basic&st=sr&ac=qr" target="_blank">
-                          {{numberFormatFunction(medium.isbn, "isbn")}}
-                        </a>
-                      </p>
-                    {% endif %}
-                    {% if medium.issn %}
-                      <p>
-                        ISSN: <a href="https://portal.issn.org/resource/ISSN/{{medium.issn}}" target="_blank">
-                          {{numberFormatFunction(medium.issn, "issn")}}
-                        </a>
-                      </p>
-                    {% endif %}
-                  </div>
-                {% endif %}
-              {% endfor %}
-            </div><!-- mediaContainer end -->
-          </div>
+  {% for category in categories %}
+    <div class="categoryContainer is-anchor" id="{{category | replace(" ", "")}}"><!-- categoryContainer start -->
+      <h3 class="strong subtitle is-4">
+        {{category}}
+      </h3>
+      <div class="mediaContainer"><!-- mediaContainer start -->
+        {% for medium in media %}
+          {% if (medium.category == category) and (medium.location == location) %}
+            <div class="listItem">
+              <h4 class="title is-5">
+                {{medium.name}}
+              </h4>
+              {% if (medium.authorFirstName) and (medium.authorLastName) %}
+                <p>
+                  Von: <strong><a href="http://gnd.eurospider.com/s?q={{medium.authorFirstName | urlencode}}+{{medium.authorLastName | urlencode}}" target="_blank">
+                    {{medium.authorFirstName}} {{medium.authorLastName}}
+                  </a></strong><br>
+                  {% if medium.publisher %}
+                    Herausgeber: {{medium.publisher}}<br>
+                  {% endif %}
+                  {% if medium.year %}
+                    Jahr: {{medium.year}}
+                  {% endif %}
+                </p>
+              {% endif %}
+              <p>
+                Medientyp: {{medium.mediaType}}<br>
+                <span class="tags has-addons">
+                  <span class="tag">Entlehnbar?</span>
+                  {% if medium.isLendable.lower() == "ja" %}
+                    <span class="tag is-success">Ja</span>
+                  {% else %}
+                    <span class="tag is-danger">Nein</span>
+                  {% endif %}
+                </span>
+                <span class="tags has-addons">
+                  <span class="tag">Lieferung zur Hauptstelle?</span>
+                  {% if medium.isMetalabPickupPossible.lower() == "ja" %}
+                    <span class="tag is-success">Ja</span>
+                  {% elif (medium.isMetalabPickupPossible.lower() == "nein") or ((medium.isLendable.lower() == "nein") and (medium.location.lower() | replace(" ", "") != "hauptstellemetalab")) %}
+                    <span class="tag is-danger">Nein</span>
+                  {% elif medium.location.lower() | replace(" ", "") == "hauptstellemetalab" %}
+                    <span class="tag is-info">Am Standort</span>
+                  {% else %}
+                    <span class="tag is-warning">Fraglich</span>
+                  {% endif %}
+                </span>
+              </p>
+              {% if medium.isbn %}
+                <p>
+                    ISBN: <a href="https://www.justbooks.de/search/?isbn={{medium.isbn}}&new_used=*&destination=at&currency=EUR&mode=basic&st=sr&ac=qr" target="_blank">
+                    {{numberFormatFunction(medium.isbn, "isbn")}}
+                  </a>
+                </p>
+              {% endif %}
+              {% if medium.issn %}
+                <p>
+                  ISSN: <a href="https://portal.issn.org/resource/ISSN/{{medium.issn}}" target="_blank">
+                    {{numberFormatFunction(medium.issn, "issn")}}
+                  </a>
+                </p>
+              {% endif %}
+            </div>
+          {% endif %}
         {% endfor %}
-
-      </div><!-- locationContainer end -->
-    </div><!-- mainContainer end -->
-    {% include "_footer.html" %}
-  </body>
-</html>
+      </div><!-- mediaContainer end -->
+    </div>
+  {% endfor %}
+{% endblock content %}

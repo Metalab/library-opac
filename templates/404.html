@@ -1,25 +1,9 @@
-<!DOCTYPE html>
-<html lang="de">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-      {{libraryName}} OPAC - 404
-    </title>
-  </head>
+{% extends "_page_boilerplate.html" %}
+{% block title %}404 :({% endblock %}
 
-  <body class="has-navbar-fixed-top">
-    {% include "_menu.html" %}
-    <div id="mainContainer">
-      <h1 class="title">
-        404 :(
-      </h1>
-      <img src="img/library.png" alt="Metalab Library Logo" id="mainLogo" class="rotate">
-      <h2 class="subtitle">
-        Die angeforderte Seite wurde nicht gefunden.
-      </h2>
-    </div>
-    {% include "_footer.html" %}
-  </body>
-</html>
+{% block content %}
+  <img src="img/library.png" alt="Metalab Library Logo" id="mainLogo" class="rotate">
+  <h2 class="subtitle">
+    Die angeforderte Seite wurde nicht gefunden.
+  </h2>
+{% endblock content %}

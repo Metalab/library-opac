@@ -1,36 +1,20 @@
-<!DOCTYPE html>
-<html lang="de">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-      {{libraryName}} OPAC
-    </title>
-  </head>
+{% extends "_page_boilerplate.html" %}
+{% block title %}Index{% endblock %}
 
-  <body class="has-navbar-fixed-top">
-    {% include "_menu.html" %}
-    <div id="mainContainer">
-      <h1 class="title">
-        {{libraryName}} OPAC
-      </h1>
-      <img src="img/library.png" alt="Metalab Library Logo" id="mainLogo">
-      <div class="tile is-ancestor">
-        {% for location in locations %}
-          <div class="card tile is-parent location">
-            <div class="tile is-child">
-              <a href="location_{{location | replace(" ", "")}}.html">
-                <img src="{{logoUrl(location)}}" alt="{{location}} Logo - Lizenzen der Bilder: img/aussenstellen/licenses.txt" class="logo">
-                <h2 class="subtitle">
-                  {{location}}
-                </h2>
-              </a>
-            </div>
-          </div>
-        {% endfor %}
+{% block content %}
+  <img src="img/library.png" alt="Metalab Library Logo" id="mainLogo">
+  <div class="tile is-ancestor">
+    {% for location in locations %}
+      <div class="card tile is-parent location">
+        <div class="tile is-child">
+          <a href="location_{{location | replace(" ", "")}}.html">
+            <img src="{{logoUrl(location)}}" alt="{{location}} Logo - Lizenzen der Bilder: img/aussenstellen/licenses.txt" class="logo">
+            <h2 class="subtitle">
+              {{location}}
+            </h2>
+          </a>
+        </div>
       </div>
-    </div>
-    {% include "_footer.html" %}
-  </body>
-</html>
+    {% endfor %}
+  </div>
+{% endblock content %}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      {{libraryName}} OPAC - {% block title %}{% endblock %}
+    </title>
+  </head>
+
+  <body class="has-navbar-fixed-top">
+    {% include "_menu.html" %}
+    <div id="mainContainer">
+      <h1 class="title">
+        {{self.title()}}
+      </h1>
+      {% block content %}{% endblock %}
+    </div>
+    {% include "_footer.html" %}
+  </body>
+</html>
