@@ -1,8 +1,11 @@
 {% extends "_page_boilerplate.html" %}
-{% block title %}Index{% endblock %}
+{% block title %}Metalab Library{% endblock %}
 
 {% block content %}
   <img src="img/library.png" alt="Metalab Library Logo" id="mainLogo">
+  <h2 class="title">
+    Standorte
+  </h2>
   <div class="tile is-ancestor">
     {% for location in locations %}
       <div class="card tile is-parent location">
