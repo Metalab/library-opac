@@ -34,7 +34,7 @@ footer {
   left: 0;
   position: fixed;
   right: 0;
-  z-index: 30;
+  z-index: 35;
   background-color: $footer-background-color;
   height: $footer-height;
 
@@ -44,5 +44,11 @@ footer {
 
   .is-pulled-right {
     margin-right: 15px;
+  }
+
+  img {
+    top: 7px;
+    position: absolute;
+    margin-left: 5px;
   }
 }
