@@ -57,25 +57,25 @@
                         </div>
                       {% endif %}
                       {% if medium.isMetalabPickupPossible.lower() == "ja" %}
-                          <div class="tags has-addons">
-                            <span class="tag">Lieferung zur Hauptstelle?</span>
-                            <span class="tag is-success">Ja</span>
-                          </div>
-                        {% elif (medium.isMetalabPickupPossible.lower() == "nein") or ((medium.isLendable.lower() == "nein") and (medium.location.lower() | replace(" ", "") != "hauptstellemetalab")) %}
-                          <div class="tags has-addons">
-                            <span class="tag">Lieferung zur Hauptstelle?</span>
-                            <span class="tag is-danger">Nein</span>
-                          </div>
-                        {% elif medium.location.lower() | replace(" ", "") == "hauptstellemetalab" %}
-                          <div class="tags has-addons">
-                            <span class="tag">Lieferung zur Hauptstelle?</span>
-                            <span class="tag is-info">Am Standort</span>
-                          </div>
-                        {% else %}
-                          <div class="tags has-addons">
-                            <span class="tag">Lieferung zur Hauptstelle?</span>
-                            <span class="tag is-warning">Fraglich</span>
-                          </div>
+                        <div class="tags has-addons">
+                          <span class="tag">Lieferung zur Hauptstelle?</span>
+                          <span class="tag is-success">Ja</span>
+                        </div>
+                      {% elif (medium.isMetalabPickupPossible.lower() == "nein") or ((medium.isLendable.lower() == "nein") and (medium.location.lower() | replace(" ", "") != "hauptstellemetalab")) %}
+                        <div class="tags has-addons">
+                          <span class="tag">Lieferung zur Hauptstelle?</span>
+                          <span class="tag is-danger">Nein</span>
+                        </div>
+                      {% elif medium.location.lower() | replace(" ", "") == "hauptstellemetalab" %}
+                        <div class="tags has-addons">
+                          <span class="tag">Lieferung zur Hauptstelle?</span>
+                          <span class="tag is-info">Am Standort</span>
+                        </div>
+                      {% else %}
+                        <div class="tags has-addons">
+                          <span class="tag">Lieferung zur Hauptstelle?</span>
+                          <span class="tag is-warning">Fraglich</span>
+                        </div>
                       {% endif %}
                     </p>
                     {% if medium.isbn %}
