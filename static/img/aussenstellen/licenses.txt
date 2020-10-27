@@ -3,3 +3,6 @@ AußenstelleBrigittenauI.png      CC BY-SA 4.0 Stadt Wien WStLA                 
 HauptstelleMetalab.png           Unknown License                                https://metalab.at/wiki/Datei:Atomic_1color_scalable.svg
 nologo.png                       CC BY-SA 4.0 Sebastian Elisa Pfeifer           https://sebastian-elisa-pfeifer.eu/
 AußenstelleOttakring.png         CC BY-SA 4.0 Stadt Wien WStLA                  https://www.wien.gv.at/bezirke/bezirkswappen/#bezirk16
+Außenstellenospace.png           Unknown License                                Internal Source
+
+Logo Boilerplate                 Unknown License                                Made by JoaK
