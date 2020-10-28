@@ -10,3 +10,4 @@ find upload/ -type f \
     -exec minify {} --type html -o {} \;
 
 uglifycss upload/style.css --output upload/style.css
+echo "\n/*# sourceMappingURL=style.css.map */" >> upload/style.css
