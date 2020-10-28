@@ -19,18 +19,22 @@
                 <p>
                   Von: <strong><a href="http://gnd.eurospider.com/s?q={{medium.authorFirstName | urlencode}}+{{medium.authorLastName | urlencode}}" target="_blank">
                     {{medium.authorFirstName}} {{medium.authorLastName}}
-                  </a></strong><br>
-                  {% if medium.publisher %}
-                    Herausgeber: {{medium.publisher}}<br>
-                  {% endif %}
-                  {% if medium.year %}
-                    Jahr: {{medium.year}}
-                  {% endif %}
+                  </a></strong>
+                </p>
+              {% endif %}
+              {% if medium.publisher %}
+                <p class="mt-0 mb-0">
+                  Herausgeber: {{medium.publisher}}
+                </p>
+              {% endif %}
+              {% if medium.year %}
+                <p class="mt-0 mb-0">
+                  Jahr: {{medium.year}}
                 </p>
               {% endif %}
               <p>
                 Medientyp: {{medium.mediaType}}<br>
-                <span class="tags has-addons">
+                <span class="tags has-addons mt-2">
                   <span class="tag">Entlehnbar?</span>
                   {% if medium.isLendable.lower() == "ja" %}
                     <span class="tag is-success">Ja</span>
@@ -38,7 +42,7 @@
                     <span class="tag is-danger">Nein</span>
                   {% endif %}
                 </span>
-                <span class="tags has-addons">
+                <span class="tags has-addons mt-2">
                   <span class="tag">Lieferung zur Hauptstelle?</span>
                   {% if medium.isMetalabPickupPossible.lower() == "ja" %}
                     <span class="tag is-success">Ja</span>
