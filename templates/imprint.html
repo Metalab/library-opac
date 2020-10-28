@@ -1,0 +1,45 @@
+{% extends "_page_boilerplate.html" %}
+{% block title %}Impressum{% endblock %}
+
+{% block content %}
+  <img src="img/library.png" alt="Metalab Library Logo" id="mainLogo">
+  <p class="has-text-centered mt-5">
+    Metalab<br>
+    Rathausstraße 6<br>
+    1010 Wien
+  </p>
+  <p class="has-text-centered">
+    Tel.: <a href="tel:0043720002323">+43 720 00 23 23</a><br>
+    Fax: +43 1 22 600 45 - 10<br>
+    Email: <a href="javascript:linkTo_UnCryptMailto('nbjmup;cjcmjpuiflAmjtut/nfubmbc/bu');">bibliothek [at] lists [dot] metalab [dot] at</a><br>
+    Web: <a href="https://bibliothek.metalab.ac.at">https://bibliothek.metalab.ac.at</a>
+  </p>
+  <p class="has-text-centered">
+    Verein zur Förderung der Erforschung und Bildung sozialer und technischer Innovationen - metalab<br>
+    Zuständige Vereinsbehörde: Landespolizeidirektion Wien<br>
+    ZVR-Zahl: 269253896
+  </p>
+
+  <script type="text/javascript"> <!--
+    function UnCryptMailto( s )
+    {
+        var n = 0;
+        var r = "";
+        for( var i = 0; i < s.length; i++)
+        {
+            n = s.charCodeAt( i );
+            if( n >= 8364 )
+            {
+                n = 128;
+            }
+            r += String.fromCharCode( n - 1 );
+        }
+        return r;
+    }
+
+    function linkTo_UnCryptMailto( s )
+    {
+        location.href=UnCryptMailto( s );
+    }
+    // --> </script>
+{% endblock content %}
