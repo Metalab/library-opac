@@ -1,5 +1,8 @@
-AußenstelleWaffelkollektiv.png   CC BY-SA 3.0 Dvortygirl on Wikimedia Commons   https://commons.wikimedia.org/wiki/File:Homemade_waffle_closeup.jpg
-AußenstelleBrigittenauI.png      CC BY-SA 4.0 Stadt Wien WStLA                  https://www.wien.gv.at/bezirke/bezirkswappen/#bezirk20
+AußenstelleWaffelkollektiv.png   CC BY-SA 4.0 joak                              https://joak.nospace.at
+AußenstelleBrigittenauI.png      CC BY-SA 4.0 joak (tribute to gerd arntz)      https://joak.nospace.at
 HauptstelleMetalab.png           Unknown License                                https://metalab.at/wiki/Datei:Atomic_1color_scalable.svg
 nologo.png                       CC BY-SA 4.0 Sebastian Elisa Pfeifer           https://sebastian-elisa-pfeifer.eu/
-AußenstelleOttakring.png         CC BY-SA 4.0 Stadt Wien WStLA                  https://www.wien.gv.at/bezirke/bezirkswappen/#bezirk16
+AußenstelleOttakring.png         CC BY-SA 4.0 joak and photo by ripper          https://joak.nospace.at 
+Außenstellenospace.png           CC BY-SA 4.0 joak                              https://joak.nospace.at 
+
+Logo Boilerplate                 CC BY-SA 4.0 joak                              https://joak.nospace.at
