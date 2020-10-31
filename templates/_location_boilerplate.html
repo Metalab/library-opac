@@ -11,7 +11,7 @@
       <div class="mediaContainer"><!-- mediaContainer start -->
         {% for medium in media %}
           {% if (medium.category == category) and (medium.location == location) %}
-            <div class="listItem">
+            <div class="listItem is-anchor" id="{{medium.itemBarcode}}">
               <h4 class="title is-5">
                 {{medium.name}}
               </h4>

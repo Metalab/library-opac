@@ -2,25 +2,22 @@ async function loadJson() {
   let response = await fetch ("/media.json");
   let json = await response.json();
 
-  toReturn = [];
-  for (let tmp of json) {
-    toReturn.push({
+  return json.map(tmp => (
+    {
       "id": tmp.itemBarcode,
       "name": tmp.name,
       "authorFirstName": tmp.authorFirstName,
       "authorLastName": tmp.authorLastName,
-      "category": tmp.category
-    });
-  }
-
-  return toReturn;
+      "category": tmp.category,
+      "location": tmp.location.replace(" ", "")
+    }
+  ));
 }
 
-async function loadSearchData() {
-  let media = await loadJson();
+function loadSearchData(media) {
 
   // Create a new Index
-  idx = lunr(function() {
+  return lunr(function() {
     this.ref("id");
     this.field("name", {
       boost: 10
@@ -34,48 +31,46 @@ async function loadSearchData() {
     this.field("category");
 
     for (let medium of media) {
-      this.add({
-        "id": medium.itemBarcode,
-        "name": medium.name,
-        "authorFirstName": medium.authorFirstName,
-        "authorLastName": medium.authorLastName,
-        "category": medium.category
-      });
+      this.add(medium);
     }
   });
 }
 
-async function doSearch(e) {
-  let media = await loadJson();
+function doSearch(e, idx, media) {
 
   // Stop the default action
   e.preventDefault();
 
+  console.log(idx);
+
   // Find the results from lunr
-  results = idx.search($("#searchField").val());
+  let results = idx.search($("#searchField").val());
 
   for (result of results) {
-    id = result.ref;
+    let id = result.ref;
+    let score = result.score;
 
-    // console.log(media[id]);
-    // $("#resultList").append("<li><a href=" + result.name + ">" + result.authorFirstName + "</li>");
+    let targetUrl = media[id].location;
+
+    $("#resultList").append("<li><a href=" + targetUrl + "#" + id + ">" + result.name + "</li>");
   }
-
-  // Loop through results
-  // $.each(results, function(index, result) {
-  //   // Get the entry from the window global
-  //   entry = window.searchData[result.ref];
-  // });
 }
 
-$(document).ready(function() {
-  loadSearchData();
+$(document).ready(async function() {
+  let media = await loadJson();
+  let idx = loadSearchData(media);
+
+  let indexed = {};
+  for(let medium of media) {
+    indexed[medium.id] = medium;
+  }
 
   // When the search form is submitted
   document.getElementById("searchButton").addEventListener("click", function(event){
-    doSearch(event);
+    doSearch(event, idx, indexed);
   });
+
   document.getElementById("searchField").addEventListener("submit", function(event){
-    doSearch(event);
+    doSearch(event, idx, indexed);
   });
 });
