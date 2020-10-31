@@ -40,9 +40,6 @@ function doSearch(e, idx, media) {
   // Stop the default action
   e.preventDefault();
 
-  let resultList = document.getElementById("resultList");
-  resultList.innerHTML = "";
-
   let searchText = $("#searchField").val();
 
   if (searchText == "") {
@@ -54,6 +51,9 @@ function doSearch(e, idx, media) {
     alert("Bitte mehr als vier Zeichen eingeben!");
     return;
   }
+
+  let resultList = document.getElementById("resultList");
+  resultList.innerHTML = "";
 
   // Find the results from lunr
   let results = idx.search(searchText);
