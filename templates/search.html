@@ -2,16 +2,30 @@
 {% block title %}Suche{% endblock %}
 
 {% block content %}
-  <div class="control">
-    <input id="searchField" class="input" type="text" placeholder="Suchbegriff...">
-  </div>
-  <div class="control">
-    <a id="searchButton" class="button is-info">
-      Los!
-    </a>
-  </div>
-  <div id="searchResults">
-    <ul id="resultList"></ul>
+  <div class="columns">
+    <div class="column is-one-third">
+      <h2>
+        Eingabe
+      </h2>
+      <div class="field has-addons">
+        <div class="control">
+          <input id="searchField" class="input" type="text" placeholder="Suchbegriff...">
+        </div>
+        <div class="control">
+          <a id="searchButton" class="button is-info">
+            Los!
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div id="searchResults">
+        <h2>
+          Ausgabe
+        </h2>
+        <ul id="resultList"></ul>
+      </div>
+    </div>
   </div>
   <script src="js/es5-sham.js"></script>
   <script src="js/es5-shim.js"></script>
