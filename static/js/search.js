@@ -37,9 +37,11 @@ function loadSearchData(media) {
 }
 
 function doSearch(e, idx, media) {
-
   // Stop the default action
   e.preventDefault();
+
+  let resultList = document.getElementById("resultList");
+  resultList.innerHTML = "";
 
   // Find the results from lunr
   let results = idx.search($("#searchField").val());
@@ -50,9 +52,10 @@ function doSearch(e, idx, media) {
 
     let targetLocationUrl = media[id].location.replace(" ", "");
     let targetUrl = "location_" + targetLocationUrl + ".html#" + id;
-    let targetTxt = media[id].name + " von " + media[id].authorFirstName + ", " + media[id].authorLastName + " am Standort " + media[id].location;
+    let targetInnerTxt = media[id].name + " von " + media[id].authorFirstName + ", " + media[id].authorLastName + " am Standort " + media[id].location;
+    let targetLink = '<li><a href="' + targetUrl + '">' + targetInnerTxt + '</li>';
 
-    $("#resultList").append('<li><a href="' + targetUrl + '">' + targetTxt + '</li>');
+    resultList.innerHTML += targetLink;
   }
 }
 
