@@ -47,6 +47,10 @@ function doSearch(e, idx, media) {
   // Find the results from lunr
   let results = idx.search(searchText);
 
+  if (results.length === 0) {
+    resultList.innerHTML = '<div class="notification is-danger">Keine Ergebnisse!</div>';
+  }
+
   for (result of results) {
     let id = result.ref;
 
