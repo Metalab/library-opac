@@ -1,19 +1,27 @@
-function loadJson() {
-  toReturn = [];
+async function loadJson() {
+  let response = await fetch ("/media.json");
+  let json = await response.json();
 
-  $.getJSON("/media.json", function(data) {
-    toReturn.push(data);
-  });
+  toReturn = [];
+  for (let tmp of json) {
+    toReturn.push({
+      "id": tmp.itemBarcode,
+      "name": tmp.name,
+      "authorFirstName": tmp.authorFirstName,
+      "authorLastName": tmp.authorLastName,
+      "category": tmp.category
+    });
+  }
 
   return toReturn;
-
 }
-function loadSearch(json) {
-  media = loadJson();
+
+async function loadSearchData() {
+  let media = await loadJson();
 
   // Create a new Index
   idx = lunr(function() {
-    this.ref("itemBarcode");
+    this.ref("id");
     this.field("name", {
       boost: 10
     });
@@ -25,34 +33,49 @@ function loadSearch(json) {
     });
     this.field("category");
 
-    // Loop through each entry and add it to the index
-    media.forEach(function (medium) {
-      console.log(medium);
-      this.add(medium);
-    }, this);
+    for (let medium of media) {
+      this.add({
+        "id": medium.itemBarcode,
+        "name": medium.name,
+        "authorFirstName": medium.authorFirstName,
+        "authorLastName": medium.authorLastName,
+        "category": medium.category
+      });
+    }
   });
+}
 
-  // When the search form is submitted
-  $("#searchButton").on("submit", function(e) {
-    // Stop the default action
-    e.preventDefault();
+async function doSearch(e) {
+  let media = await loadJson();
 
-    // Find the results from lunr
-    results = idx.search($("#searchField").val());
+  // Stop the default action
+  e.preventDefault();
 
-    $("#searchResults").append("<ul id=" + searchResults + "></ul>");
+  // Find the results from lunr
+  results = idx.search($("#searchField").val());
 
-    // Loop through results
-    $.each(results, function(index, result) {
-      // Get the entry from the window global
-      entry = window.searchData[result.ref];
+  for (result of results) {
+    id = result.ref;
 
-      // Append the entry to the list.
-      $("#searchResults").append("<li><a href=" + entry.url + ">" + entry.name + "</li>");
-    })
-  })
+    // console.log(media[id]);
+    // $("#resultList").append("<li><a href=" + result.name + ">" + result.authorFirstName + "</li>");
+  }
+
+  // Loop through results
+  // $.each(results, function(index, result) {
+  //   // Get the entry from the window global
+  //   entry = window.searchData[result.ref];
+  // });
 }
 
 $(document).ready(function() {
-  loadSearch();
+  loadSearchData();
+
+  // When the search form is submitted
+  document.getElementById("searchButton").addEventListener("click", function(event){
+    doSearch(event);
+  });
+  document.getElementById("searchField").addEventListener("submit", function(event){
+    doSearch(event);
+  });
 });
