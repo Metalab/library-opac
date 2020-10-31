@@ -8,7 +8,7 @@
       <h3 class="strong subtitle is-4">
         {{category}}
       </h3>
-      <div class="mediaContainer"><!-- mediaContainer start -->
+      <div class="mediaContainer container is-fluid"><!-- mediaContainer start -->
         {% for medium in media %}
           {% if (medium.category == category) and (medium.location == location) %}
             <div class="listItem is-anchor" id="{{medium.itemBarcode}}">
