@@ -43,17 +43,28 @@ function doSearch(e, idx, media) {
   let resultList = document.getElementById("resultList");
   resultList.innerHTML = "";
 
+  let searchText = $("#searchField").val();
+
+  if (searchText == "") {
+    alert("Bitte einen Suchbegriff eingeben!");
+    return;
+  }
+
+  if(searchText.length < 4) {
+    alert("Bitte mehr als vier Zeichen eingeben!");
+    return;
+  }
+
   // Find the results from lunr
-  let results = idx.search($("#searchField").val());
+  let results = idx.search(searchText);
 
   for (result of results) {
     let id = result.ref;
     let score = result.score;
 
-    let targetLocationUrl = media[id].location.replace(" ", "");
+    let targetLocationUrl = media[id].location.replaceAll(" ", "");
     let targetUrl = "location_" + targetLocationUrl + ".html#" + id;
-    let targetInnerTxt = media[id].name + " von " + media[id].authorFirstName + ", " + media[id].authorLastName + " am Standort " + media[id].location;
-    let targetLink = '<li><a href="' + targetUrl + '">' + targetInnerTxt + '</li>';
+    let targetLink = '<li><a href="' + targetUrl + '">' + media[id].name + '</a> von ' + media[id].authorFirstName + ', ' + media[id].authorLastName +  ' am Standort ' + media[id].location + '</li>';
 
     resultList.innerHTML += targetLink;
   }
