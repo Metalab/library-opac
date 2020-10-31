@@ -56,7 +56,7 @@ function doSearch(e, idx, media) {
 
     let targetLocationUrl = media[id].location.replaceAll(" ", "");
     let targetUrl = `location_${targetLocationUrl}.html#${id}`;
-    let targetLink = `<li><a href="${targetUrl}">${media[id].name}</a> von ${media[id].authorFirstName} ${media[id].authorLastName} am Standort ${media[id].location}</li>`;
+    let targetLink = `<li><a href="${targetUrl}">${media[id].name}</a> von ${media[id].authorFirstName} ${media[id].authorLastName} am Standort <span class="${targetLocationUrl}">${media[id].location}</span></li>`;
 
     resultList.innerHTML += targetLink;
   }
