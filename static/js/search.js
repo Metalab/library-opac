@@ -60,7 +60,6 @@ function doSearch(e, idx, media) {
 
   for (result of results) {
     let id = result.ref;
-    let score = result.score;
 
     let targetLocationUrl = media[id].location.replaceAll(" ", "");
     let targetUrl = "location_" + targetLocationUrl + ".html#" + id;
