@@ -1,0 +1,18 @@
+{% extends "_page_boilerplate.html" %}
+{% block title %}Suche{% endblock %}
+
+{% block content %}
+  <div class="control">
+    <input id="searchField" class="input" type="text" placeholder="Suchbegriff...">
+  </div>
+  <div class="control">
+    <a id="searchButton" class="button is-info">
+      Los!
+    </a>
+  </div>
+  <div id="searchResults"></div>
+  <script src="js/es5-sham.js"></script>
+  <script src="js/es5-shim.js"></script>
+  <script src="js/lunr.js"></script>
+  <script src="js/search.js"></script>
+{% endblock content %}
