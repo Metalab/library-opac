@@ -9,7 +9,7 @@ async function loadJson() {
       "authorFirstName": tmp.authorFirstName,
       "authorLastName": tmp.authorLastName,
       "category": tmp.category,
-      "location": tmp.location.replace(" ", "")
+      "location": tmp.location
     }
   ));
 }
@@ -41,8 +41,6 @@ function doSearch(e, idx, media) {
   // Stop the default action
   e.preventDefault();
 
-  console.log(idx);
-
   // Find the results from lunr
   let results = idx.search($("#searchField").val());
 
@@ -50,9 +48,11 @@ function doSearch(e, idx, media) {
     let id = result.ref;
     let score = result.score;
 
-    let targetUrl = media[id].location;
+    let targetLocationUrl = media[id].location.replace(" ", "");
+    let targetUrl = "location_" + targetLocationUrl + ".html#" + id;
+    let targetTxt = media[id].name + " von " + media[id].authorFirstName + ", " + media[id].authorLastName + " am Standort " + media[id].location;
 
-    $("#resultList").append("<li><a href=" + targetUrl + "#" + id + ">" + result.name + "</li>");
+    $("#resultList").append('<li><a href="' + targetUrl + '">' + targetTxt + '</li>');
   }
 }
 
