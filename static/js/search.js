@@ -83,7 +83,9 @@ $(document).ready(async function() {
     doSearch(event, idx, indexed);
   });
 
-  document.getElementById("searchField").addEventListener("submit", function(event){
-    doSearch(event, idx, indexed);
+  document.getElementById("searchField").addEventListener("keypress", function(event){
+    if (event.keyCode === 13) {
+       doSearch(event, idx, indexed);
+    }
   });
 });
