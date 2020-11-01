@@ -7,14 +7,14 @@ install:
   - sudo apt-get install -y golang-go rsync minify npm > /dev/null
   - export GOPATH=/tmp/go && go get github.com/Clever/csvlint/cmd/csvlint > /dev/null
   - pip install -r requirements.txt > /dev/null
-  - npm install --global terser uglifycss sass > /dev/null
+  - npm install --global terser sass > /dev/null
 
 before_script:
   - ./update.sh
   - /tmp/go/bin/csvlint /tmp/library-media-inventory/inventory.csv
 
 script:
-  - sass static/sass/all.scss static/style.css
+  - sass static/sass/all.scss static/style.css --source-map
   - rsync -av --info=progress2 --delete --exclude "sass" ./static/ ./upload/
   - ./staticSiteGenerator.py
 
