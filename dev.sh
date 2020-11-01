@@ -37,8 +37,11 @@ for branch in $(< /tmp/branches); do
   rsync -avP "${sourceFolder}/" "${targetFolder}/${branch}/"
   cd ${targetFolder}/${branch}
   git checkout ${branch}
-  sudo pip3 install -r requirements.txt > /dev/null
-  rsync -av --info=progress2 --delete ./static/ ./upload/
-  ./staticSiteGenerator.py
+
+  if [ -f "requirements.txt" ]; then
+    sudo pip3 install -r requirements.txt > /dev/null
+    rsync -av --info=progress2 --delete ./static/ ./upload/
+    ./staticSiteGenerator.py
+  fi
   cd ..
 done
