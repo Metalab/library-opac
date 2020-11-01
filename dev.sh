@@ -19,12 +19,12 @@ fi
 rm -rf ${targetFolder}
 mkdir ${targetFolder}
 
-branches=$(git ls-remote --heads ${sourceRepo} | awk -F 'refs/heads/' '{print $2}')
+git ls-remote --heads ${sourceRepo} | awk -F 'refs/heads/' '{print $2}' > /tmp/branches
 
-for branch in "${branches[@]}"; do
-  mkdir "${targetFolder}/${branch}"
+for branch in $(< /tmp/branches); do
+  mkdir ${targetFolder}/${branch}
   rsync -avP "${sourceFolder}/" "${targetFolder}/${branch}/"
-  cd "${targetFolder}/${branch}"
+  cd ${targetFolder}/${branch}
   git checkout ${branch}
   cd ..
 done
