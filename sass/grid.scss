@@ -1,0 +1,26 @@
+.listItem {
+  page-break-inside: avoid;
+  width: 95%;
+  height: 95%;
+  padding: 15px;
+}
+
+.mediaContainer {
+  width: 100%;
+  display: inline-grid;
+  overflow: hidden;
+}
+
+.card {
+  p {
+    text-align: center;
+  }
+}
+
+.logo {
+  margin: auto;
+  display: block;
+  padding-top: 5px;
+  max-height: 250px;
+  border-radius: 5px;
+}

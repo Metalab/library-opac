@@ -1,0 +1,22 @@
+#mainLogo {
+  height: 300px;
+  margin: 0 auto;
+  display: block;
+}
+
+.rotate {
+  animation: rotation 5s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.is-anchor {
+  scroll-margin-top: 100px;
+}
