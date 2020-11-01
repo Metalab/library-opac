@@ -15,7 +15,7 @@ before_script:
 
 script:
   - sass static/sass/all.scss static/style.css --source-map
-  - rsync -av --info=progress2 --delete --exclude "sass" ./static/ ./upload/
+  - rsync -av --info=progress2 --delete ./static/ ./upload/
   - ./staticSiteGenerator.py
 
 before_deploy:
