@@ -1,1 +1,0 @@
-{"version":3,"sources":["upload/js/menu.js"],"names":["$","document","ready","click","toggleClass","removeClass"],"mappings":"AAAAA,EAAEC,UAAUC,OAAM,WAChBF,EAAE,kBAAkBG,OAAM,WACxBH,EAAE,kBAAkBI,YAAY,aAChCJ,EAAE,YAAYI,YAAY,eAE5BJ,EAAE,gBAAgBG,OAAM,WACtBH,EAAE,YAAYK,YAAY"}
