@@ -13,7 +13,7 @@ If you want to use the Metalab Library Media Inventory, run update.sh. It will c
 
 ```bash
 sass static/sass/all.scss static/style.css --source-map
-rsync -av --info=progress2 --delete --exclude "sass" ./static/ ./upload/
+rsync -av --info=progress2 --delete ./static/ ./upload/
 ./staticSiteGenerator.py
 ```
 
