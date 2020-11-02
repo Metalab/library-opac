@@ -12,7 +12,7 @@ An Online Public Access Catalogue (OPAC) is an only accessible library catalog.
 If you want to use the Metalab Library Media Inventory, run update.sh. It will clone/pull the repo to the location where the script will look for it by default. Then replace the logos in static/img. Install the python dependencies in requirements.json and the node.js ones from the package.json. Have a look at what is done in the .travis.yml file, otherwise run the following commands in the root folder of this repo:
 
 ```bash
-sass static/sass/all.scss static/style.css --source-map
+./node_modules/node-sass/bin/node-sass --source-map true --source-map-contents --output-style compressed static/sass/all.scss static/style.css
 rsync -av --info=progress2 --delete ./static/ ./upload/
 ./staticSiteGenerator.py
 ```
