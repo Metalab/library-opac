@@ -38,8 +38,10 @@ for branch in $(< /tmp/branches); do
   git checkout ${branch}
 
   if [ -f "requirements.txt" ]; then
+    rm -rf node_modules
     pip3 install -r requirements.txt > /dev/null
     npm install
+    ./node_modules/node-sass/bin/node-sass --source-map true --source-map-contents --output-style compressed static/sass/all.scss static/style.css
     rsync -av --info=progress2 --delete ./static/ ./upload/
     ./staticSiteGenerator.py
   fi
