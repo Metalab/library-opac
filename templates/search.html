@@ -2,32 +2,22 @@
 {% block title %}Suche{% endblock %}
 
 {% block content %}
-  <div class="columns is-small is-center">
-    <div class="column is-one-third">
-      <h2>
-        Eingabe
-      </h2>
-      <div class="field has-addons">
-        <div class="control">
-          <input id="searchField" class="input" type="text" placeholder="Suchbegriff...">
-        </div>
-        <p class="help is-danger is-hidden" id="fourCharWarning">
-          Bitte gib mehr als drei Zeichen ein!
-        </p>
-        <div class="control">
-          <button id="searchButton" class="button is-primary is-light" disabled>
-            Los!
-          </button>
-        </div>
-      </div>
+  <div class="is-small is-center">
+    <div class="field has-addons">
+	  <div class="control">
+	    <input id="searchField" class="input" type="text" placeholder="Suchbegriff...">
+	  </div>
+      <p class="help is-danger is-hidden" id="fourCharWarning">
+	    Bitte gib mehr als drei Zeichen ein!
+      </p>
+	  <div class="control">
+	    <button id="searchButton" class="button is-primary is-light" disabled>
+		  Los!
+	    </button>
+	  </div>
     </div>
-    <div class="column">
-      <div id="searchResults">
-        <h2>
-          Ausgabe
-        </h2>
-        <ul id="resultList"></ul>
-      </div>
+    <div id="searchResults">
+      <ul id="resultList"></ul>
     </div>
   </div>
   <script src="js/es5-sham.js"></script>
