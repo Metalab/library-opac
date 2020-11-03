@@ -21,6 +21,8 @@ script:
 before_deploy:
   - echo "bibliothek.metalab.ac.at" > upload/CNAME
   - ./minify.sh # Minify html and js
+  - $(npm bin)/http-server upload & wait-on http://localhost:8080 
+  - $(npm bin)/cypress run --record
 
 deploy:
   provider: pages

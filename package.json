@@ -3,6 +3,7 @@
     "cypress": "^5.5.0",
     "http-server": "^0.12.3",
     "node-sass": "^5.0.0",
-    "terser": "^5.3.8"
+    "terser": "^5.3.8",
+    "wait-on": "^5.2.0"
   }
 }
