@@ -5,7 +5,7 @@ The Metalab has a library. And this library now has an OPAC! And this is the gen
 
 ## What's an OPAC?
 
-An Online Public Access Catalogue (OPAC) is an only accessible library catalog.
+An Online Public Access Catalogue (OPAC) is an online accessible library catalog.
 
 ## How to use?
 
