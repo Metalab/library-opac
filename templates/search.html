@@ -2,7 +2,7 @@
 {% block title %}Suche{% endblock %}
 
 {% block content %}
-  <div class="columns">
+  <div class="columns is-small is-center">
     <div class="column is-one-third">
       <h2>
         Eingabe
@@ -11,10 +11,13 @@
         <div class="control">
           <input id="searchField" class="input" type="text" placeholder="Suchbegriff...">
         </div>
+        <p class="help is-danger is-hidden" id="fourCharWarning">
+          Bitte gib mehr als drei Zeichen ein!
+        </p>
         <div class="control">
-          <a id="searchButton" class="button is-info">
+          <button id="searchButton" class="button is-primary is-light" disabled>
             Los!
-          </a>
+          </button>
         </div>
       </div>
     </div>

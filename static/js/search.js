@@ -1,5 +1,5 @@
 async function loadJson() {
-  let response = await fetch ("/media.json");
+  let response = await fetch ("media.json");
   let json = await response.json();
 
   return json.map(tmp => (
@@ -15,7 +15,6 @@ async function loadJson() {
 }
 
 function loadSearchData(media) {
-
   // Create a new Index
   return lunr(function() {
     this.ref("id");
@@ -42,28 +41,22 @@ function doSearch(e, idx, media) {
 
   let searchText = $("#searchField").val();
 
-  if (searchText == "") {
-    alert("Bitte einen Suchbegriff eingeben!");
-    return;
-  }
-
-  if(searchText.length < 4) {
-    alert("Bitte mehr als vier Zeichen eingeben!");
-    return;
-  }
-
   let resultList = document.getElementById("resultList");
   resultList.innerHTML = "";
 
   // Find the results from lunr
   let results = idx.search(searchText);
 
+  if (results.length === 0) {
+    resultList.innerHTML = '<div class="notification is-danger">Keine Ergebnisse!</div>';
+  }
+
   for (result of results) {
     let id = result.ref;
 
     let targetLocationUrl = media[id].location.replaceAll(" ", "");
-    let targetUrl = "location_" + targetLocationUrl + ".html#" + id;
-    let targetLink = '<li><a href="' + targetUrl + '">' + media[id].name + '</a> von ' + media[id].authorFirstName + ', ' + media[id].authorLastName +  ' am Standort ' + media[id].location + '</li>';
+    let targetUrl = `location_${targetLocationUrl}.html#${id}`;
+    let targetLink = `<li><a href="${targetUrl}">${media[id].name}</a> von ${media[id].authorFirstName} ${media[id].authorLastName} am Standort <span class="${targetLocationUrl}">${media[id].location}</span></li>`;
 
     resultList.innerHTML += targetLink;
   }
@@ -78,14 +71,24 @@ $(document).ready(async function() {
     indexed[medium.id] = medium;
   }
 
-  // When the search form is submitted
-  document.getElementById("searchButton").addEventListener("click", function(event){
+  document.getElementById("searchButton").addEventListener("click", function(event) {
     doSearch(event, idx, indexed);
   });
 
-  document.getElementById("searchField").addEventListener("keypress", function(event){
-    if (event.keyCode === 13) {
-       doSearch(event, idx, indexed);
+  document.getElementById("searchField").addEventListener("keydown", function(event) {
+    if (document.getElementById("searchField").value.length >= 3) {
+      document.getElementById("searchButton").disabled = false;
+      document.getElementById("searchField").classList.remove("is-danger");
+      document.getElementById("fourCharWarning").classList.add("is-hidden");
+
+      if (event.keyCode === 13) {
+         doSearch(event, idx, indexed);
+      }
+
+    } else {
+      document.getElementById("searchButton").disabled = true;
+      document.getElementById("searchField").classList.add("is-danger");
+      document.getElementById("fourCharWarning").classList.remove("is-hidden");
     }
   });
 });
