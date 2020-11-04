@@ -20,7 +20,7 @@ script:
   - ./node_modules/node-sass/bin/node-sass --source-map true --source-map-contents --output-style compressed static/sass/all.scss static/style.css
   - rsync -av --info=progress2 --delete ./static/ ./upload/
   - ./staticSiteGenerator.py
-  - $(npm bin)/http-server upload & wait-on http://localhost:8080 
+  - $(npm bin)/http-server upload & $(npm bin)/wait-on http://localhost:8080 
   - $(npm bin)/cypress run --record --key $CYPRESS_RECORD_KEY
 
 before_deploy:
