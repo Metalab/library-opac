@@ -15,7 +15,7 @@ from jinja2 import Environment, FileSystemLoader
 from locale import strxfrm
 from pathlib import Path
 
-def numberFormatFunction(stringToFormat, type):
+def formatIdentifier(stringToFormat, type):
     if type.lower() == "isbn":
         if isbn.is_valid(stringToFormat):
             tmp = isbn.format(stringToFormat)
@@ -134,7 +134,7 @@ for location in reversedLocations:
         "location": location,
         "media": media,
         "categories": locationsAndCategories[location],
-        "numberFormatFunction": numberFormatFunction
+        "formatIdentifier": formatIdentifier
     }
 
     with open("{0}/{1}".format(workDir, destFile), "w") as locationWriter:
