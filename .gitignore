@@ -1,2 +1,7 @@
 upload
 static/*.css*
+
+node_modules
+
+cypress/video
+cypress/screenshot
