@@ -1,2 +1,8 @@
 upload
 static/*.css*
+
+node_modules
+package-lock.json
+
+cypress/video
+cypress/screenshot
