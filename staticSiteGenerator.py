@@ -18,21 +18,19 @@ from pathlib import Path
 def formatIdentifier(stringToFormat, type):
     if type.lower() == "isbn":
         if isbn.is_valid(stringToFormat):
-            tmp = isbn.format(stringToFormat)
+            return isbn.format(stringToFormat)
             logger.debug("OK ISBN: {0}".format(tmp))
         else:
             logger.error("Malformed ISBN: {0}".format(stringToFormat))
-            tmp = stringToFormat
+            return stringToFormat
 
     elif type.lower() == "issn":
         if issn.is_valid(stringToFormat):
-            tmp = issn.format(stringToFormat)
+            return issn.format(stringToFormat)
             logger.debug("OK ISSN: {0}".format(tmp))
         else:
             logger.error("Malformed ISSN: {0}".format(stringToFormat))
-            tmp = stringToFormat
-
-    return tmp
+            return stringToFormat
 
 def generateLogoUrl(locationForLogoCheck):
     tmp = locationForLogoCheck.replace(" ", "")
