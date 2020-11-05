@@ -25,7 +25,7 @@ jobs:
         - ./update.sh
         - /tmp/go/bin/csvlint /tmp/library-media-inventory/inventory.csv
 
-    - stage: build:
+    - stage: build
       script:
         - $(npm bin)/node-sass --source-map true --source-map-contents --output-style compressed static/sass/all.scss static/style.css
         - rsync -av --info=progress2 --delete ./static/ ./upload/
