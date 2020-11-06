@@ -32,12 +32,26 @@
             </div>
           </div>
         {% endfor %}
-        <span class="navbar-item is-hidden-desktop">
-          Mit dem Stand vom: {{generationTime}}
-        </span>
-        <a href="https://metalab.at/wiki/Impressum" target="_blank" class="navbar-item is-hidden-desktop">
-          Impressum
-        </a>
+        <div class="is-hidden-desktop">
+          <span class="navbar-item">
+            Mit dem Stand vom: {{generationTime}}
+          </span>
+          <a href="imprint.html" class="navbar-item">
+            Impressum
+          </a>
+          <a href="https://github.com/Metalab/library-opac" target="_blank" class="navbar-item">
+            Source Code
+          </a>
+        </div>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-link is-light" href="search.html">
+              Suche
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
