@@ -8,7 +8,6 @@ targetFolder="/var/www/html/sebastian/metalab-library-opac/branches"
 sourceFolder="/var/www/html/sebastian/metalab-library-opac/source"
 
 sudo apt-get install -y golang-go rsync minify npm > /dev/null
-sudo npm install --global terser sass > /dev/null
 export GOPATH=/tmp/go && go get github.com/Clever/csvlint/cmd/csvlint
 
 # If the repo is not present, clone it from github, otherwise do a git pull
@@ -18,7 +17,7 @@ if [ -d ${sourceFolder} ]; then
   git pull
   ./update.sh
 else
-  echo "Repo is not clonded."
+  echo "Repo is not cloned."
   git clone ${sourceRepo} ${sourceFolder}
   cd ${sourceFolder}
   ./update.sh
@@ -39,7 +38,10 @@ for branch in $(< /tmp/branches); do
   git checkout ${branch}
 
   if [ -f "requirements.txt" ]; then
-    sudo pip3 install -r requirements.txt > /dev/null
+    rm -rf node_modules
+    pip3 install -r requirements.txt > /dev/null
+    npm install
+    ./node_modules/node-sass/bin/node-sass --source-map true --source-map-contents --output-style compressed static/sass/all.scss static/style.css
     rsync -av --info=progress2 --delete ./static/ ./upload/
     ./staticSiteGenerator.py
   fi

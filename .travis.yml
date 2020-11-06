@@ -2,35 +2,55 @@ dist: focal
 language: python
 os: linux
 
-install:
-  - sudo add-apt-repository -y ppa:longsleep/golang-backports > /dev/null
-  - sudo apt-get install -y golang-go rsync minify npm > /dev/null
-  - export GOPATH=/tmp/go && go get github.com/Clever/csvlint/cmd/csvlint > /dev/null
-  - pip install -r requirements.txt > /dev/null
-  - npm install > /dev/null
+stages:
+  - setup
+  - 'Fetch data'
+  - build
+  - test
+  - 'Prepare deployment'
+  - deploy
 
-before_script:
-  - ./update.sh
-  - /tmp/go/bin/csvlint /tmp/library-media-inventory/inventory.csv
+jobs:
+  include:
+    - stage: setup
+      script:
+        - sudo add-apt-repository -y ppa:longsleep/golang-backports > /dev/null
+        - sudo apt-get install -y golang-go rsync minify npm > /dev/null
+        - go get github.com/Clever/csvlint/cmd/csvlint > /dev/null
+        - pip install -r requirements.txt > /dev/null
+        - npm install > /dev/null
 
-script:
-  - sass static/sass/all.scss static/style.css --source-map
-  - rsync -av --info=progress2 --delete ./static/ ./upload/
-  - ./staticSiteGenerator.py
+    - stage: 'Fetch data'
+      script:
+        - ./update.sh
+        - $HOME/go/bin/csvlint /tmp/library-media-inventory/inventory.csv
 
-before_deploy:
-  - echo "bibliothek.metalab.ac.at" > upload/CNAME
-  - ./minify.sh # Minify html and js
+    - stage: build
+      script:
+        - $(npm bin)/node-sass --source-map true --source-map-contents --output-style compressed static/sass/all.scss static/style.css
+        - rsync -av --info=progress2 --delete ./static/ ./upload/
+        - ./staticSiteGenerator.py
 
-deploy:
-  provider: pages
-  token: $GITHUB_TOKEN
-  keep_history: true
-  local_dir: upload
-  strategy: git
-  edge: true
-  skip_cleanup: true
-  target_branch: gh-pages
-  committer_from_gh: true
-  on:
-    branch: main
+    - stage: test
+      script:
+        - $(npm bin)/http-server upload & $(npm bin)/wait-on http://localhost:8080
+        - $(npm bin)/cypress run --record --key $CYPRESS_RECORD_KEY
+
+    - stage: 'Prepare deployment'
+      script:
+        - echo "bibliothek.metalab.ac.at" > upload/CNAME
+        - ./minify.sh # Minify html and js
+
+    - stage: deploy
+      script: "echo deploy"
+      deploy:
+        provider: pages
+        token: $GITHUB_TOKEN
+        keep_history: true
+        local_dir: upload
+        strategy: git
+        edge: true
+        target_branch: gh-pages
+        committer_from_gh: true
+        on:
+          branch: main
