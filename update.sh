@@ -2,7 +2,7 @@
 # Sebastian Elisa Pfeifer <sebastian@sebastian-elisa-pfeifer.eu>
 
 sourceRepo="https://github.com/Metalab/library-media-inventory.git"
-targetFolder="/tmp/library-media-inventory"
+targetFolder="$HOME/library-media-inventory"
 
 # If the repo with the "database" is not present, clone it from github, otherwise do a git pull
 if [ -d ${targetFolder} ]; then

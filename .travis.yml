@@ -23,13 +23,13 @@ jobs:
     - stage: 'Fetch data'
       script:
         - ./update.sh
-        - $HOME/go/bin/csvlint /tmp/library-media-inventory/inventory.csv
+        - $HOME/go/bin/csvlint $HOME/library-media-inventory/inventory.csv
 
     - stage: build
       script:
         - $(npm bin)/node-sass --source-map true --source-map-contents --output-style compressed static/sass/all.scss static/style.css
         - rsync -av --info=progress2 --delete ./static/ ./upload/
-        - ./staticSiteGenerator.py
+        - ./staticSiteGenerator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv --name "Metalab Library"
 
     - stage: test
       script:
