@@ -16,14 +16,14 @@ jobs:
       script:
         - sudo add-apt-repository -y ppa:longsleep/golang-backports > /dev/null
         - sudo apt-get install -y golang-go rsync minify npm > /dev/null
-        - export GOPATH=/tmp/go && go get github.com/Clever/csvlint/cmd/csvlint > /dev/null
+        - go get github.com/Clever/csvlint/cmd/csvlint > /dev/null
         - pip install -r requirements.txt > /dev/null
         - npm install > /dev/null
 
     - stage: 'Fetch data'
       script:
         - ./update.sh
-        - /tmp/go/bin/csvlint /tmp/library-media-inventory/inventory.csv
+        - $HOME/go/bin/csvlint /tmp/library-media-inventory/inventory.csv
 
     - stage: build
       script:
@@ -42,7 +42,7 @@ jobs:
         - ./minify.sh # Minify html and js
 
     - stage: deploy
-      script: ":ship: it"
+      script: "echo deploy"
       deploy:
         provider: pages
         token: $GITHUB_TOKEN
