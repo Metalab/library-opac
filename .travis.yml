@@ -7,15 +7,16 @@ before_install:
   - sudo apt-get install -y golang-go rsync minify npm > /dev/null
   - export GOPATH=/tmp/go && go get github.com/Clever/csvlint/cmd/csvlint > /dev/null
   - pip install -r requirements.txt > /dev/null
-  - npm install > /dev/null
+  - sudo npm install --global gulp-cli
+  - npm install --save-dev > /dev/null
 
 install:
   - ./update.sh
   - /tmp/go/bin/csvlint $HOME/library-media-inventory/inventory.csv
 
 script:
-  - $(npm bin)/node-sass --source-map true --source-map-contents --output-style compressed static/sass/all.scss static/style.css
-  - rsync -av --info=progress2 --delete ./static/ ./upload/
+  - rsync -aP --delete ./static/ ./upload/
+  - $(npm bin)/gulp compile
   - ./staticSiteGenerator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv --name "Metalab Library"
 
 after_success:
