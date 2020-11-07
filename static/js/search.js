@@ -56,7 +56,14 @@ function doSearch(e, idx, media) {
 
     let targetLocation = media[id].location.replace(/ /g, "");
     let targetUrl = `location_${targetLocation}.html#${id}`;
-    let targetLink = `<li class="${targetLocation}"><span class="book"><a href="${targetUrl}">${media[id].name}</a> von ${media[id].authorFirstName} ${media[id].authorLastName}</span><span class="location"> am Standort ${media[id].location}</span></li>`;
+
+    let targetLink = `<li class="${targetLocation}"><span class="book"><a href="${targetUrl}">${media[id].name}</a>`
+
+    if (media[id].authorFirstName !== "") {
+      targetLink += ` von ${media[id].authorFirstName} ${media[id].authorLastName}`; // In case the book has an author
+    }
+
+    targetLink += `</span><span class="location"> am Standort ${media[id].location}</span></li>`;
 
     resultList.innerHTML += targetLink;
   }
