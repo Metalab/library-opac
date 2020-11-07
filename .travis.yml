@@ -4,10 +4,8 @@ os: linux
 
 before_install:
   - sudo add-apt-repository -y ppa:longsleep/golang-backports > /dev/null
-  - sudo apt-get install -y golang-go rsync minify > /dev/null
-  - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
-  - \. "$HOME/.nvm/nvm.sh"
-  - sudo nvm install node > /dev/null
+  - curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -
+  - sudo apt-get install -y golang-go rsync minify npm > /dev/null
   - export GOPATH=/tmp/go && go get github.com/Clever/csvlint/cmd/csvlint > /dev/null
   - pip install -r requirements.txt > /dev/null
   - sudo npm cache clean --force # ...
