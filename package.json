@@ -8,6 +8,7 @@
     "wait-on": "^5.2.0"
   },
   "devDependencies": {
+    "gulp-autoprefixer": "^7.0.1",
     "gulp-sri-hash": "^2.2.1"
   }
 }
