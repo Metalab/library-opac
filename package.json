@@ -5,5 +5,8 @@
     "node-sass": "^5.0.0",
     "terser": "^5.3.8",
     "wait-on": "^5.2.0"
+  },
+  "devDependencies": {
+    "gulp-sri-hash": "^2.2.1"
   }
 }
