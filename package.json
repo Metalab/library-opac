@@ -3,12 +3,13 @@
     "cypress": "^5.5.0",
     "gulp": "^4.0.2",
     "http-server": "^0.12.3",
-    "node-sass": "^5.0.0",
     "terser": "^5.3.8",
     "wait-on": "^5.2.0"
   },
   "devDependencies": {
     "gulp-autoprefixer": "^7.0.1",
-    "gulp-sri-hash": "^2.2.1"
+    "gulp-sass": "^4.1.0",
+    "gulp-sri-hash": "^2.2.1",
+    "node-sass": "^5.0.0"
   }
 }
