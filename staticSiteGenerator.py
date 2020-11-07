@@ -35,11 +35,11 @@ def formatIdentifier(stringToFormat, type):
 def generateLogoUrl(locationForLogoCheck):
     tmp = locationForLogoCheck.replace(" ", "")
 
-    if os.path.isfile("static/img/aussenstellen/{0}.png".format(tmp)):
-        return "img/aussenstellen/{0}.png".format(tmp)
+    if os.path.isfile("static/img/locations/{0}.png".format(tmp)):
+        return "img/locations/{0}.png".format(tmp)
     else:
         logger.error("No Logo for {0}!".format(locationForLogoCheck))
-        return "img/aussenstellen/nologo.png"
+        return "img/locations/nologo.png"
 
 # CLI Parameter
 parser = argparse.ArgumentParser("staticSiteGenerator.py")

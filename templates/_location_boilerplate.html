@@ -1,7 +1,7 @@
 {% extends "_page_boilerplate.html" %}
 {% block title %}{{location}}{% endblock %}
 {% block content %}
-  <img src="{{logoUrl(location)}}" alt="{{location}} Logo - Lizenzen der Bilder: img/aussenstellen/licenses.txt" class="logo">
+  <img src="{{logoUrl(location)}}" alt="{{location}} Logo - Lizenzen der Bilder: img/locations/licenses.txt" class="logo">
 
   {% for category in categories %}
     <div class="categoryContainer is-anchor" id="{{category | replace(" ", "")}}"><!-- categoryContainer start -->
