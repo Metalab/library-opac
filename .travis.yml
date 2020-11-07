@@ -2,55 +2,38 @@ dist: focal
 language: python
 os: linux
 
-stages:
-  - setup
-  - 'Fetch data'
-  - build
-  - test
-  - 'Prepare deployment'
-  - deploy
+before_install:
+  - sudo add-apt-repository -y ppa:longsleep/golang-backports > /dev/null
+  - sudo apt-get install -y golang-go rsync minify npm > /dev/null
+  - go get github.com/Clever/csvlint/cmd/csvlint > /dev/null
+  - pip install -r requirements.txt > /dev/null
+  - npm install > /dev/null
 
-jobs:
-  include:
-    - stage: setup
-      script:
-        - sudo add-apt-repository -y ppa:longsleep/golang-backports > /dev/null
-        - sudo apt-get install -y golang-go rsync minify npm > /dev/null
-        - go get github.com/Clever/csvlint/cmd/csvlint > /dev/null
-        - pip install -r requirements.txt > /dev/null
-        - npm install > /dev/null
+install:
+  - ./update.sh
+  - $HOME/go/bin/csvlint $HOME/library-media-inventory/inventory.csv
 
-    - stage: 'Fetch data'
-      script:
-        - ./update.sh
-        - $HOME/go/bin/csvlint $HOME/library-media-inventory/inventory.csv
+script:
+  - $(npm bin)/node-sass --source-map true --source-map-contents --output-style compressed static/sass/all.scss static/style.css
+  - rsync -av --info=progress2 --delete ./static/ ./upload/
+  - ./staticSiteGenerator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv --name "Metalab Library"
 
-    - stage: build
-      script:
-        - $(npm bin)/node-sass --source-map true --source-map-contents --output-style compressed static/sass/all.scss static/style.css
-        - rsync -av --info=progress2 --delete ./static/ ./upload/
-        - ./staticSiteGenerator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv --name "Metalab Library"
+after_success:
+  - $(npm bin)/http-server upload & $(npm bin)/wait-on http://localhost:8080
+  - $(npm bin)/cypress run --record --key $CYPRESS_RECORD_KEY
 
-    - stage: test
-      script:
-        - $(npm bin)/http-server upload & $(npm bin)/wait-on http://localhost:8080
-        - $(npm bin)/cypress run --record --key $CYPRESS_RECORD_KEY
+before_deploy:
+  - echo "bibliothek.metalab.ac.at" > upload/CNAME
+  - ./minify.sh # Minify html and js
 
-    - stage: 'Prepare deployment'
-      script:
-        - echo "bibliothek.metalab.ac.at" > upload/CNAME
-        - ./minify.sh # Minify html and js
-
-    - stage: deploy
-      script: "echo deploy"
-      deploy:
-        provider: pages
-        token: $GITHUB_TOKEN
-        keep_history: true
-        local_dir: upload
-        strategy: git
-        edge: true
-        target_branch: gh-pages
-        committer_from_gh: true
-        on:
-          branch: main
+deploy:
+  provider: pages
+  token: $GITHUB_TOKEN
+  keep_history: true
+  local_dir: upload
+  strategy: git
+  edge: true
+  target_branch: gh-pages
+  committer_from_gh: true
+  on:
+    branch: main
