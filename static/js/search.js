@@ -78,8 +78,8 @@ $(document).ready(async function() {
   document.getElementById("searchField").addEventListener("keydown", function(event) {
     if (document.getElementById("searchField").value.length >= 3) {
       document.getElementById("searchButton").disabled = false;
-      document.getElementById("searchField").classList.remove("is-danger");
-      document.getElementById("fourCharWarning").classList.add("is-hidden");
+      $("searchField").removeClass("is-danger");
+      $("#fourCharWarning").addClass("is-hidden");
 
       if (event.keyCode === 13) {
          doSearch(event, idx, indexed);
@@ -87,8 +87,8 @@ $(document).ready(async function() {
 
     } else {
       document.getElementById("searchButton").disabled = true;
-      document.getElementById("searchField").classList.add("is-danger");
-      document.getElementById("fourCharWarning").classList.remove("is-hidden");
+      $("searchField").addClass("is-danger");
+      $("#fourCharWarning").removeClass("is-hidden");
     }
   });
 });
