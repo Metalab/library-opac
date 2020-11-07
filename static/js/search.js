@@ -63,7 +63,7 @@ function doSearch(e, idx, media) {
       targetLink += ` von ${media[id].authorFirstName} ${media[id].authorLastName}`; // In case the book has an author
     }
 
-    targetLink += `</span><span class="location"> am Standort ${media[id].location}</span></li>`;
+    targetLink += `<span class="category is-size-7 is-italic">${media[id].category}</span></span><span class="location"> am Standort ${media[id].location}</span></li>`;
 
     resultList.innerHTML += targetLink;
   }
