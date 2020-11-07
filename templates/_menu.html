@@ -14,6 +14,13 @@
 
     <div id="mainNav" class="navbar-menu">
       <div class="navbar-start">
+        <div class="navbar-item is-hidden-desktop">
+          <div class="buttons">
+            <a class="button is-link is-light" href="search.html">
+              Suche
+            </a>
+          </div>
+        </div>
         {% for menuLocation in locations %}
           <div class="navbar-item has-dropdown is-hoverable {% if location == menuLocation %}active{% else %}not-active{% endif %}">
             <a class="navbar-link" href="location_{{menuLocation | replace(" ", "")}}.html">
@@ -44,7 +51,7 @@
           </a>
         </div>
       </div>
-      <div class="navbar-end">
+      <div class="navbar-end is-hidden-mobile">
         <div class="navbar-item">
           <div class="buttons">
             <a class="button is-link is-light" href="search.html">
