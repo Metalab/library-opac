@@ -20,10 +20,11 @@ script:
   - rsync -aP --delete ./static/ ./upload/
   - $(npm bin)/gulp compile
   - ./staticSiteGenerator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv --name "Metalab Library"
+  - find upload/js/ -type f -name "*.js" -exec $(npm bin)/terser {} --comments --compress --mangle --comments --source-map --output {} \;
   - $(npm bin)/gulp subresource-integrity
 
 after_success:
-  - ./minify.sh # Minify html and js
+  - find upload/ -type f -name "*.html" -exec minify {} --type html -o {} \;
   - $(npm bin)/http-server upload & $(npm bin)/wait-on http://localhost:8080
   - $(npm bin)/cypress run --record --key $CYPRESS_RECORD_KEY
 
