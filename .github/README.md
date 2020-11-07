@@ -19,6 +19,7 @@ Have a look at what is done in the .travis.yml file, otherwise run the following
 rsync -aP --delete ./static/ ./upload/
 $(npm bin)/gulp compile
 ./staticSiteGenerator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv --name "Metalab Library"
+$(npm bin)/gulp subresource-integrity
 ```
 
 Note that this will not minify the generated html pages and the JavaScript and is only wise to use for development!

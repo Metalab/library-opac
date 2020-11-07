@@ -18,6 +18,7 @@ script:
   - rsync -aP --delete ./static/ ./upload/
   - $(npm bin)/gulp compile
   - ./staticSiteGenerator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv --name "Metalab Library"
+  - $(npm bin)/gulp subresource-integrity
 
 after_success:
   - $(npm bin)/http-server upload & $(npm bin)/wait-on http://localhost:8080
