@@ -42,18 +42,20 @@
                     <span class="tag is-danger">Nein</span>
                   {% endif %}
                 </span>
-                <span class="tags has-addons mt-2">
-                  <span class="tag">Lieferung zur Hauptstelle?</span>
-                  {% if medium.isMetalabPickupPossible.lower() == "ja" %}
-                    <span class="tag is-success">Ja</span>
-                  {% elif (medium.isMetalabPickupPossible.lower() == "nein") or ((medium.isLendable.lower() == "nein") and (medium.location.lower() | replace(" ", "") != "hauptstellemetalab")) %}
-                    <span class="tag is-danger">Nein</span>
-                  {% elif medium.location.lower() | replace(" ", "") == "hauptstellemetalab" %}
-                    <span class="tag is-info">Am Standort</span>
-                  {% else %}
-                    <span class="tag is-warning">Fraglich</span>
-                  {% endif %}
-                </span>
+                {% if medium.location.lower() | replace(" ", "") != "hauptstellemetalab" %}
+                  <span class="tags has-addons mt-2">
+                    <span class="tag">Lieferung zur Hauptstelle?</span>
+                    {% if medium.isMetalabPickupPossible.lower() == "ja" %}
+                      <span class="tag is-success">Ja</span>
+                    {% elif (medium.isMetalabPickupPossible.lower() == "nein") or ((medium.isLendable.lower() == "nein")) %}
+                      <span class="tag is-danger">Nein</span>
+                    {% elif medium.location.lower() | replace(" ", "") == "hauptstellemetalab" %}
+                      <span class="tag is-info">Am Standort</span>
+                    {% else %}
+                      <span class="tag is-warning">Fraglich</span>
+                    {% endif %}
+                  </span>
+                {% endif %}
               </p>
               {% if medium.isbn %}
                 <p>
