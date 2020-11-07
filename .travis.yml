@@ -9,8 +9,8 @@ before_install:
   - export GOPATH=/tmp/go && go get github.com/Clever/csvlint/cmd/csvlint > /dev/null
   - pip install -r requirements.txt > /dev/null
   - sudo npm cache clean --force # ...
-  - sudo npm install --global gulp-cli
   - npm install > /dev/null
+  - sudo npm install --global gulp-cli
 
 install:
   - ./update.sh
