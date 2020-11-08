@@ -5,37 +5,37 @@
 }
 
 /* Icons */
-.icon-email {
+.iconEmail {
   content: url("img/icons/email.png");
   height: 15px;
 }
 
-.icon-fax {
+.iconFax {
   content: url("img/icons/fax.png");
   height: 15px;
 }
 
-.lightbox-content {
-  display: block !important;
-  min-width: 300px;
-}
-
-.lightbox-container {
+.lightboxContainer {
   display: none;
-}
 
-.orderOption {
-  width: 100px;
+  .lightboxContent {
+    display: block !important;
+    min-width: 500px;
 
-  img {
-    width: 95px;
-    height: auto;
+    .orderOptionContainer {
+      width: 450px;
+      margin: 15px auto 0 auto;
+      text-align: center;
+
+      .orderOption {
+        width: 200px;
+
+        img {
+          width: 95px;
+        }
+      }
+    }
   }
-}
-
-.flex-container {
-  display: flex;
-  justify-content: space-between;
 }
 
 .rotate {
