@@ -35,25 +35,52 @@
               {% endif %}
               <p>
                 Medientyp: {{medium.mediaType}}<br>
-                <span class="tags has-addons mt-2">
-                  <span class="tag">Entlehnbar?</span>
-                  {% if medium.isLendable.lower() == "ja" %}
-                    <span class="tag is-success">Ja</span>
-                  {% else %}
-                    <span class="tag is-danger">Nein</span>
-                  {% endif %}
-                </span>
+                <div class="is-inline-block">
+                  <span class="tags has-addons mt-2">
+                    <span class="tag">Entlehnbar?</span>
+                    {% if medium.isLendable.lower() == "ja" %}
+                      <span class="tag is-success">Ja</span>
+                    {% else %}
+                      <span class="tag is-danger">Nein</span>
+                    {% endif %}
+                  </span>
+                </div>
+                {% if medium.isLendable.lower() == "ja" %}
+                  <div class="lightbox-wrapper is-inline-block">
+                    <button class="button is-primary is-light" data-featherlight="#lightbox-{{medium.itemBarcode}}">Bestellung</button>
+                    <div id="lightbox-{{medium.itemBarcode}}" class="lightbox-container">
+                      <div class="lightbox-content">
+                        <h1 class="title is-2">
+                          {{medium.name}}
+                        </h1>
+                        <div class="flex-container">
+                          <div class="orderOption is-inline-block">
+                            <a href="mailto:bibliothek@lists.metalab.at?subject=Bestellung {{medium.itemBarcode}}&body=Buchbestellung%0D%0A%0D%0ABarcode%3A {{medium.itemBarcode}}%0D%0ATitel%3A {{medium.name}}%0D%0AVon%3A {{medium.authorFirstName}} {{medium.authorLastName}}%0D%0AISBN%3A {{medium.isbn}}%0D%0A%0D%0A">
+                              <img src="img/icons/email.png" alt="Bestellung per Email">
+                              <h2 class="title is-4">
+                                Email
+                              </h2>
+                            </a>
+                          </div>
+                          <div class="orderOption is-inline-block">
+                            <img src="img/icons/fax.png" alt="Bestellung per Fax">
+                            <h2 class="title is-4">
+                              Fax
+                            </h2>
+                            <p>
+                              +431226004510
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
                 {% if medium.location.lower() | replace(" ", "") != "hauptstellemetalab" %}
                   <span class="tags has-addons mt-2">
                     <span class="tag">Lieferung zur Hauptstelle?</span>
                     {% if medium.isMetalabPickupPossible.lower() == "ja" %}
                       <span class="tag is-success">Ja</span>
-                      <button class="button is-primary is-light" data-featherlight="#lightbox-{{medium.itemBarcode}}">Bestellung</button>
-                      <div id="lightbox-{{medium.itemBarcode}}" class="is-hidden">
-                        <h1 class="title is-1">
-                          {{medium.name}}
-                        </h1>
-                      </div>
                     {% elif (medium.isMetalabPickupPossible.lower() == "nein") or ((medium.isLendable.lower() == "nein")) %}
                       <span class="tag is-danger">Nein</span>
                     {% elif medium.location.lower() | replace(" ", "") == "hauptstellemetalab" %}

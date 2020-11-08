@@ -15,6 +15,33 @@
   height: 15px;
 }
 
+.lightbox-content {
+  display: block !important;
+  min-width: 300px;
+}
+
+.lightbox-container {
+  display: none;
+}
+
+.lightbox-wrapper {
+  margin-left: 25px;
+}
+
+.orderOption {
+  width: 100px;
+
+  img {
+    width: 95px;
+    height: auto;
+  }
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .rotate {
   animation: rotation 5s infinite linear;
 }
