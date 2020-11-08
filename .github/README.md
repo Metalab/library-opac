@@ -30,3 +30,9 @@ find upload/ -type f -name "*.html" -exec minify {} --type html -o {} \;
 ```
 
 You can then serve the upload folder in an web server of your like.
+
+## License
+MIT License (c) 2020 Metalab
+
+## 3rd Party License
+https://github.com/Metalab/library-opac/blob/main/.github/3dparty.md

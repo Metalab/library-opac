@@ -1,7 +1,8 @@
 {% extends "_page_boilerplate.html" %}
 {% block title %}{{location}}{% endblock %}
 {% block content %}
-  <img src="{{logoUrl(location)}}" alt="{{location}} Logo - Lizenzen der Bilder: img/locations/licenses.txt" class="logo">
+  <img src="{{logoUrl(location)}}" alt="{{location}} Logo" class="logo">
+  <script src="js/featherlight.js"></script>
 
   {% for category in categories %}
     <div class="categoryContainer is-anchor" id="{{category | replace(" ", "")}}"><!-- categoryContainer start -->
@@ -34,14 +35,47 @@
               {% endif %}
               <p>
                 Medientyp: {{medium.mediaType}}<br>
-                <span class="tags has-addons mt-2">
-                  <span class="tag">Entlehnbar?</span>
-                  {% if medium.isLendable.lower() == "ja" %}
-                    <span class="tag is-success">Ja</span>
-                  {% else %}
-                    <span class="tag is-danger">Nein</span>
-                  {% endif %}
-                </span>
+                <div class="is-inline-block">
+                  <span class="tags has-addons mt-2">
+                    <span class="tag">Entlehnbar?</span>
+                    {% if medium.isLendable.lower() == "ja" %}
+                      <span class="tag is-success">Ja</span>
+                    {% else %}
+                      <span class="tag is-danger">Nein</span>
+                    {% endif %}
+                  </span>
+                </div>
+                {% if medium.isLendable.lower() == "ja" %}
+                  <div class="lightbox-wrapper is-inline-block">
+                    <button class="button is-primary is-light" data-featherlight="#lightbox-{{medium.itemBarcode}}">Bestellung</button>
+                    <div id="lightbox-{{medium.itemBarcode}}" class="lightbox-container">
+                      <div class="lightbox-content">
+                        <h1 class="title is-2">
+                          {{medium.name}}
+                        </h1>
+                        <div class="flex-container">
+                          <div class="orderOption is-inline-block">
+                            <a href="mailto:bibliothek@lists.metalab.at?subject=Bestellung%20{{medium.itemBarcode}}&body=Buchbestellung%0D%0A%0D%0ABarcode%3A%20{{medium.itemBarcode}}%0D%0ATitel%3A%20{{medium.name | urlencode}}%0D%0AVon%3A%20{{medium.authorFirstName | urlencode}}%20{{medium.authorLastName | urlencode}}%0D%0AISBN%3A%20{{medium.isbn}}%0D%0A%0D%0A">
+                              <img src="img/icons/email.png" alt="Bestellung per Email">
+                              <h2 class="title is-4">
+                                Email
+                              </h2>
+                            </a>
+                          </div>
+                          <div class="orderOption is-inline-block">
+                            <img src="img/icons/fax.png" alt="Bestellung per Fax">
+                            <h2 class="title is-4">
+                              Fax
+                            </h2>
+                            <p>
+                              +431226004510
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
                 {% if medium.location.lower() | replace(" ", "") != "hauptstellemetalab" %}
                   <span class="tags has-addons mt-2">
                     <span class="tag">Lieferung zur Hauptstelle?</span>
