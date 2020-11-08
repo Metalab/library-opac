@@ -14,10 +14,20 @@
 
     <div id="mainNav" class="navbar-menu">
       <div class="navbar-start">
-        <div class="navbar-item is-hidden-desktop">
-          <div class="buttons">
+        <div class="is-hidden-desktop">
+          <div class="navbar-item buttons is-inline-block">
             <a class="button is-link is-light" href="search.html">
               Suche
+            </a>
+          </div>
+          <div class="navbar-item buttons is-inline-block">
+            <a href="imprint.html" class="button is-link is-light">
+              Impressum
+            </a>
+          </div>
+          <div class="navbar-item buttons is-inline-block">
+            <a href="https://github.com/Metalab/library-opac" target="_blank" class="button is-link is-light">
+              Source Code
             </a>
           </div>
         </div>
@@ -39,17 +49,9 @@
             </div>
           </div>
         {% endfor %}
-        <div class="is-hidden-desktop">
-          <span class="navbar-item">
-            Mit dem Stand vom: {{generationTime}}
-          </span>
-          <a href="imprint.html" class="navbar-item">
-            Impressum
-          </a>
-          <a href="https://github.com/Metalab/library-opac" target="_blank" class="navbar-item">
-            Source Code
-          </a>
-        </div>
+        <span class="navbar-item is-hidden-desktop">
+          Mit dem Stand vom: {{generationTime}}
+        </span>
       </div>
       <div class="navbar-end is-hidden-mobile">
         <div class="navbar-item buttons">
