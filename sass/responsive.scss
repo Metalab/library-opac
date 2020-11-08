@@ -17,7 +17,7 @@
   }
 
   .marginLeft {
-    margin-left: 0px;
+    margin-left: 0;
   }
 
   h4 {
@@ -35,8 +35,9 @@
     padding-top: 10px;
     border-top: 2px black solid;
   }
-  #resultList > li{
-	 box-shadow: 1px 1px 5px black; 
+
+  #resultList > li {
+    box-shadow: 1px 1px 5px black;
   }
 }
 
@@ -44,6 +45,11 @@
 @media screen and (min-width: 1080px) {
   .mediaContainer {
     grid-template-columns: 25% 25% 25% 25%;
+  }
+
+  .navbar-dropdown {
+    max-height: 512px;
+    overflow: auto;
   }
 }
 
@@ -53,16 +59,23 @@
   }
 }
 
-@media screen and (min-width: 1080px) {
-  .navbar-dropdown {
-    max-height: 512px;
-    overflow: auto;
-  }
-}
-
 @media screen and (max-width: 1024px) {
   .desktopOnly {
     display: none;
+  }
+
+  .navbar-item {
+    &.has-dropdown {
+      .navbar-dropdown {
+        display: none;
+      }
+
+      &.is-active {
+        .navbar-dropdown {
+          display: block;
+        }
+      }
+    }
   }
 }
 
@@ -76,6 +89,6 @@
   }
 
   .card {
-    margin: 10px 0px 0px 0px;
+    margin: 10px 0 0;
   }
 }
