@@ -55,7 +55,7 @@
                         </h1>
                         <div class="flex-container">
                           <div class="orderOption is-inline-block">
-                            <a href="mailto:bibliothek@lists.metalab.at?subject=Bestellung {{medium.itemBarcode}}&body=Buchbestellung%0D%0A%0D%0ABarcode%3A {{medium.itemBarcode}}%0D%0ATitel%3A {{medium.name}}%0D%0AVon%3A {{medium.authorFirstName}} {{medium.authorLastName}}%0D%0AISBN%3A {{medium.isbn}}%0D%0A%0D%0A">
+                            <a href="mailto:bibliothek@lists.metalab.at?subject=Bestellung%20{{medium.itemBarcode}}&body=Buchbestellung%0D%0A%0D%0ABarcode%3A%20{{medium.itemBarcode}}%0D%0ATitel%3A%20{{medium.name | urlencode}}%0D%0AVon%3A%20{{medium.authorFirstName | urlencode}}%20{{medium.authorLastName | urlencode}}%0D%0AISBN%3A%20{{medium.isbn}}%0D%0A%0D%0A">
                               <img src="img/icons/email.png" alt="Bestellung per Email">
                               <h2 class="title is-4">
                                 Email
