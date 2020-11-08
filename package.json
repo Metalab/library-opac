@@ -4,6 +4,7 @@
     "gulp": "4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-cache": "1.1.3",
+    "gulp-cli": "^2.3.0",
     "gulp-imagemin": "7.1.0",
     "gulp-minify-css": "1.0.0",
     "gulp-plumber": "1.2.1",

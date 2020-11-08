@@ -3,18 +3,14 @@ language: python
 os: linux
 
 before_install:
-  - sudo add-apt-repository -y ppa:longsleep/golang-backports > /dev/null
   - curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -
-  - sudo apt-get install -y golang-go rsync minify nodejs > /dev/null
-  - export GOPATH=/tmp/go && go get github.com/Clever/csvlint/cmd/csvlint > /dev/null
+  - sudo apt-get install -y rsync minify nodejs > /dev/null
   - pip install -r requirements.txt > /dev/null
   - sudo npm cache clean --force # ...
   - npm install > /dev/null
-  - sudo npm install --global gulp-cli
 
 install:
   - ./update.sh
-  - /tmp/go/bin/csvlint $HOME/library-media-inventory/inventory.csv
 
 script:
   - rsync -aP --delete --exclude "js" ./static/ ./upload/
