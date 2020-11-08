@@ -66,11 +66,14 @@
                           <h1 class="title is-2">
                             {{medium.name}}
                           </h1>
+                          <h2 class="title is-3">
+                            Bestellung
+                          </h2>
                           <div class="orderOptionContainer">
                             <div class="orderOption is-inline-block">
                               <a href="mailto:bibliothek@lists.metalab.at?subject=Bestellung%20{{medium.itemBarcode}}&body=Buchbestellung%0D%0A%0D%0ABarcode%3A%20{{medium.itemBarcode}}%0D%0ATitel%3A%20{{medium.name | urlencode}}%0D%0AVon%3A%20{{medium.authorFirstName | urlencode}}%20{{medium.authorLastName | urlencode}}%0D%0AISBN%3A%20{{medium.isbn}}%0D%0A%0D%0A">
                                 <img src="img/icons/email.png" alt="Bestellung per Email">
-                                <h2 class="title is-4">
+                                <h3 class="title is-4">
                                   Email
                                 </h2>
                                 <p>
@@ -80,7 +83,7 @@
                             </div>
                             <div class="orderOption is-inline-block">
                               <img src="img/icons/fax.png" alt="Bestellung per Fax">
-                              <h2 class="title is-4">
+                              <h3 class="title is-4">
                                 Fax
                               </h2>
                               <p>
