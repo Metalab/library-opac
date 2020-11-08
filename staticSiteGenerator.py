@@ -74,7 +74,7 @@ jinja2Env = Environment(loader=FileSystemLoader('templates'), autoescape=True)
 try:
     with open(sourceFile, newline='') as csvFileReader:
         readFile = csv.DictReader(csvFileReader)
-        media = sorted(readFile, key = lambda tup: (strxfrm(tup["location"]), strxfrm(tup["category"]), strxfrm(tup["name"])))
+        media = sorted(readFile, key = lambda tup: (strxfrm(tup["location"].lower()), strxfrm(tup["category"].lower()), strxfrm(tup["name"].lower())))
 except FileNotFoundError:
     logger.critical("Can't read library.csv!")
     exit(1)
