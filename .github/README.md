@@ -26,3 +26,5 @@ Note that this will not minify the generated html pages and is only wise to use 
 ```bash
 find upload/ -type f -name "*.html" -exec minify {} --type html -o {} \;
 ```
+
+You can then serve the upload folder in an web server of your like.
