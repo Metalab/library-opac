@@ -4,9 +4,21 @@
   display: block;
 }
 
+/* Icons */
+.icon-email {
+  content: url("img/icons/email.png");
+  height: 15px;
+}
+
+.icon-fax {
+  content: url("img/icons/fax.png");
+  height: 15px;
+}
+
 .rotate {
   animation: rotation 5s infinite linear;
 }
+
 @keyframes rotation {
   from {
     transform: rotate(0deg);
