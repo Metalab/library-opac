@@ -35,7 +35,7 @@
               {% endif %}
               <p>
                 Medientyp: {{medium.mediaType}}<br>
-                <div class="is-inline-block">
+                <div class="is-block">
                   <span class="tags has-addons mt-2">
                     <span class="tag">Entlehnbar?</span>
                     {% if medium.isLendable.lower() == "ja" %}
@@ -46,7 +46,7 @@
                   </span>
                 </div>
                 {% if medium.location.lower() | replace(" ", "") != "hauptstellemetalab" %}
-                  <div class="is-inline-block">
+                  <div class="is-block">
                     <span class="tags has-addons mt-2">
                       <span class="tag">Lieferung zur Hauptstelle?</span>
                       {% if medium.isMetalabPickupPossible.lower() == "ja" %}
@@ -59,7 +59,7 @@
                     </span>
                   </div>
                   {% if medium.isMetalabPickupPossible.lower() == "ja" %}
-                    <div class="lightbox-wrapper is-inline-block">
+                    <div class="lightbox-wrapper is-block">
                       <button class="button is-primary is-light" data-featherlight="#lightbox-{{medium.itemBarcode}}">Bestellung</button>
                       <div id="lightbox-{{medium.itemBarcode}}" class="lightbox-container">
                         <div class="lightbox-content">
