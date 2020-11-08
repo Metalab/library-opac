@@ -12,6 +12,8 @@
     "gulp-sourcemaps": "2.6.5",
     "gulp-sri-hash": "^2.2.1",
     "gulp-terser": "^1.4.1",
+    "html-validator": "^5.0.1",
+    "html-validator-cli": "^7.0.1",
     "http-server": "^0.12.3",
     "node-sass": "^5.0.0",
     "terser": "5.3.8",

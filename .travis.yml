@@ -24,6 +24,7 @@ script:
 
 after_success:
   - find upload/ -type f -name "*.html" -exec minify {} --type html -o {} \;
+  - find upload/ -type f -name "*.html" -exec echo "{}" \; -exec $(npm bin)/html-validator --file={} \;
   - $(npm bin)/http-server upload & $(npm bin)/wait-on http://localhost:8080
   - $(npm bin)/cypress run --record --key $CYPRESS_RECORD_KEY
 
