@@ -2,6 +2,7 @@
 {% block title %}{{location}}{% endblock %}
 {% block content %}
   <img src="{{logoUrl(location)}}" alt="{{location}} Logo" class="logo">
+  <script src="js/featherlight.js"></script>
 
   {% for category in categories %}
     <div class="categoryContainer is-anchor" id="{{category | replace(" ", "")}}"><!-- categoryContainer start -->
@@ -47,6 +48,12 @@
                     <span class="tag">Lieferung zur Hauptstelle?</span>
                     {% if medium.isMetalabPickupPossible.lower() == "ja" %}
                       <span class="tag is-success">Ja</span>
+                      <button class="button is-primary is-light" data-featherlight="#lightbox-{{medium.itemBarcode}}">Bestellung</button>
+                      <div id="lightbox-{{medium.itemBarcode}}" class="is-hidden">
+                        <h1 class="title is-1">
+                          {{medium.name}}
+                        </h1>
+                      </div>
                     {% elif (medium.isMetalabPickupPossible.lower() == "nein") or ((medium.isLendable.lower() == "nein")) %}
                       <span class="tag is-danger">Nein</span>
                     {% elif medium.location.lower() | replace(" ", "") == "hauptstellemetalab" %}
