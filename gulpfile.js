@@ -6,10 +6,11 @@ var sourcemaps = require("gulp-sourcemaps");
 var autoprefixer = require("gulp-autoprefixer");
 var minifycss = require("gulp-minify-css");
 var sriHash = require("gulp-sri-hash");
+var terser = require("gulp-terser");
 
 sass.compiler = require("node-sass");
 
-gulp.task("sass", function(){
+gulp.task("sass", function() {
   return gulp.src(["static/sass/all.scss"])
     .pipe(sourcemaps.init())
     .pipe(sass.sync({
@@ -21,6 +22,17 @@ gulp.task("sass", function(){
     .pipe(gulp.dest("upload/"))
 });
 
+gulp.task("js", function() {
+  return gulp.src("static/js/**/*.js")
+    .pipe(sourcemaps.init())
+    .pipe(terser({
+      mangle: true,
+      compress: true
+    }))
+    .pipe(sourcemaps.write("."))
+    .pipe(gulp.dest("upload/js"))
+});
+
 gulp.task("sri", () => {
   return gulp.src("upload/*.html")
     .pipe(sriHash({
@@ -29,5 +41,5 @@ gulp.task("sri", () => {
     .pipe(gulp.dest("upload/"));
 });
 
-gulp.task("compile", gulp.series("sass"));
+gulp.task("compile", gulp.series("sass", "js"));
 gulp.task("subresource-integrity", gulp.series("sri"));
