@@ -22,4 +22,7 @@ $(npm bin)/gulp compile
 $(npm bin)/gulp subresource-integrity
 ```
 
-Note that this will not minify the generated html pages and the JavaScript and is only wise to use for development!
+Note that this will not minify the generated html pages and is only wise to use for development! To minify the html pages, install the "minify" package and run
+```bash
+find upload/ -type f -name "*.html" -exec minify {} --type html -o {} \;
+```
