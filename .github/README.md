@@ -14,8 +14,9 @@ If you want to use the Metalab Library Media Inventory, run update.sh. It will c
 pip install -r requirements.txt
 npm install
 ```
+und the src folder.
 
-Have a look at what is done in the .travis.yml file, or run the following commands in the src folder of this repo:
+Have a look at what is done in the .travis.yml file, or run the following commands (also in the src folder) of this repo:
 
 ```bash
 rsync -aP --delete ./static/ ./upload/
