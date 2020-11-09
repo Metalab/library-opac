@@ -9,14 +9,15 @@ An Online Public Access Catalogue (OPAC) is an online accessible library catalog
 
 ## How to use it?
 
-If you want to use the Metalab Library Media Inventory, run update.sh. It will clone/pull the repo to your home folder. Then replace the logos in src/static/img. Install the python dependencies in requirements.json and the node.js ones from the package.json. To do so run
+If you want to use the Metalab Library Media Inventory, run src/update.sh. It will clone/pull the repo to your home folder, install some npm modules and validate the csv. Install the python dependencies in requirements.json and the node.js ones from the package.json. To do so run
+
 ```bash
 pip install -r requirements.txt
 npm install
 ```
-und the src folder.
+in the src folder.
 
-Have a look at what is done in the .travis.yml file, or run the following commands (also in the src folder) of this repo:
+Have a look at what is done in the .travis.yml file, or run the following commands (also in the src folder):
 
 ```bash
 rsync -aP --delete ./static/ ./upload/
@@ -35,5 +36,13 @@ find upload/ -type f -name "*.html" -exec minify {} --type html -o {} \;
 ## License
 MIT License (c) 2020 Metalab
 
-## 3rd Party License
+## Developed by
+(in alphabetical order)
+* anlumo
+* coldice4
+* deadda7a
+* eest9
+* joak
+
+## 3rd Party / Media License information
 https://github.com/Metalab/library-opac/blob/main/.github/3dparty.md
