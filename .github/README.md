@@ -15,7 +15,7 @@ pip install -r requirements.txt
 npm install
 ```
 
-Have a look at what is done in the .travis.yml file, otherwise run the following commands in the root folder of this repo:
+Have a look at what is done in the .travis.yml file, otherwise run the following commands in the src folder of this repo:
 
 ```bash
 rsync -aP --delete ./static/ ./upload/
@@ -24,12 +24,12 @@ $(npm bin)/gulp compile
 $(npm bin)/gulp subresource-integrity
 ```
 
+This will generate a folder called "upload", which you can then serve with any web server of your like. Since the generated files are static html, and the search and other dynamic features are implemented in JavaScript, there is no need for PHP or any other server side language to serve the OPAC.
+
 Note that this will not minify the generated html pages and is only wise to use for development! To minify the html pages, install the "minify" package and run
 ```bash
 find upload/ -type f -name "*.html" -exec minify {} --type html -o {} \;
 ```
-
-You can then serve the upload folder in an web server of your like.
 
 ## License
 MIT License (c) 2020 Metalab
