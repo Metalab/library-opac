@@ -24,3 +24,4 @@
 | src/static/js/mail.js                                    | Internetservice Kummer + Oster            | https://jumk.de/nospam                  |
 | src/static/js/menu.js                                    | MIT Licensed Metalab                      | https://github.com/Metalab/library-opac |
 | src/static/js/search.js                                  | MIT Licensed Metalab                      | https://github.com/Metalab/library-opac |
+| src/static/fonts/julius-sans-one-v9-latin-regular*       | SIL Open Font License, Version 1.1        | https://latinotype.com                  |
