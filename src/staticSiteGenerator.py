@@ -115,7 +115,7 @@ sharedTemplateVars = {
 }
 
 # Write the templates
-for templateFile in [x for x in os.listdir(workDir + "/templates") if (os.path.splitext(x)[1] == ".html" and x[0] != "_")]:
+for templateFile in [x for x in os.listdir(workDir + "/templates") if (os.path.splitext(x)[1] == ".html.j2" and x[0] != "_")]:
     logger.info("Writing Page: {0}".format(templateFile))
 
     template = jinja2Env.get_template(templateFile)
@@ -123,7 +123,7 @@ for templateFile in [x for x in os.listdir(workDir + "/templates") if (os.path.s
         templateWriter.write(template.render(sharedTemplateVars))
 
 # Write the locations
-locationTemplate = jinja2Env.get_template("_location_boilerplate.html")
+locationTemplate = jinja2Env.get_template("_location_boilerplate.html.j2")
 for location in reversedLocations:
     logger.info("Writing location: {0}".format(location))
     destFile = "upload/location_{0}.html".format(location.replace(" ", ""))
