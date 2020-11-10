@@ -34,13 +34,13 @@
       Software: MIT Lizenz, 2020 Metalab
       Sourcode: https://github.com/Metalab/library-opac/
     -->
-    {% include "_menu.html" %}
+    {% include "_menu.html.j2" %}
     <div id="mainContainer">
       <h1 class="title">
         {{self.title()}}
       </h1>
       {% block content %}{% endblock %}
     </div>
-    {% include "_footer.html" %}
+    {% include "_footer.html.j2" %}
   </body>
 </html>

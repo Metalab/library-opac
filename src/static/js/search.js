@@ -8,8 +8,8 @@ async function loadJson() {
       "name": tmp.name,
       "authorFirstName": tmp.authorFirstName,
       "authorLastName": tmp.authorLastName,
-      "category": tmp.category,
-      "location": tmp.location
+      "location": tmp.location,
+      "category": tmp.category
     }
   ));
 }
@@ -27,7 +27,6 @@ function loadSearchData(media) {
     this.field("authorLastName", {
       boost: 5
     });
-    this.field("category");
 
     for (let medium of media) {
       this.add(medium);

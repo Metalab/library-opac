@@ -1,0 +1,23 @@
+<div class="listItem is-anchor" id="{{medium.itemBarcode}}"><!-- medium start -->
+  <h4 class="title is-5">
+    {{medium.name}}
+  </h4>
+  {% if (medium.authorFirstName) and (medium.authorLastName) %}
+    {% include "medium/_author.html.j2" %}
+  {% endif %}
+  {% if medium.publisher %}
+    {% include "medium/_publisher.html.j2" %}
+  {% endif %}
+  {% if medium.year %}
+    {% include "medium/_year.html.j2" %}
+  {% endif %}
+  <p>
+    {% include "medium/_medium-location-details.html.j2" %}
+  </p>
+  {% if medium.isbn %}
+    {% include "medium/_isbn.html.j2" %}
+  {% endif %}
+  {% if medium.issn %}
+        {% include "medium/_issn.html.j2" %}
+  {% endif %}
+</div><!-- medium end -->

@@ -1,0 +1,10 @@
+<div class="is-block">
+  <span class="tags has-addons mt-2">
+    <span class="tag">Entlehnbar?</span>
+    {% if medium.isLendable.lower() == "ja" %}
+      <span class="tag is-success">Ja</span>
+    {% else %}
+      <span class="tag is-danger">Nein</span>
+    {% endif %}
+  </span>
+</div>
