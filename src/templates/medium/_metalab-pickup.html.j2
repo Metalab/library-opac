@@ -1,0 +1,17 @@
+{% if medium.location.lower() | replace(" ", "") != "hauptstellemetalab" %}
+  <div class="is-block">
+    <span class="tags has-addons mt-2">
+      <span class="tag">Lieferung zur Hauptstelle?</span>
+      {% if medium.isMetalabPickupPossible.lower() == "ja" %}
+        <span class="tag is-success">Ja</span>
+      {% elif (medium.isMetalabPickupPossible.lower() == "nein") or ((medium.isLendable.lower() == "nein")) %}
+        <span class="tag is-danger">Nein</span>
+      {% else %}
+        <span class="tag is-warning">Fraglich</span>
+      {% endif %}
+    </span>
+  </div>
+  {% if medium.isMetalabPickupPossible.lower() == "ja" %}
+    {% include "medium/_lightbox.html.j2" %}
+  {% endif %}
+{% endif %}
