@@ -7,7 +7,9 @@ async function loadJson() {
       "id": tmp.itemBarcode,
       "name": tmp.name,
       "authorFirstName": tmp.authorFirstName,
-      "authorLastName": tmp.authorLastName
+      "authorLastName": tmp.authorLastName,
+      "location": tmp.location,
+      "category": tmp.category
     }
   ));
 }
