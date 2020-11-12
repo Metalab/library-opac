@@ -7,6 +7,7 @@
     url("../fonts/Economica-Regular.woff") format("woff"),
     url("../fonts/Economica-Regular.ttf") format("truetype");
 }
+
 @font-face {
   font-family: "Economica";
   font-style: normal;
@@ -15,6 +16,24 @@
   src: url("../fonts/Economica-Bold.woff2") format("woff2"),
     url("../fonts/Economica-Bold.woff") format("woff"),
     url("../fonts/Economica-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/eb-garamond-v14-latin-regular.woff2") format("woff2"), /* Super Modern Browsers */
+    url("../fonts/eb-garamond-v14-latin-regular.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/eb-garamond-v14-latin-regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "EB Garamond";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../fonts/eb-garamond-v14-latin-italic.woff2") format("woff2"), /* Super Modern Browsers */
+    url("../fonts/eb-garamond-v14-latin-italic.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/eb-garamond-v14-latin-italic.ttf") format("truetype");
 }
 
 .font-variant-small-caps {
