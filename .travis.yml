@@ -13,7 +13,7 @@ install:
   - ./update.sh
 
 script:
-  - rsync -aq --delete --exclude "js" ./static/ ./upload/
+  - rsync -aq --delete --exclude "js" --exclude "sass" ./static/ ./upload/
   - $(npm bin)/gulp compile
   - ./staticSiteGenerator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv --name "Metalab Library"
   - $(npm bin)/gulp subresource-integrity
