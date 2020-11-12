@@ -20,16 +20,6 @@ $family-secondary: Verdana, sans-serif;
   font-family: 'Julius Sans One';
 }
 
-.title,
-.subtitle {
-  font-variant: small-caps;
-}
-
-.listItem .title,
-.listItem .title {
-  font-variant: normal;
-}
-
 .tile {
   &.is-ancestor {
     margin-top: 0.75rem !important;
