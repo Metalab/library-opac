@@ -3,7 +3,7 @@
 
 {% block content %}
   <img src="img/library.png" alt="{{libraryName}} Logo" id="mainLogo">
-  <h2 class="title">
+  <h2 class="title is-2">
     Standorte
   </h2>
   <div class="tile is-ancestor">
@@ -12,7 +12,7 @@
         <div class="tile is-child">
           <a href="location_{{location | replace(" ", "")}}.html">
             <img src="{{logoUrl(location)}}" alt="{{location}} Logo - Lizenzen der Bilder: img/locations/licenses.txt" class="logo">
-            <h2 class="subtitle has-text-weight-bold font-variant-small-caps">
+            <h2 class="subtitle has-text-weight-bold font-variant-small-caps is-3">
               {{location}}
             </h2>
           </a>
