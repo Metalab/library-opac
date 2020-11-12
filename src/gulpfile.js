@@ -4,7 +4,7 @@ var gulp = require("gulp");
 var sass = require("gulp-sass");
 var sourcemaps = require("gulp-sourcemaps");
 var autoprefixer = require("gulp-autoprefixer");
-var minifycss = require("gulp-minify-css");
+var cleancss = require("gulp-clean-css");
 var sriHash = require("gulp-sri-hash");
 var terser = require("gulp-terser");
 
@@ -17,7 +17,7 @@ gulp.task("sass", function() {
       outputStyle: "compressed"
     }).on("error", sass.logError))
     .pipe(autoprefixer("last 2 versions"))
-    .pipe(minifycss())
+    .pipe(cleancss())
     .pipe(sourcemaps.write("."))
     .pipe(gulp.dest("upload/"))
 });

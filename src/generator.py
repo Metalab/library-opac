@@ -42,7 +42,7 @@ def generateLogoUrl(locationForLogoCheck):
         return "img/locations/nologo.png"
 
 # CLI Parameter
-parser = argparse.ArgumentParser("staticSiteGenerator.py")
+parser = argparse.ArgumentParser("generator.py")
 parser.add_argument("--loglevel", help="DEBUG, INFO, ERROR, CRITICAL")
 parser.add_argument("--source", help="Path to inventory.csv. Default /tmp/library-media-inventory/inventory.csv")
 parser.add_argument("--name", help="Library Name. Defaults to 'Metalab Library'")

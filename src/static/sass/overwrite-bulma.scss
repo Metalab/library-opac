@@ -1,7 +1,12 @@
 $navbar-background-color: hsl(0, 0%, 90%);
 $footer-background-color: $navbar-background-color;
-$footer-height: 30px;
+$footer-height: 40px;
 $desktop: 1300px;
+
+$size-small: 1rem;
+$size-normal: 1.25rem;
+$size-medium: 1.5rem;
+$size-large: 1.75rem;
 
 $metalab-lightblue: rgb(28, 54, 84);
 $metalab-darkblue: rgb(24, 46, 70);
@@ -13,17 +18,15 @@ $primary: $metalab-lightblue;
 $link: $metalab-orange;
 $green: darkgreen;
 
-$family-primary: Helvetica, Arial, sans-serif;
-$family-secondary: Verdana, sans-serif;
+$family-primary: "EB Garamond", "Times New Roman", Times, serif;
+$family-secondary: $family-primary;
 
-.title,
-.subtitle {
-  font-variant: small-caps;
+.tag:not(body) {
+  font-size: $size-small;
 }
 
-.listItem .title,
-.listItem .title {
-  font-variant: normal;
+.title, .subtitle {
+  font-family: "Economica", Helvetica, sans-serif;
 }
 
 .tile {

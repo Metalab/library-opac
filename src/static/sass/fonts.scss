@@ -1,9 +1,45 @@
-/* julius-sans-one-regular - latin */
 @font-face {
-  font-family: 'Julius Sans One';
+  font-family: "Economica";
   font-style: normal;
   font-weight: 400;
-  src: local('Julius Sans One'), local('JuliusSansOne-Regular'),
-       url('../fonts/julius-sans-one-v9-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/julius-sans-one-v9-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-display: swap;
+  src: url("../fonts/Economica-Regular.woff2") format("woff2"),
+    url("../fonts/Economica-Regular.woff") format("woff"),
+    url("../fonts/Economica-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Economica";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/Economica-Bold.woff2") format("woff2"),
+    url("../fonts/Economica-Bold.woff") format("woff"),
+    url("../fonts/Economica-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/eb-garamond-v14-latin-regular.woff2") format("woff2"), /* Super Modern Browsers */
+    url("../fonts/eb-garamond-v14-latin-regular.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/eb-garamond-v14-latin-regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "EB Garamond";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../fonts/eb-garamond-v14-latin-italic.woff2") format("woff2"), /* Super Modern Browsers */
+    url("../fonts/eb-garamond-v14-latin-italic.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/eb-garamond-v14-latin-italic.ttf") format("truetype");
+}
+
+.font-variant-small-caps {
+  font-variant: small-caps;
+}
+
+.font-variant-normal {
+  font-variant: normal;
 }

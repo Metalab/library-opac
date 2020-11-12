@@ -13,9 +13,9 @@ install:
   - ./update.sh
 
 script:
-  - rsync -aq --delete --exclude "js" ./static/ ./upload/
+  - rsync -aq --delete --exclude "js" --exclude "sass" ./static/ ./upload/
   - $(npm bin)/gulp compile
-  - ./staticSiteGenerator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv --name "Metalab Library"
+  - ./generator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv --name "Metalab Library"
   - $(npm bin)/gulp subresource-integrity
 
 after_success:
@@ -23,10 +23,6 @@ after_success:
   - find upload/ -type f -name "*.html" -exec echo "{}" \; -exec $(npm bin)/html-validator --file={} \;
   - $(npm bin)/http-server upload & $(npm bin)/wait-on http://localhost:8080
   - cd $TRAVIS_BUILD_DIR/tests && ../src/node_modules/.bin/cypress run --record --key $CYPRESS_RECORD_KEY
-  - ls -hall $TRAVIS_BUILD_DIR/src/upload
-
-before_deploy:
-  - echo "bibliothek.metalab.ac.at" > $TRAVIS_BUILD_DIR/src/upload/CNAME
 
 deploy:
   provider: pages
@@ -36,6 +32,7 @@ deploy:
   strategy: git
   edge: true
   target_branch: gh-pages
+  fqdn: bibliothek.metalab.ac.at
   committer_from_gh: true
   on:
     branch: main

@@ -1,6 +1,7 @@
 body {
   margin: 10px auto 0px auto;
   padding: 0 10px $footer-height 10px;
+  font-size: $size-normal;
 }
 
 header {
@@ -18,10 +19,6 @@ h3 {
 h4 {
   line-height: 1.2;
   margin-left: 0px;
-}
-
-.title, .subtitle {
-  font-family: 'Julius Sans One';
 }
 
 p {
@@ -51,7 +48,7 @@ footer {
   }
 
   img {
-    top: 7px;
+    top: 10px;
     position: absolute;
     margin-left: 5px;
   }

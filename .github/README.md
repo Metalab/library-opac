@@ -22,7 +22,7 @@ Have a look at what is done in the .travis.yml file, or run the following comman
 ```bash
 rsync -aP --delete ./static/ ./upload/
 $(npm bin)/gulp compile
-./staticSiteGenerator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv --name "Metalab Library"
+./generator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv --name "Metalab Library"
 $(npm bin)/gulp subresource-integrity
 ```
 
