@@ -25,6 +25,7 @@
       {{libraryName}} OPAC - {% block title %}{% endblock %}
     </title>
     <script src="js/jquery-3.5.1.js"></script>
+    <script src="js/menu.js"></script>
     <script src="js/mail.js"></script>
   </head>
 
@@ -36,11 +37,23 @@
     -->
     {% include "_menu.html.j2" %}
     <div id="mainContainer">
-      <h1 class="title is-1">
+      <h1 class="title is-1 has-text-weight-bold has-text-centered">
         {{self.title()}}
       </h1>
+      <img src="{% block logoFileName %}{% endblock %}" alt="{{libraryName}} {{self.title()}} Logo" class="logo" id="{{self.title() | replace(" ", "")}}">
       {% block content %}{% endblock %}
     </div>
-    {% include "_footer.html.j2" %}
+    <footer class="is-hidden-mobile">
+      <div class="content">
+        <p class="is-clearfix">
+          <span class="is-pulled-left">
+            <a href="https://metalab.at/" target="_blank">{{libraryName}}</a> | <a href="imprint.html">Impressum</a> | <a href="https://github.com/Metalab/library-opac/" target="_blank">Source Code</a> | <a href="https://travis-ci.org/Metalab/library-opac" target="_blank"><img src="https://travis-ci.org/Metalab/library-opac.svg?branch=main" alt="Build Status"></a>
+          </span>
+          <span class="is-pulled-right">
+            Mit dem Stand vom: {{generationTime}}
+          </span>
+        </p>
+      </div>
+    </footer>
   </body>
 </html>

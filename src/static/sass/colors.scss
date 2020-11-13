@@ -21,3 +21,9 @@ a {
     background-color: rgba(0, 0, 0, 0) !important;
   }
 }
+
+.has-hover {
+  &:hover {
+    box-shadow: inset 2px 2px 2px 0px rgba(0,0,0,0.5);
+  }
+}

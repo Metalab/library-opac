@@ -1,40 +1,35 @@
-#mainLogo {
-  height: 300px;
+#MetalabLibrary,
+#Impressum,
+#Suche {
+  max-height: 350px;
   margin: 0 auto 15px auto;
   display: block;
 }
 
 /* Icons */
-.iconEmail {
+.icon-email {
   content: url("img/icons/email.png");
   height: 15px;
 }
 
-.iconFax {
+.icon-fax {
   content: url("img/icons/fax.png");
   height: 15px;
 }
 
-.location,
-.medium {
-  &:hover {
-    box-shadow: inset 2px 2px 2px 0px rgba(0,0,0,0.5);
-  }
-}
-
-.lightboxContainer {
+.lightbox-container {
   display: none;
 
-  .lightboxContent {
+  .lightbox-content {
     display: block !important;
     min-width: 500px;
 
-    .orderOptionContainer {
+    .order-option-container {
       width: 450px;
       margin: 15px auto 0 auto;
       text-align: center;
 
-      .orderOption {
+      .order-option {
         width: 200px;
 
         img {
@@ -45,7 +40,8 @@
   }
 }
 
-.rotate {
+.rotate,
+.404 {
   animation: rotation 5s infinite linear;
 }
 

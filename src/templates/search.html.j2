@@ -1,5 +1,6 @@
 {% extends "_page_boilerplate.html.j2" %}
 {% block title %}Suche{% endblock %}
+{% block logoFileName %}img/library.png{% endblock %}
 
 {% block content %}
   <div class="is-small is-center">
@@ -11,13 +12,13 @@
 	    Bitte gib mehr als drei Zeichen ein!
       </p>
 	  <div class="control">
-	    <button id="searchButton" class="button is-primary is-light" disabled>
+	    <button id="search-button" class="button is-primary is-light" disabled>
 		  Los!
 	    </button>
 	  </div>
     </div>
-    <div id="searchResults">
-      <ul id="resultList"></ul>
+    <div id="search-results">
+      <ul id="result-list"></ul>
     </div>
   </div>
   <script src="js/es5-sham.js"></script>

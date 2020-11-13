@@ -1,21 +1,22 @@
 {% extends "_page_boilerplate.html.j2" %}
 {% block title %}{{location}}{% endblock %}
+{% block logoFileName %}{{logoUrl(location)}}{% endblock %}
+
 {% block content %}
-  <img src="{{logoUrl(location)}}" alt="{{location}} Logo" class="logo">
   <script src="js/featherlight.js"></script>
 
   {% for category in categories %}
     <div class="categoryContainer is-anchor" id="{{category | replace(" ", "")}}"><!-- categoryContainer start -->
-      <h3 class="has-text-weight-bold subtitle is-2">
+      <h2 class="has-text-weight-normal subtitle is-2 has-text-centered">
         {{category}}
-      </h3>
-      <div class="mediaContainer container is-fluid"><!-- mediaContainer start -->
+      </h2>
+      <div class="media-container container is-fluid"><!-- media-container start -->
         {% for medium in media %}
           {% if (medium.category == category) and (medium.location == location) %}
             {% include "medium/_base.html.j2" %}
           {% endif %}
         {% endfor %}
-      </div><!-- mediaContainer end -->
+      </div><!-- media-container end -->
     </div>
   {% endfor %}
 {% endblock content %}

@@ -1,29 +1,30 @@
 @font-face {
-  font-family: "Economica";
+  font-family: "Open Sans Condensed";
   font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("../fonts/Economica-Regular.woff2") format("woff2"),
-    url("../fonts/Economica-Regular.woff") format("woff"),
-    url("../fonts/Economica-Regular.ttf") format("truetype");
+  font-weight: 300;
+  src: local("Open Sans Condensed Light"), local("OpenSansCondensed-Light"),
+       url("../fonts/open-sans-condensed-v15-latin-300.woff2") format("woff2"),
+       url("../fonts/open-sans-condensed-v15-latin-300.woff") format("woff"),
+       url("../fonts/open-sans-condensed-v15-latin-300.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "Economica";
+  font-family: "Open Sans Condensed";
   font-style: normal;
   font-weight: 700;
-  font-display: swap;
-  src: url("../fonts/Economica-Bold.woff2") format("woff2"),
-    url("../fonts/Economica-Bold.woff") format("woff"),
-    url("../fonts/Economica-Bold.ttf") format("truetype");
+  src: local("Open Sans Condensed Bold"), local("OpenSansCondensed-Bold"),
+       url("../fonts/open-sans-condensed-v15-latin-700.woff2") format("woff2"),
+       url("../fonts/open-sans-condensed-v15-latin-700.woff") format("woff"),
+       url("../fonts/open-sans-condensed-v15-latin-700.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "EB Garamond";
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/eb-garamond-v14-latin-regular.woff2") format("woff2"), /* Super Modern Browsers */
-    url("../fonts/eb-garamond-v14-latin-regular.woff") format("woff"), /* Modern Browsers */
+  src: local("EB Garamond"), local("EB-Garamond"),
+    url("../fonts/eb-garamond-v14-latin-regular.woff2") format("woff2"),
+    url("../fonts/eb-garamond-v14-latin-regular.woff") format("woff"),
     url("../fonts/eb-garamond-v14-latin-regular.ttf") format("truetype");
 }
 
@@ -31,8 +32,9 @@
   font-family: "EB Garamond";
   font-style: italic;
   font-weight: 400;
-  src: url("../fonts/eb-garamond-v14-latin-italic.woff2") format("woff2"), /* Super Modern Browsers */
-    url("../fonts/eb-garamond-v14-latin-italic.woff") format("woff"), /* Modern Browsers */
+  src: local("EB Garamond Italic"), local("EB-Garamond-Italic"),
+    url("../fonts/eb-garamond-v14-latin-italic.woff2") format("woff2"),
+    url("../fonts/eb-garamond-v14-latin-italic.woff") format("woff"),
     url("../fonts/eb-garamond-v14-latin-italic.ttf") format("truetype");
 }
 
