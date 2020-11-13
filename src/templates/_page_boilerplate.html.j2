@@ -40,6 +40,7 @@
       <h1 class="title is-1 has-text-weight-bold has-text-centered">
         {{self.title()}}
       </h1>
+      <img src="{% block logoFileName %}{% endblock %}" alt="{{libraryName}} {{self.title()}} Logo" class="logo" id="{{self.title() | replace(" ", "")}}">
       {% block content %}{% endblock %}
     </div>
     <footer class="is-hidden-mobile">

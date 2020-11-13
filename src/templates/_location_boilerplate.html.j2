@@ -1,7 +1,8 @@
 {% extends "_page_boilerplate.html.j2" %}
 {% block title %}{{location}}{% endblock %}
+{% block logoFileName %}{{logoUrl(location)}}{% endblock %}
+
 {% block content %}
-  <img src="{{logoUrl(location)}}" alt="{{location}} Logo" class="logo">
   <script src="js/featherlight.js"></script>
 
   {% for category in categories %}
