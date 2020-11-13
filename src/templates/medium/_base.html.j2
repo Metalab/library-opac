@@ -1,7 +1,7 @@
 <div class="listItem is-anchor medium" id="{{medium.itemBarcode}}"><!-- medium start -->
-  <h4 class="title is-3 font-variant-normal">
+  <h3 class="title is-3 font-variant-normal has-text-weight-light">
     {{medium.name}}
-  </h4>
+  </h3>
   {% if (medium.authorFirstName) and (medium.authorLastName) %}
     {% include "medium/_author.html.j2" %}
   {% endif %}

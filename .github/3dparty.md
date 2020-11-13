@@ -24,5 +24,5 @@
 | src/static/js/mail.js                                    | Internetservice Kummer + Oster            | https://jumk.de/nospam                  |
 | src/static/js/menu.js                                    | MIT Licensed Metalab                      | https://github.com/Metalab/library-opac |
 | src/static/js/search.js                                  | MIT Licensed Metalab                      | https://github.com/Metalab/library-opac |
-| src/static/fonts/Economica*                              | SIL Open Font License                     | produccion.taller [at] gmail.com        |
+| src/static/fonts/open-sans-condensed*                    | Apache License, Version 2.0               | https://twitter.com/SteveMatteson1      |
 | src/static/fonts/eb-garamond*                            | SIL Open Font License                     | http://www.georgduffner.at/ebgaramond   |
