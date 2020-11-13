@@ -58,7 +58,7 @@ logzero.loglevel(loglevelFromCli)
 if (jsonLogFromCli == "Y" or jsonLogFromCli == "YES"):
     logzero.json()
 
-log.debug(args)
+log.debug("Command Line Parameters: {0}".format(args))
 
 # Defaults
 sourceFile = args["source"] if args["source"] else "/tmp/library-media-inventory/inventory.csv"
@@ -69,7 +69,7 @@ log.info("Library Name: {0}".format(libraryName))
 # Current folder
 workDir = os.path.dirname(os.path.realpath(__file__))
 
-log.info("Source file {0}".format(sourceFile))
+log.info("Source file: {0}".format(sourceFile))
 
 jinja2Env = Environment(loader=FileSystemLoader('templates'), autoescape=True)
 
@@ -146,4 +146,5 @@ for location in reversedLocations:
 
 # Write media json
 with open("upload/media.json", "w") as mediaJsonWriter:
+    log.info("Writing Media Information as JSON...")
     json.dump(media, mediaJsonWriter)
