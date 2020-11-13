@@ -44,6 +44,7 @@ def generateLogoUrl(locationForLogoCheck):
 # CLI Parameter
 parser = argparse.ArgumentParser("generator.py")
 parser.add_argument("--loglevel", help="DEBUG, INFO, ERROR, CRITICAL")
+parser.add_argument("--jsonlog", help="Log output as JSON")
 parser.add_argument("--source", help="Path to inventory.csv. Default /tmp/library-media-inventory/inventory.csv")
 parser.add_argument("--name", help="Library Name. Defaults to 'Metalab Library'")
 
@@ -51,7 +52,11 @@ args = vars(parser.parse_args())
 
 # Logging stuff
 loglevelFromCli = getattr(sys.modules["logging"], args["loglevel"].upper() if args["loglevel"] else "INFO")
+jsonLogFromCli = args["jsonlog"].upper() if args["jsonlog"] else "N"
 logzero.loglevel(loglevelFromCli)
+
+if (jsonLogFromCli == "Y" or jsonLogFromCli == "YES"):
+    logzero.json()
 
 log.debug(args)
 
