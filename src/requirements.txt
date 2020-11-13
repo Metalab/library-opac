@@ -1,4 +1,4 @@
-chromalog
 jinja2
 python-stdnum
 pytz
+logzero
