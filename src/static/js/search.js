@@ -56,7 +56,7 @@ function doSearch(e, idx, media) {
     let targetLocation = media[id].location.replace(/ /g, "");
     let targetUrl = `location_${targetLocation}.html#${id}`;
 
-    let targetLink = `<li class="has-hover ${targetLocation}"><span class="book"><a href="${targetUrl}">${media[id].name}</a>`
+    let targetLink = `<li class="has-hover ${targetLocation}"><span class="medium-title"><a href="${targetUrl}">${media[id].name}</a>`
 
     if (media[id].authorFirstName !== "") {
       targetLink += ` von ${media[id].authorFirstName} ${media[id].authorLastName}`; // In case the book has an author
@@ -77,13 +77,13 @@ $(document).ready(async function() {
     indexed[medium.id] = medium;
   }
 
-  document.getElementById("searchButton").addEventListener("click", function(event) {
+  document.getElementById("search-button").addEventListener("click", function(event) {
     doSearch(event, idx, indexed);
   });
 
   document.getElementById("searchField").addEventListener("keydown", function(event) {
     if (document.getElementById("searchField").value.length >= 3) {
-      document.getElementById("searchButton").disabled = false;
+      document.getElementById("search-button").disabled = false;
       $("searchField").removeClass("is-danger");
       $("#fourCharWarning").addClass("is-hidden");
 
@@ -92,7 +92,7 @@ $(document).ready(async function() {
       }
 
     } else {
-      document.getElementById("searchButton").disabled = true;
+      document.getElementById("search-button").disabled = true;
       $("searchField").addClass("is-danger");
       $("#fourCharWarning").removeClass("is-hidden");
     }
