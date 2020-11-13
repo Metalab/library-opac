@@ -5,29 +5,29 @@
 }
 
 /* Icons */
-.iconEmail {
+.icon-email {
   content: url("img/icons/email.png");
   height: 15px;
 }
 
-.iconFax {
+.icon-fax {
   content: url("img/icons/fax.png");
   height: 15px;
 }
 
-.lightboxContainer {
+.lightbox-container {
   display: none;
 
-  .lightboxContent {
+  .lightbox-content {
     display: block !important;
     min-width: 500px;
 
-    .orderOptionContainer {
+    .order-option-container {
       width: 450px;
       margin: 15px auto 0 auto;
       text-align: center;
 
-      .orderOption {
+      .order-option {
         width: 200px;
 
         img {

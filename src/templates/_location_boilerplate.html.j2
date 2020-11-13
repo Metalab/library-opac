@@ -9,13 +9,13 @@
       <h2 class="has-text-weight-normal subtitle is-2 has-text-centered">
         {{category}}
       </h2>
-      <div class="mediaContainer container is-fluid"><!-- mediaContainer start -->
+      <div class="media-container container is-fluid"><!-- media-container start -->
         {% for medium in media %}
           {% if (medium.category == category) and (medium.location == location) %}
             {% include "medium/_base.html.j2" %}
           {% endif %}
         {% endfor %}
-      </div><!-- mediaContainer end -->
+      </div><!-- media-container end -->
     </div>
   {% endfor %}
 {% endblock content %}

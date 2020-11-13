@@ -40,7 +40,7 @@ function doSearch(e, idx, media) {
 
   let searchText = $("#searchField").val();
 
-  let resultList = document.getElementById("resultList");
+  let resultList = document.getElementById("result-list");
   resultList.innerHTML = "";
 
   // Find the results from lunr
