@@ -56,7 +56,7 @@ function doSearch(e, idx, media) {
     let targetLocation = media[id].location.replace(/ /g, "");
     let targetUrl = `location_${targetLocation}.html#${id}`;
 
-    let targetLink = `<li class="${targetLocation}"><span class="book"><a href="${targetUrl}">${media[id].name}</a>`
+    let targetLink = `<li class="has-hover ${targetLocation}"><span class="book"><a href="${targetUrl}">${media[id].name}</a>`
 
     if (media[id].authorFirstName !== "") {
       targetLink += ` von ${media[id].authorFirstName} ${media[id].authorLastName}`; // In case the book has an author

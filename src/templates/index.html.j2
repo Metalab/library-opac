@@ -8,7 +8,7 @@
   </h2>
   <div class="tile is-ancestor">
     {% for location in locations %}
-      <div class="card tile is-parent location">
+      <div class="card tile is-parent location has-hover">
         <div class="tile is-child">
           <a href="location_{{location | replace(" ", "")}}.html">
             <img src="{{logoUrl(location)}}" alt="{{location}} Logo - Lizenzen der Bilder: img/locations/licenses.txt" class="logo">
