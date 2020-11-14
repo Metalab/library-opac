@@ -9,11 +9,12 @@ if [ -d ${targetFolder} ]; then
   echo "Repo is already cloned. Getting latest version..."
   cd ${targetFolder}
   git pull
+  npm install
+  $(npm bin)/csval inventory.csv rules.json
 else
   echo "Repo is not clonded."
   git clone ${sourceRepo} ${targetFolder}
+  cd ${targetFolder}
+  npm install
+  $(npm bin)/csval inventory.csv rules.json
 fi
-
-cd ${targetFolder}
-npm install
-$(npm bin)/csval inventory.csv rules.json
