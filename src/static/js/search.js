@@ -1,5 +1,5 @@
 async function loadJson() {
-  let response = await fetch ("media.json");
+  let response = await fetch ("media_search.json");
   let json = await response.json();
 
   return json.map(tmp => (

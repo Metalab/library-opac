@@ -15,6 +15,9 @@ from jinja2 import Environment, FileSystemLoader
 from locale import strxfrm
 
 def formatIdentifier(stringToFormat, type):
+    """
+        This is used to format/check ISBN and ISSN numbers
+    """
     if type.lower() == "isbn":
         if isbn.is_valid(stringToFormat):
             return isbn.format(stringToFormat)
@@ -32,6 +35,9 @@ def formatIdentifier(stringToFormat, type):
             return stringToFormat
 
 def generateLogoUrl(locationForLogoCheck):
+    """
+        Checks if the location has a logo, and if so returns the location of the file, otherwise returns a default logo
+    """
     tmp = locationForLogoCheck.replace(" ", "")
 
     if os.path.isfile("static/img/locations/{0}.png".format(tmp)):
@@ -39,6 +45,22 @@ def generateLogoUrl(locationForLogoCheck):
     else:
         log.error("No Logo for {0}!".format(locationForLogoCheck))
         return "img/locations/nologo.png"
+
+def prepareSearchJson(d):
+    """
+        recursively remove empty lists, empty dicts, or None elements from a dictionary
+        adapted from https://gist.github.com/nlohmann/c899442d8126917946580e7f84bf7ee7
+    """
+
+    def empty(x):
+        return x is None or x == {} or x == [] or x == ""
+
+    if not isinstance(d, (dict, list)):
+        return d
+    elif isinstance(d, list):
+        return [v for v in (prepareSearchJson(v) for v in d) if not empty(v)]
+    else:
+        return {k: v for k, v in ((k, prepareSearchJson(v)) for k, v in d.items()) if not empty(v)}
 
 #### Config ####
 # CLI Params
@@ -154,6 +176,6 @@ for location in reversedLocations:
         locationWriter.write(locationTemplate.render({**sharedTemplateVars, **templateVars}))
 
 # Write media json
-with open("upload/media.json", "w") as mediaJsonWriter:
-    log.info("Writing Media Information as JSON...")
-    json.dump(media, mediaJsonWriter)
+with open("upload/media_search.json", "w") as mediaJsonWriter:
+    log.info("Writing Media Information for the search as JSON...")
+    json.dump(prepareSearchJson(media), mediaJsonWriter)
