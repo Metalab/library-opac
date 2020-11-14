@@ -72,7 +72,7 @@ log.info("Source file: {0}".format(sourceFile))
 workDir = os.path.dirname(os.path.realpath(__file__))
 log.info("Working Directory: {0}".format(workDir))
 
-jinja2Env = Environment(loader=FileSystemLoader("templates"), autoescape=True)
+jinja2Env = Environment(loader=FileSystemLoader("templates"), extensions=["jinja2.ext.i18n"], autoescape=True)
 
 # Generation Time
 generationTime = datetime.datetime.now().astimezone(pytz.timezone("Europe/Vienna")).replace(microsecond=0).isoformat()
