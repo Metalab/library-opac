@@ -1,12 +1,24 @@
 $navbar-background-color: hsl(0, 0%, 90%);
 $footer-background-color: $navbar-background-color;
-$footer-height: 40px;
-$desktop: 1300px;
+$footer-height: 30px;
+$desktop: 1200px;
 
-$size-small: 1rem;
-$size-normal: 1.25rem;
-$size-medium: 1.5rem;
-$size-large: 1.75rem;
+$size-small: 0.9rem;
+$size-normal: 1rem;
+$size-medium: 1.25rem;
+$size-large: 1.5rem;
+
+$body-font-size: $size-normal;
+$small-font-size: ($body-font-size - 0.25);
+$body-line-height: 1.25;
+
+$size-1: ($body-font-size + 1.25);
+$size-2: ($body-font-size + 1);
+$size-3: ($body-font-size + 0.75);
+$size-4: ($body-font-size + 0.5);
+$size-5: ($body-font-size + 0.25);
+$size-6: $body-font-size;
+$size-7: ($body-font-size - 0.25);
 
 $metalab-lightblue: rgb(28, 54, 84);
 $metalab-darkblue: rgb(24, 46, 70);
