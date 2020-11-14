@@ -40,7 +40,8 @@ def generateLogoUrl(locationForLogoCheck):
         log.error("No Logo for {0}!".format(locationForLogoCheck))
         return "img/locations/nologo.png"
 
-# CLI Parameter
+#### Config ####
+# CLI Params
 parser = argparse.ArgumentParser("generator.py")
 parser.add_argument("--loglevel", help="DEBUG, INFO, ERROR, CRITICAL")
 parser.add_argument("--jsonlog", help="Log output as JSON")
@@ -49,11 +50,12 @@ parser.add_argument("--name", help="Library Name. Defaults to 'Metalab Library'"
 
 args = vars(parser.parse_args())
 
-# Logging stuff
+# Logging
 loglevelFromCli = getattr(sys.modules["logging"], args["loglevel"].upper() if args["loglevel"] else "INFO")
 jsonLogFromCli = args["jsonlog"].upper() if args["jsonlog"] else "N"
 logzero.loglevel(loglevelFromCli)
 
+# Do we want to log as json?
 if (jsonLogFromCli == "Y" or jsonLogFromCli == "YES"):
     logzero.json()
 
@@ -62,22 +64,31 @@ log.debug("Command Line Parameters: {0}".format(args))
 # Defaults
 sourceFile = args["source"] if args["source"] else "/tmp/library-media-inventory/inventory.csv"
 libraryName = args["name"] if args["name"] else "Metalab Library"
-
 log.info("Library Name: {0}".format(libraryName))
-
-# Current folder
-workDir = os.path.dirname(os.path.realpath(__file__))
-
 log.info("Source file: {0}".format(sourceFile))
 
-jinja2Env = Environment(loader=FileSystemLoader('templates'), autoescape=True)
+## Some variables, init jinja2
+# Current folder
+workDir = os.path.dirname(os.path.realpath(__file__))
+log.info("Working Directory: {0}".format(workDir))
 
-#### End of config stuff ####
+jinja2Env = Environment(loader=FileSystemLoader("templates"), autoescape=True)
 
+# Generation Time
+generationTime = datetime.datetime.now().astimezone(pytz.timezone("Europe/Vienna")).replace(microsecond=0).isoformat()
+log.info("Generation Time: {0}".format(generationTime))
+
+#### End config ####
+
+# Read the csv and sort it
 try:
-    with open(sourceFile, newline='') as csvFileReader:
+    with open(sourceFile, newline="") as csvFileReader:
         readFile = csv.DictReader(csvFileReader)
-        media = sorted(readFile, key = lambda tup: (strxfrm(tup["location"].lower()), strxfrm(tup["category"].lower()), strxfrm(tup["name"].lower())))
+        media = sorted(readFile, key = lambda tup: (
+            strxfrm(tup["location"].lower()), # Sorting is: Location (branch office) -> Category -> Name
+            strxfrm(tup["category"].lower()),
+            strxfrm(tup["name"].lower()))
+        )
 except FileNotFoundError:
     log.critical("Can't read library.csv!")
     exit(1)
@@ -91,22 +102,20 @@ log.debug("Media: {0}".format(media))
 # -> location 2
 #   -> category 1
 #   -> category 2
+# ...
 
 locationsAndCategories = {}
 for record in media: # Loop through all records
-    if not record["location"] in locationsAndCategories: # ... if we don't have the location (branch offices)
+    if not record["location"] in locationsAndCategories: # ... if we don't have the location (branch office)
         locationsAndCategories[record["location"]] = {} # ... add it do the dict
 
     if not record["category"] in locationsAndCategories[record["location"]]: # now we do the same with the categories
-        locationsAndCategories[record["location"]][record["category"]] = []
+        locationsAndCategories[record["location"]][record["category"]] = {}
 
 log.debug("Records: {0}".format(locationsAndCategories))
 
 # Reverse Locations as a quick fix for issue #1
 reversedLocations = sorted(locationsAndCategories, reverse=True)
-
-# Generation Time
-generationTime = datetime.datetime.now().astimezone(pytz.timezone("Europe/Vienna")).replace(microsecond=0).isoformat()
 
 # Shared Template vars
 sharedTemplateVars = {
@@ -116,6 +125,7 @@ sharedTemplateVars = {
     "locationsAndCategories": locationsAndCategories,
     "libraryName": libraryName
 }
+log.debug("sharedTemplateVars: {0}".format(sharedTemplateVars))
 
 # Write the templates
 for templateFile in [x for x in os.listdir(workDir + "/templates") if (os.path.splitext(x)[1] == ".j2" and x[0] != "_")]:
