@@ -9,6 +9,7 @@ import datetime
 import pytz
 import json
 import logzero
+import gettext
 from logzero import logger as log
 from stdnum import isbn, issn
 from jinja2 import Environment, FileSystemLoader
