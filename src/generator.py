@@ -13,7 +13,6 @@ from logzero import logger as log
 from stdnum import isbn, issn
 from jinja2 import Environment, FileSystemLoader
 from locale import strxfrm
-from pathlib import Path
 
 def formatIdentifier(stringToFormat, type):
     if type.lower() == "isbn":
