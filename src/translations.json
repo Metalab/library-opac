@@ -10,7 +10,10 @@
     }
   },
   "translations": {
-
+    "Branch offices": {
+      "de": "Standorte",
+      "en": "Branch offices"
+    }
   },
   "default": "de"
 }
