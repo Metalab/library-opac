@@ -1,0 +1,16 @@
+{
+  "languages": {
+    "de": {
+      "icon": "de.png",
+      "desc": "Deutsch"
+    },
+    "en": {
+      "icon": "en.png",
+      "desc": "English"
+    }
+  },
+  "translations": {
+
+  },
+  "default": "de"
+}
