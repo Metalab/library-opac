@@ -20,16 +20,16 @@ def formatIdentifier(stringToFormat, type):
     """
     if type.lower() == "isbn":
         if isbn.is_valid(stringToFormat):
+            log.debug("OK ISBN: {0}".format(stringToFormat))
             return isbn.format(stringToFormat)
-            log.debug("OK ISBN: {0}".format(tmp))
         else:
             log.error("Malformed ISBN: {0}".format(stringToFormat))
             return stringToFormat
 
     elif type.lower() == "issn":
         if issn.is_valid(stringToFormat):
+            log.debug("OK ISSN: {0}".format(stringToFormat))
             return issn.format(stringToFormat)
-            log.debug("OK ISSN: {0}".format(tmp))
         else:
             log.error("Malformed ISSN: {0}".format(stringToFormat))
             return stringToFormat
