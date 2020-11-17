@@ -16,7 +16,7 @@
     "html-validator-cli": "7.0.1",
     "http-server": "0.12.3",
     "node-sass": "5.0.0",
-    "terser": "5.3.8",
+    "terser": "5.4.0",
     "wait-on": "5.2.0"
   },
   "name": "library-opac"
