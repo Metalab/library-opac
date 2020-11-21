@@ -17,17 +17,17 @@
         <div class="is-hidden-desktop">
           <div class="navbar-item buttons is-inline-block">
             <a class="button is-link is-light" href="search.html">
-              Suche
+              {{ _( 'Search' )) }}
             </a>
           </div>
           <div class="navbar-item buttons is-inline-block">
             <a href="imprint.html" class="button is-link is-light">
-              Impressum
+              {{ _( 'Imprint' )) }}
             </a>
           </div>
           <div class="navbar-item buttons is-inline-block">
             <a href="https://github.com/Metalab/library-opac" target="_blank" class="button is-link is-light">
-              Source Code
+              {{ _( 'Source Code' )) }}
             </a>
           </div>
         </div>
@@ -50,13 +50,13 @@
           </div>
         {% endfor %}
         <span class="navbar-item is-hidden-desktop">
-          Mit dem Stand vom: {{generationTime}}
+          {{ _( 'Generation Time' ) }}: {{generationTime}}
         </span>
       </div>
       <div class="navbar-end is-hidden-mobile">
         <div class="navbar-item buttons">
           <a class="button is-link is-light" href="search.html">
-            Suche
+            {{ _( 'Search' )) }}
           </a>
         </div>
       </div>

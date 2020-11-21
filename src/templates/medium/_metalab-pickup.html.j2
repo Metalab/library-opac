@@ -1,13 +1,13 @@
 {% if medium.location.lower() | replace(" ", "") != "hauptstellemetalab" %}
   <div class="is-block">
     <span class="tags has-addons mt-2">
-      <span class="tag">Lieferung zur Hauptstelle?</span>
+      <span class="tag">{{ _( 'Is Metalab pickup possible' )) }}?</span>
       {% if medium.isMetalabPickupPossible.lower() == "ja" %}
-        <span class="tag is-success">Ja</span>
+        <span class="tag is-success">{{ _( 'Yes' )) }}</span>
       {% elif (medium.isMetalabPickupPossible.lower() == "nein") or ((medium.isLendable.lower() == "nein")) %}
-        <span class="tag is-danger">Nein</span>
+        <span class="tag is-danger">{{ _( 'No' )) }}</span>
       {% else %}
-        <span class="tag is-warning">Fraglich</span>
+        <span class="tag is-warning">{{ _( 'Unknown' )) }}</span>
       {% endif %}
     </span>
   </div>
