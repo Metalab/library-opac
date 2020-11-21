@@ -1,7 +1,7 @@
 <header class="screen-only">
   <nav class="navbar is-fixed-top is-transparent" aria-label="dropdown navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="/">
+      <a class="navbar-item" href="{{language}}_index.html">
         <img src="img/metalab.png" alt="{{libraryName}} Logo">
       </a>
 
@@ -21,7 +21,7 @@
             </a>
           </div>
           <div class="navbar-item buttons is-inline-block">
-            <a href="imprint.html" class="button is-link is-light">
+            <a href="{{language}}_imprint.html" class="button is-link is-light">
               {{ _( 'Imprint' ) }}
             </a>
           </div>
@@ -33,14 +33,14 @@
         </div>
         {% for menuLocation in locations %}
           <div class="navbar-item has-dropdown is-hoverable {% if location == menuLocation %}active{% else %}not-active{% endif %}">
-            <a class="navbar-link" href="location_{{menuLocation | replace(" ", "")}}.html">
+            <a class="navbar-link" href="{{language}}_location_{{menuLocation | replace(" ", "")}}.html">
               {{menuLocation}}
             </a>
             <div class="navbar-dropdown">
               {% for locationTmp, categories in locationsAndCategories.items() %}
                 {% if locationTmp == menuLocation %}
                   {% for category in categories %}
-                    <a class="navbar-item" href="location_{{menuLocation | replace(" ", "")}}.html#{{category | replace(" ", "")}}">
+                    <a class="navbar-item" href="{{language}}_location_{{menuLocation | replace(" ", "")}}.html#{{category | replace(" ", "")}}">
                       {{category}}
                     </a>
                   {% endfor %}
@@ -55,7 +55,7 @@
       </div>
       <div class="navbar-end is-hidden-mobile">
         <div class="navbar-item buttons">
-          <a class="button is-link is-light" href="search.html">
+          <a class="button is-link is-light" href="{{language}}_search.html">
             {{ _( 'Search' ) }}
           </a>
         </div>

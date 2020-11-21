@@ -70,9 +70,13 @@ def writePage(page, language):
     targetFilename = "{0}_{1}".format(language, os.path.splitext(page)[0])
     log.info("Writing Page: {0}".format(targetFilename))
 
+    templateVars = {
+        "language": language
+    }
+
     template = jinja2Env.get_template(page)
     with open("{0}/upload/{1}".format(workDir, targetFilename), "w") as templateWriter:
-        templateWriter.write(template.render(sharedTemplateVars))
+        templateWriter.write(template.render({**sharedTemplateVars, **templateVars}))
 
 def writeLocation(location, language):
     log.info("Writing location: {0}".format(location))
@@ -82,7 +86,8 @@ def writeLocation(location, language):
         "location": location,
         "media": media,
         "categories": locationsAndCategories[location],
-        "formatIdentifier": formatIdentifier
+        "formatIdentifier": formatIdentifier,
+        "language": language
     }
 
     with open("{0}/{1}".format(workDir, destFile), "w") as locationWriter:
