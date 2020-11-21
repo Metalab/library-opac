@@ -45,21 +45,19 @@
     </div>
     <footer class="is-hidden-mobile">
       <div class="content">
-        <p class="is-clearfix">
-          <div class="is-pulled-left">
-            <a href="https://metalab.at/" target="_blank">{{libraryName}}</a> | <a href="{{language}}_imprint.html">{{ _( 'Imprint') }}</a> | <a href="https://github.com/Metalab/library-opac/" target="_blank">{{ _( 'Source Code' ) }}</a> | <a href="https://travis-ci.org/Metalab/library-opac" target="_blank"><img src="https://travis-ci.org/Metalab/library-opac.svg?branch=main" id="build-status" alt="{{ _( 'Build Status' ) }}"></a>
+        <div class="is-pulled-left">
+          <a href="https://metalab.at/" target="_blank">{{libraryName}}</a> | <a href="{{language}}_imprint.html">{{ _( 'Imprint') }}</a> | <a href="https://github.com/Metalab/library-opac/" target="_blank">{{ _( 'Source Code' ) }}</a> | <a href="https://travis-ci.org/Metalab/library-opac" target="_blank"><img src="https://travis-ci.org/Metalab/library-opac.svg?branch=main" id="build-status" alt="{{ _( 'Build Status' ) }}"></a>
+        </div>
+        <div class="is-pulled-right">
+          <div class="is-inline-block language-switcher">
+            {% for language in languages %}
+              <a class="language is-link is-light" href="{{language}}_index.html">
+                <img src="img/locales/{{language}}.png" alt="{{language}}">
+              </a>
+            {% endfor %}
           </div>
-          <div class="is-pulled-right">
-            <div class="is-block language-switcher">
-              {% for language in languages %}
-                <a class="language is-link is-light" href="{{language}}_index.html">
-                  <img src="img/locales/{{language}}.png" alt="{{language}}">
-                </a>
-              {% endfor %}
-            </div>
-            | {{ _( 'Generation Time' ) }}: {{generationTime}}
-          </div>
-        </p>
+          | <div class="is-inline-block">{{ _( 'Generation Time' ) }}: {{generationTime}}</div>
+        </div>
       </div>
     </footer>
   </body>
