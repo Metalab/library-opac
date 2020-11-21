@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: library-opac 1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-21 17:52+0100\n"
+"POT-Creation-Date: 2020-11-21 20:46+0100\n"
 "PO-Revision-Date: 2020-11-21 18:14+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ebu_KE\n"
@@ -21,7 +21,9 @@ msgstr ""
 
 #: templates/404.html.j2:7
 msgid "The requested page was not found."
-msgstr "Die angefowdewte Seite *sweats* wuwde *boops your nose* nyicht gefunden. (≥o≤)"
+msgstr ""
+"Die angefowdewte Seite *sweats* wuwde *boops your nose* nyicht gefunden. "
+"(≥o≤)"
 
 #: templates/_menu.html.j2:20 templates/_menu.html.j2:59
 #: templates/search.html.j2:2
@@ -37,7 +39,7 @@ msgstr "Impwessum"
 msgid "Source Code"
 msgstr "Souwce Code"
 
-#: templates/_menu.html.j2:53 templates/_page_boilerplate.html.j2:53
+#: templates/_menu.html.j2:53 templates/_page_boilerplate.html.j2:60
 msgid "Generation Time"
 msgstr "Datenstand vom"
 
@@ -146,3 +148,4 @@ msgstr "Hewausgebew"
 #: templates/medium/_year.html.j2:2
 msgid "Year"
 msgstr "Jahw"
+
