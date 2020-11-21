@@ -47,7 +47,7 @@ function doSearch(e, idx, media) {
   let results = idx.search(searchText);
 
   if (results.length === 0) {
-    resultList.innerHTML = '<div class="notification is-danger">Keine Ergebnisse!</div>';
+    $(".no-results").removeClass("is-hidden")
   }
 
   for (result of results) {
