@@ -118,7 +118,7 @@ try:
             strxfrm(tup["category"].lower()),
             strxfrm(tup["name"].lower()))
         )
-        
+
 except FileNotFoundError:
     log.critical("Can't read library.csv!")
     exit(1)
@@ -156,6 +156,9 @@ sharedTemplateVars = {
     "libraryName": libraryName
 }
 log.debug("sharedTemplateVars: {0}".format(sharedTemplateVars))
+
+translations = Translations.load("locale", ["de_AT"])
+jinja2Env.install_gettext_translations(translations)
 
 # Write the templates
 for templateFile in [x for x in os.listdir(workDir + "/templates") if (os.path.splitext(x)[1] == ".j2" and x[0] != "_")]:
