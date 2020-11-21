@@ -65,6 +65,29 @@ def prepareSearchJson(d):
     else:
         return {k: v for k, v in ((k, prepareSearchJson(v)) for k, v in d.items()) if not empty(v)}
 
+def writePage(page):
+    log.info("Reading Page Template: {0}".format(page))
+    targetFilename = os.path.splitext(page)[0]
+    log.info("Writing Page: {0}".format(targetFilename))
+
+    template = jinja2Env.get_template(page)
+    with open("{0}/upload/{1}".format(workDir, targetFilename), "w") as templateWriter:
+        templateWriter.write(template.render(sharedTemplateVars))
+
+def writeLocation(location):
+    log.info("Writing location: {0}".format(location))
+    destFile = "upload/location_{0}.html".format(location.replace(" ", ""))
+
+    templateVars = {
+        "location": location,
+        "media": media,
+        "categories": locationsAndCategories[location],
+        "formatIdentifier": formatIdentifier
+    }
+
+    with open("{0}/{1}".format(workDir, destFile), "w") as locationWriter:
+        locationWriter.write(locationTemplate.render({**sharedTemplateVars, **templateVars}))
+
 #### Config ####
 # CLI Params
 parser = argparse.ArgumentParser("generator.py")
@@ -102,6 +125,7 @@ jinja2Env = Environment(
     extensions=["jinja2.ext.i18n"],
     autoescape=True
 )
+locationTemplate = jinja2Env.get_template("_location_boilerplate.html.j2")
 
 # Generation Time
 generationTime = datetime.datetime.now().astimezone(pytz.timezone("Europe/Vienna")).replace(microsecond=0).isoformat()
@@ -161,30 +185,12 @@ translations = Translations.load("locale", ["de_AT"])
 jinja2Env.install_gettext_translations(translations)
 
 # Write the templates
-for templateFile in [x for x in os.listdir(workDir + "/templates") if (os.path.splitext(x)[1] == ".j2" and x[0] != "_")]:
-    log.info("Reading Page Template: {0}".format(templateFile))
-    targetFilename = os.path.splitext(templateFile)[0]
-    log.info("Writing Page: {0}".format(targetFilename))
-
-    template = jinja2Env.get_template(templateFile)
-    with open("{0}/upload/{1}".format(workDir, targetFilename), "w") as templateWriter:
-        templateWriter.write(template.render(sharedTemplateVars))
+for page in [x for x in os.listdir(workDir + "/templates") if (os.path.splitext(x)[1] == ".j2" and x[0] != "_")]:
+    writePage(page)
 
 # Write the locations
-locationTemplate = jinja2Env.get_template("_location_boilerplate.html.j2")
 for location in reversedLocations:
-    log.info("Writing location: {0}".format(location))
-    destFile = "upload/location_{0}.html".format(location.replace(" ", ""))
-
-    templateVars = {
-        "location": location,
-        "media": media,
-        "categories": locationsAndCategories[location],
-        "formatIdentifier": formatIdentifier
-    }
-
-    with open("{0}/{1}".format(workDir, destFile), "w") as locationWriter:
-        locationWriter.write(locationTemplate.render({**sharedTemplateVars, **templateVars}))
+    writeLocation(location)
 
 # Write media json
 with open("upload/media_search.json", "w") as mediaJsonWriter:
