@@ -8,13 +8,14 @@ import os
 import datetime
 import pytz
 import json
-import babel
-import gettext
 import logzero
+import gettext
+from gettext import gettext as _
 from logzero import logger as log
 from stdnum import isbn, issn
 from jinja2 import Environment, FileSystemLoader
 from locale import strxfrm
+from babel.support import Translations
 
 def formatIdentifier(stringToFormat, type):
     """
@@ -96,7 +97,11 @@ log.info("Source file: {0}".format(sourceFile))
 workDir = os.path.dirname(os.path.realpath(__file__))
 log.info("Working Directory: {0}".format(workDir))
 
-jinja2Env = Environment(loader=FileSystemLoader("templates"), extensions=["jinja2.ext.i18n"], autoescape=True)
+jinja2Env = Environment(
+    loader=FileSystemLoader("templates"),
+    extensions=["jinja2.ext.i18n"],
+    autoescape=True
+)
 
 # Generation Time
 generationTime = datetime.datetime.now().astimezone(pytz.timezone("Europe/Vienna")).replace(microsecond=0).isoformat()
@@ -113,6 +118,7 @@ try:
             strxfrm(tup["category"].lower()),
             strxfrm(tup["name"].lower()))
         )
+        
 except FileNotFoundError:
     log.critical("Can't read library.csv!")
     exit(1)
