@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: library-opac 1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-21 20:59+0100\n"
+"POT-Creation-Date: 2020-11-21 21:04+0100\n"
 "PO-Revision-Date: 2020-11-21 17:56+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en_US\n"
@@ -83,6 +83,10 @@ msgstr ""
 
 #: templates/search.html.j2:16
 msgid "Go!"
+msgstr ""
+
+#: templates/search.html.j2:22
+msgid "No results"
 msgstr ""
 
 #: templates/medium/_author.html.j2:2
