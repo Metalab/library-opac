@@ -20,7 +20,9 @@ in the src folder.
 Have a look at what is done in the .travis.yml file, or run the following commands (also in the src folder):
 
 ```bash
-rsync -aP --delete ./static/ ./upload/
+rsync -aq --delete --exclude "js" --exclude "sass" ./static/ ./upload/
+$(npm bin)/jsonlint -q translations.json
+pybabel compile --directory=locale
 $(npm bin)/gulp compile
 ./generator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv --name "Metalab Library"
 $(npm bin)/gulp subresource-integrity
