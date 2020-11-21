@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: library-opac 1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-21 20:46+0100\n"
+"POT-Creation-Date: 2020-11-21 20:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,20 +27,20 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: templates/_menu.html.j2:25 templates/_page_boilerplate.html.j2:50
+#: templates/_menu.html.j2:25 templates/_page_boilerplate.html.j2:49
 #: templates/imprint.html.j2:2
 msgid "Imprint"
 msgstr ""
 
-#: templates/_menu.html.j2:30 templates/_page_boilerplate.html.j2:50
+#: templates/_menu.html.j2:30 templates/_page_boilerplate.html.j2:49
 msgid "Source Code"
 msgstr ""
 
-#: templates/_menu.html.j2:53 templates/_page_boilerplate.html.j2:60
+#: templates/_menu.html.j2:53 templates/_page_boilerplate.html.j2:59
 msgid "Generation Time"
 msgstr ""
 
-#: templates/_page_boilerplate.html.j2:50
+#: templates/_page_boilerplate.html.j2:49
 msgid "Build Status"
 msgstr ""
 
@@ -70,6 +70,10 @@ msgstr ""
 
 #: templates/index.html.j2:7
 msgid "Branch offices"
+msgstr ""
+
+#: templates/search.html.j2:9
+msgid "Search term..."
 msgstr ""
 
 #: templates/search.html.j2:12
