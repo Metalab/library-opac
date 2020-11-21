@@ -27,6 +27,12 @@ p {
   background-color: $metalab-contrast;
 }
 
+abbr[title] {
+  text-decoration: dotted underline;
+  border-bottom: none;
+  cursor: help;
+}
+
 footer {
   bottom: 0;
   left: 0;
