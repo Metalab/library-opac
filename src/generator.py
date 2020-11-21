@@ -131,6 +131,17 @@ locationTemplate = jinja2Env.get_template("_location_boilerplate.html.j2")
 generationTime = datetime.datetime.now().astimezone(pytz.timezone("Europe/Vienna")).replace(microsecond=0).isoformat()
 log.info("Generation Time: {0}".format(generationTime))
 
+localeFile = "locales.json"
+try:
+    with open(localeFile) as localeJson:
+        locales = json.load(localeJson)
+
+except FileNotFoundError:
+    log.critical("Can't read locales.json!")
+    exit(1)
+
+log.info("Locales to generate: {0}".format(locales))
+
 #### End config ####
 
 # Read the csv and sort it
@@ -184,7 +195,7 @@ log.debug("sharedTemplateVars: {0}".format(sharedTemplateVars))
 translations = Translations.load("locale", ["de_AT"])
 jinja2Env.install_gettext_translations(translations)
 
-# Write the templates
+# Write the pages
 for page in [x for x in os.listdir(workDir + "/templates") if (os.path.splitext(x)[1] == ".j2" and x[0] != "_")]:
     writePage(page)
 
