@@ -26,7 +26,7 @@ def formatIdentifier(stringToFormat, type):
             log.debug("OK ISBN: {0}".format(stringToFormat))
             return isbn.format(stringToFormat)
         else:
-            log.error("Malformed ISBN: {0}".format(stringToFormat))
+            log.warning("Malformed ISBN: {0}".format(stringToFormat))
             return stringToFormat
 
     elif type.lower() == "issn":
@@ -34,7 +34,7 @@ def formatIdentifier(stringToFormat, type):
             log.debug("OK ISSN: {0}".format(stringToFormat))
             return issn.format(stringToFormat)
         else:
-            log.error("Malformed ISSN: {0}".format(stringToFormat))
+            log.warning("Malformed ISSN: {0}".format(stringToFormat))
             return stringToFormat
 
 def generateLogoUrl(locationForLogoCheck):
@@ -46,7 +46,7 @@ def generateLogoUrl(locationForLogoCheck):
     if os.path.isfile("static/img/locations/{0}.png".format(tmp)):
         return "img/locations/{0}.png".format(tmp)
     else:
-        log.error("No Logo for {0}!".format(locationForLogoCheck))
+        log.warning("No Logo for {0}!".format(locationForLogoCheck))
         return "img/locations/nologo.png"
 
 def prepareSearchJson(d):
