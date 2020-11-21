@@ -5,3 +5,5 @@ node_modules
 
 cypress/video
 cypress/screenshot
+
+*.mo
