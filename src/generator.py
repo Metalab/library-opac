@@ -195,7 +195,8 @@ sharedTemplateVars = {
     "logoUrl": generateLogoUrl,
     "generationTime": generationTime,
     "locationsAndCategories": locationsAndCategories,
-    "libraryName": libraryName
+    "libraryName": libraryName,
+    "languages": localeInfo["languages"]
 }
 log.debug("sharedTemplateVars: {0}".format(sharedTemplateVars))
 

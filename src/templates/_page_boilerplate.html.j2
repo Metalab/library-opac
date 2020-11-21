@@ -50,7 +50,16 @@
             <a href="https://metalab.at/" target="_blank">{{libraryName}}</a> | <a href="{{language}}_imprint.html">{{ _( 'Imprint') }}</a> | <a href="https://github.com/Metalab/library-opac/" target="_blank">{{ _( 'Source Code' ) }}</a> | <a href="https://travis-ci.org/Metalab/library-opac" target="_blank"><img src="https://travis-ci.org/Metalab/library-opac.svg?branch=main" alt="{{ _( 'Build Status' ) }}"></a>
           </span>
           <span class="is-pulled-right">
-            {{ _( 'Generation Time' ) }}: {{generationTime}}
+            <ul id="language-switcher">
+              {% for language in languages %}
+                <li class="language is-inline-block" id="{{language}}">
+                  <a href="{{language}}_index.html">
+                    <img src="img/locales/{{language}}.png" alt="{{language}}">
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+            | {{ _( 'Generation Time' ) }}: {{generationTime}}
           </span>
         </p>
       </div>

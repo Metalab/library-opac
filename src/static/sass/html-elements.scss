@@ -48,6 +48,21 @@ footer {
 
   .is-pulled-right {
     margin-right: 15px;
+
+    #language-switcher {
+      .language {
+        a {
+          &:link, &:visited {
+            text-decoration: none;
+          }
+
+          img {
+            width: auto;
+            height: 25px;
+          }
+        }
+      }
+    }
   }
 
   img {
