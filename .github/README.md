@@ -21,7 +21,7 @@ Have a look at what is done in the .travis.yml file, or run the following comman
 
 ```bash
 rsync -aq --delete --exclude "js" --exclude "sass" ./static/ ./upload/
-$(npm bin)/jsonlint -q translations.json
+$(npm bin)/jsonlint -q locales.json
 pybabel compile --directory=locale
 $(npm bin)/gulp compile
 ./generator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv --name "Metalab Library"
