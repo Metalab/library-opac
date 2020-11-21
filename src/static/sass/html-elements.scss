@@ -10,16 +10,16 @@ h1,
 h2,
 h3 {
   display: block;
-  margin: 10px auto 15px auto;
+  margin: 10px auto 15px;
 }
 
 h4 {
   line-height: 1.2;
-  margin-left: 0px;
+  margin-left: 0;
 }
 
 p {
-  margin: 5px 0 10px 0;
+  margin: 5px 0 10px;
 }
 
 *::selection {
@@ -49,23 +49,15 @@ footer {
   .is-pulled-right {
     margin-right: 15px;
 
-    #language-switcher {
-      .language {
-        a {
-          &:link, &:visited {
-            text-decoration: none;
-          }
-
-          img {
-            width: auto;
-            height: 25px;
-          }
-        }
+    .language {
+      img {
+        width: auto;
+        height: 25px;
       }
     }
   }
 
-  img {
+  img#build-status {
     position: absolute;
     margin-left: 5px;
   }
