@@ -1,8 +1,8 @@
 {
   "languages": [
     "de_AT",
-    "en_UK",
-    "ebu_KE"
+    "ebu_KE",
+    "en_UK"
   ],
   "default": "de_AT"
 }
