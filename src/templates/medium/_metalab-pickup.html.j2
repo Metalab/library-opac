@@ -1,4 +1,4 @@
-{% if medium.location.lower() | replace(" ", "") != "hauptstellemetalab" %}
+{% if medium.location.lower() | replace(" ", "") != "hauptstellemetalab" %}<!-- _metalab-pickup.j2 start -->
   <div class="is-block">
     <span class="tags has-addons mt-2">
       <span class="tag">{{ _( 'Is Metalab pickup possible' ) }}?</span>
@@ -14,4 +14,4 @@
   {% if medium.isMetalabPickupPossible.lower() == "ja" %}
     {% include "medium/_lightbox.html.j2" %}
   {% endif %}
-{% endif %}
+{% endif %}<!-- _metalab-pickup.j2 end -->

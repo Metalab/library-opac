@@ -1,3 +1,6 @@
-{{ _( 'Media Type' ) }}: {{medium.mediaType}}<br>
-{% include "medium/_is-lendable.html.j2" %}
-{% include "medium/_metalab-pickup.html.j2" %}
+<p><!-- _medium-location-details.j2 start -->
+  {{ _( 'Media Type' ) }}: {{medium.mediaType}}<br>
+</p>
+  {% include "medium/_is-lendable.html.j2" %}
+  {% include "medium/_metalab-pickup.html.j2" %}
+<!-- _medium-location-details.j2 end -->

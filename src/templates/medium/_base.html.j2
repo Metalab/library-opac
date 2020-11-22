@@ -11,9 +11,7 @@
   {% if medium.year %}
     {% include "medium/_year.html.j2" %}
   {% endif %}
-  <p>
-    {% include "medium/_medium-location-details.html.j2" %}
-  </p>
+  {% include "medium/_medium-location-details.html.j2" %}
   {% if medium.isbn %}
     {% include "medium/_isbn.html.j2" %}
   {% endif %}
