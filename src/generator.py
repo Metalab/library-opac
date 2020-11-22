@@ -66,23 +66,24 @@ def prepareSearchJson(d):
     else:
         return {k: v for k, v in ((k, prepareSearchJson(v)) for k, v in d.items()) if not empty(v)}
 
-def writePage(page, locale, language):
+def writePage(page, locale, language, fileNamePrefix):
     log.info("Reading Page Template: {0}".format(page))
-    targetFilename = "{0}{1}".format(locale, os.path.splitext(page)[0])
+    targetFilename = "{0}{1}".format(fileNamePrefix, os.path.splitext(page)[0])
     log.info("Writing Page: {0}".format(targetFilename))
 
     templateVars = {
         "locale": locale,
-        "language": language
+        "language": language,
+        "fileNamePrefix": fileNamePrefix
     }
 
     template = jinja2Env.get_template(page)
     with open("{0}/upload/{1}".format(workDir, targetFilename), "w") as templateWriter:
         templateWriter.write(template.render({**sharedTemplateVars, **templateVars}))
 
-def writeLocation(location, locale, language):
+def writeLocation(location, locale, language, fileNamePrefix):
     log.info("Writing location: {0}".format(location))
-    destFile = "upload/{0}location_{1}.html".format(locale, location.replace(" ", ""))
+    destFile = "upload/{0}location_{1}.html".format(fileNamePrefix, location.replace(" ", ""))
 
     templateVars = {
         "location": location,
@@ -90,7 +91,8 @@ def writeLocation(location, locale, language):
         "categories": locationsAndCategories[location],
         "formatIdentifier": formatIdentifier,
         "locale": locale,
-        "language": language
+        "language": language,
+        "fileNamePrefix": fileNamePrefix
     }
 
     with open("{0}/{1}".format(workDir, destFile), "w") as locationWriter:
@@ -209,17 +211,22 @@ for locale in localeInfo["languages"]:
     language = parse_locale(locale)[0]
     log.debug("Parsed language {0} from locale {1}".format(language, locale))
 
+    if (locale == localeInfo["default"]):
+        fileNamePrefix = ""
+    else:
+        fileNamePrefix = locale
+
     # Initialise the locale
     translation = Translations.load("locale", [locale])
     jinja2Env.install_gettext_translations(translation)
 
     # Write the pages
     for page in [x for x in os.listdir(workDir + "/templates") if (os.path.splitext(x)[1] == ".j2" and x[0] != "_")]:
-        writePage(page, locale, language)
+        writePage(page, locale, language, fileNamePrefix)
 
     # Write the locations
     for location in reversedLocations:
-        writeLocation(location, locale, language)
+        writeLocation(location, locale, language, fileNamePrefix)
 
 # Write media json
 with open("upload/media_search.json", "w") as mediaJsonWriter:

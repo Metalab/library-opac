@@ -10,7 +10,7 @@
     {% for location in locations %}
       <div class="card tile is-parent location has-hover">
         <div class="tile is-child">
-          <a href="{{locale}}location_{{location | replace(" ", "")}}.html">
+          <a href="{{fileNamePrefix}}location_{{location | replace(" ", "")}}.html">
             <img src="{{logoUrl(location)}}" alt="{{location}} Logo - Lizenzen der Bilder: img/locations/licenses.txt" class="logo">
             <h2 class="subtitle has-text-weight-normal font-variant-small-caps is-3 has-text-centered">
               {{location}}
