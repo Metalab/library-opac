@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{language}}">
+<html lang="{{locale}}">
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="all.css">
@@ -29,7 +29,7 @@
     <script src="js/mail.js"></script>
   </head>
 
-  <body class="has-navbar-fixed-top" id="{{language}}">
+  <body class="has-navbar-fixed-top" id="{{locale}}">
     <!--
       Lizenzen: https://github.com/Metalab/library-opac/blob/main/.github/3dparty.md
       Software: MIT Lizenz, 2020 Metalab
@@ -46,13 +46,13 @@
     <footer class="is-hidden-mobile">
       <div class="content">
         <div class="is-pulled-left">
-          <a href="https://metalab.at/" target="_blank">{{libraryName}}</a> | <a href="{{language}}_imprint.html">{{ _( 'Imprint') }}</a> | <a href="https://github.com/Metalab/library-opac/" target="_blank">{{ _( 'Source Code' ) }}</a> | <a href="https://travis-ci.org/Metalab/library-opac" target="_blank"><img src="https://travis-ci.org/Metalab/library-opac.svg?branch=main" id="build-status" alt="{{ _( 'Build Status' ) }}"></a>
+          <a href="https://metalab.at/" target="_blank">{{libraryName}}</a> | <a href="{{locale}}_imprint.html">{{ _( 'Imprint') }}</a> | <a href="https://github.com/Metalab/library-opac/" target="_blank">{{ _( 'Source Code' ) }}</a> | <a href="https://travis-ci.org/Metalab/library-opac" target="_blank"><img src="https://travis-ci.org/Metalab/library-opac.svg?branch=main" id="build-status" alt="{{ _( 'Build Status' ) }}"></a>
         </div>
         <div class="is-pulled-right">
           <div class="is-inline-block language-switcher">
             {% for language in languages %}
-              <a class="language is-link is-light" href="{{language}}_index.html">
-                <img src="img/locales/{{language}}.png" alt="{{language}}">
+              <a class="language is-link is-light" href="{{locale}}_index.html">
+                <img src="img/locales/{{locale}}.png" alt="{{locale}}">
               </a>
             {% endfor %}
           </div>
