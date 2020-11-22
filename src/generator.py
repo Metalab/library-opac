@@ -133,7 +133,9 @@ log.info("Working Directory: {0}".format(workDir))
 jinja2Env = Environment(
     loader=FileSystemLoader("templates"),
     extensions=["jinja2.ext.i18n"],
-    autoescape=True
+    autoescape=True,
+    trim_blocks=True,
+    lstrip_blocks=True
 )
 locationTemplate = jinja2Env.get_template("_location_boilerplate.html.j2")
 
