@@ -46,12 +46,12 @@
     <footer class="is-hidden-mobile">
       <div class="content">
         <div class="is-pulled-left">
-          <a href="https://metalab.at/" target="_blank">{{libraryName}}</a> | <a href="{{locale}}_imprint.html">{{ _( 'Imprint') }}</a> | <a href="https://github.com/Metalab/library-opac/" target="_blank">{{ _( 'Source Code' ) }}</a> | <a href="https://travis-ci.org/Metalab/library-opac" target="_blank"><img src="https://travis-ci.org/Metalab/library-opac.svg?branch=main" id="build-status" alt="{{ _( 'Build Status' ) }}"></a>
+          <a href="https://metalab.at/" target="_blank">{{libraryName}}</a> | <a href="{{locale}}imprint.html">{{ _( 'Imprint') }}</a> | <a href="https://github.com/Metalab/library-opac/" target="_blank">{{ _( 'Source Code' ) }}</a> | <a href="https://travis-ci.org/Metalab/library-opac" target="_blank"><img src="https://travis-ci.org/Metalab/library-opac.svg?branch=main" id="build-status" alt="{{ _( 'Build Status' ) }}"></a>
         </div>
         <div class="is-pulled-right">
           <div class="is-inline-block language-switcher">
             {% for locale_flag in locales %}
-              <a class="locale-flag is-link is-light" href="{{locale_flag}}_index.html">
+              <a class="locale-flag is-link is-light" href="{{locale_flag}}index.html">
                 <img src="img/locales/{{locale_flag}}.png" alt="{{locale_flag}}">
               </a>
             {% endfor %}

@@ -68,7 +68,7 @@ def prepareSearchJson(d):
 
 def writePage(page, locale, language):
     log.info("Reading Page Template: {0}".format(page))
-    targetFilename = "{0}_{1}".format(locale, os.path.splitext(page)[0])
+    targetFilename = "{0}{1}".format(locale, os.path.splitext(page)[0])
     log.info("Writing Page: {0}".format(targetFilename))
 
     templateVars = {
@@ -82,7 +82,7 @@ def writePage(page, locale, language):
 
 def writeLocation(location, locale, language):
     log.info("Writing location: {0}".format(location))
-    destFile = "upload/{0}_location_{1}.html".format(locale, location.replace(" ", ""))
+    destFile = "upload/{0}location_{1}.html".format(locale, location.replace(" ", ""))
 
     templateVars = {
         "location": location,
