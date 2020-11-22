@@ -50,9 +50,9 @@
         </div>
         <div class="is-pulled-right">
           <div class="is-inline-block language-switcher">
-            {% for language in languages %}
-              <a class="language is-link is-light" href="{{locale}}_index.html">
-                <img src="img/locales/{{locale}}.png" alt="{{locale}}">
+            {% for locale_flag in locales %}
+              <a class="locale-flag is-link is-light" href="{{locale_flag}}_index.html">
+                <img src="img/locales/{{locale_flag}}.png" alt="{{locale_flag}}">
               </a>
             {% endfor %}
           </div>
