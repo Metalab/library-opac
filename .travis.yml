@@ -14,6 +14,8 @@ install:
 
 script:
   - rsync -aq --delete --exclude "js" --exclude "sass" ./static/ ./upload/
+  - $(npm bin)/jsonlint -q locales.json
+  - pybabel compile --directory=locale
   - $(npm bin)/gulp compile
   - ./generator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv --name "Metalab Library"
   - $(npm bin)/gulp subresource-integrity

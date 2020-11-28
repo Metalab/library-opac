@@ -1,5 +1,5 @@
-<p>
-  Von: <strong><a href="http://gnd.eurospider.com/s?q={{medium.authorFirstName | urlencode}}+{{medium.authorLastName | urlencode}}" target="_blank">
+<p><!-- _author.html.j2 start -->
+  {{ _( 'By' ) }}: <strong><a href="http://gnd.eurospider.com/s?q={{medium.authorFirstName | urlencode}}+{{medium.authorLastName | urlencode}}" target="_blank">
     {{medium.authorFirstName}} {{medium.authorLastName}}
   </a></strong>
-</p>
+</p><!-- _author.html.j2 end -->

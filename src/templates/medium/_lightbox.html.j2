@@ -1,30 +1,30 @@
-<div class="lightbox-wrapper is-block">
-  <button class="button is-primary is-light" data-featherlight="#lightbox-{{medium.itemBarcode}}">Bestellung</button>
+<div class="lightbox-wrapper is-block"><!-- _lightbox.html.j2 start -->
+  <button class="button is-primary is-light" data-featherlight="#lightbox-{{medium.itemBarcode}}">{{ _( 'Order' ) }}</button>
   <div id="lightbox-{{medium.itemBarcode}}" class="lightbox-container">
     <div class="lightbox-content">
       <h1 class="title is-2">
         {{medium.name}}
       </h1>
       <h2 class="title is-3">
-        Bestellung
+        {{ _( 'Order' ) }}
       </h2>
       <div class="order-option-container">
         <div class="order-option is-inline-block">
           <a href="mailto:bibliothek@lists.metalab.at?subject=Bestellung%20{{medium.itemBarcode}}&body=Buchbestellung%0D%0A%0D%0ABarcode%3A%20{{medium.itemBarcode}}%0D%0ATitel%3A%20{{medium.name | urlencode}}%0D%0AVon%3A%20{{medium.authorFirstName | urlencode}}%20{{medium.authorLastName | urlencode}}%0D%0AISBN%3A%20{{medium.isbn}}%0D%0A%0D%0A">
-            <img src="img/icons/email.png" alt="Bestellung per Email">
+            <img src="img/icons/email.png" alt="{{ _( 'Order via Email' ) }}">
             <h3 class="title is-4">
-              Email
-            </h2>
+              {{ _( 'Email' ) }}
+            </h3>
             <p>
               bibliothek@lists.metalab.at
             </p>
           </a>
         </div>
         <div class="order-option is-inline-block">
-          <img src="img/icons/fax.png" alt="Bestellung per Fax">
+          <img src="img/icons/fax.png" alt="{{ _( 'Order by fax' ) }}">
           <h3 class="title is-4">
-            Fax
-          </h2>
+            {{ _( 'Fax' ) }}
+          </h3>
           <p>
             +431226004510
           </p>
@@ -32,4 +32,4 @@
       </div>
     </div>
   </div>
-</div>
+</div><!-- _lightbox.html.j2 end -->

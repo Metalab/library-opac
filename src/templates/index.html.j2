@@ -4,13 +4,13 @@
 
 {% block content %}
   <h2 class="title is-2 has-text-centered has-font-weight-normal">
-    Standorte
+    {{ _( 'Branch offices') }}
   </h2>
   <div class="tile is-ancestor">
     {% for location in locations %}
       <div class="card tile is-parent location has-hover">
         <div class="tile is-child">
-          <a href="location_{{location | replace(" ", "")}}.html">
+          <a href="{{fileNamePrefix}}location_{{location | replace(" ", "")}}.html">
             <img src="{{logoUrl(location)}}" alt="{{location}} Logo - Lizenzen der Bilder: img/locations/licenses.txt" class="logo">
             <h2 class="subtitle has-text-weight-normal font-variant-small-caps is-3 has-text-centered">
               {{location}}
