@@ -52,9 +52,9 @@
           <div class="is-inline-block language-switcher">
             {% for locale_flag in locales %}
               {% if locale_flag == defaultLocale %}
-                <a class="locale-flag is-link is-light" href="index.html">
+                <a class="locale-flag is-link is-light" href="{{targetFilenameWithoutPrefix}}">
               {% else %}
-                <a class="locale-flag is-link is-light" href="{{locale_flag}}index.html">
+                <a class="locale-flag is-link is-light" href="{{locale_flag}}{{targetFilenameWithoutPrefix}}">
               {% endif %}
                 <img src="img/locales/{{locale_flag}}.png" alt="{{locale_flag}}">
               </a>

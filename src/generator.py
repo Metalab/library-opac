@@ -74,7 +74,8 @@ def writePage(page, locale, language, fileNamePrefix):
     templateVars = {
         "locale": locale,
         "language": language,
-        "fileNamePrefix": fileNamePrefix
+        "fileNamePrefix": fileNamePrefix,
+        "targetFilenameWithoutPrefix": os.path.splitext(page)[0]
     }
 
     template = jinja2Env.get_template(page)
@@ -83,7 +84,8 @@ def writePage(page, locale, language, fileNamePrefix):
 
 def writeLocation(location, locale, language, fileNamePrefix):
     log.info("Writing location: {0}".format(location))
-    destFile = "upload/{0}location_{1}.html".format(fileNamePrefix, location.replace(" ", ""))
+    targetFilenameWithoutPrefix = "location_{0}.html".format(location.replace(" ", ""))
+    destFile = "upload/{0}{1}".format(fileNamePrefix, targetFilenameWithoutPrefix)
 
     templateVars = {
         "location": location,
@@ -92,7 +94,8 @@ def writeLocation(location, locale, language, fileNamePrefix):
         "formatIdentifier": formatIdentifier,
         "locale": locale,
         "language": language,
-        "fileNamePrefix": fileNamePrefix
+        "fileNamePrefix": fileNamePrefix,
+        "targetFilenameWithoutPrefix": targetFilenameWithoutPrefix
     }
 
     with open("{0}/{1}".format(workDir, destFile), "w") as locationWriter:
