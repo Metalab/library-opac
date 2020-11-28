@@ -24,4 +24,36 @@
   p, .title, .subtitle {
     font-family: "Comic Sans MS", cursive, sans-serif !important;
   }
+
+  .title, .subtitle {
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+    color: transparent;
+    background-clip: text;
+  }
+
+  footer, .navbar {
+    background: linear-gradient(to bottom,#e2453c 0,#e2453c 16%,#e07e39 16%,#e07e39 32%,#e5d667 32%,#e5d667 48%,#51b95b 48%,#51b95b 66%,#1e72b7 66%,#1e72b7 86%,#6f5ba7 86%) no-repeat;
+
+    a:link, a:hover, a:visited {
+      color: black;
+    }
+  }
+
+  .active {
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red) !important;
+  }
+
+  .shadow {
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.5);
+
+    p {
+      background-color: rgba(215, 140, 255, 0.5) !important;
+    }
+  }
+
+  .has-hover {
+    &:hover {
+      box-shadow: inset 0px 0px 1px 1px rgba(59, 178, 109, 0.5);
+    }
+  }
 }
