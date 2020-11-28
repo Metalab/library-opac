@@ -10,6 +10,7 @@ import pytz
 import json
 import logzero
 import gettext
+import yaml
 from gettext import gettext as _
 from logzero import logger as log
 from stdnum import isbn, issn
@@ -104,11 +105,9 @@ def writeLocation(location, locale, language, fileNamePrefix):
 #### Config ####
 # CLI Params
 parser = argparse.ArgumentParser("generator.py")
-parser.add_argument("--loglevel", help="DEBUG, INFO, ERROR, CRITICAL")
-parser.add_argument("--jsonlog", help="Log output as JSON")
-parser.add_argument("--source", help="Path to inventory.csv. Default /tmp/library-media-inventory/inventory.csv")
-parser.add_argument("--name", help="Library Name. Defaults to 'Metalab Library'")
-
+parser.add_argument("--loglevel", help="DEBUG, INFO, ERROR, CRITICAL. Default INFO")
+parser.add_argument("--jsonlog", help="Log output as JSON. Default no")
+parser.add_argument("--source", help="Path to inventory.csv. Default ~/library-media-inventory/inventory.csv")
 args = vars(parser.parse_args())
 
 # Logging
@@ -122,10 +121,23 @@ if (jsonLogFromCli == "Y" or jsonLogFromCli == "YES"):
 
 log.debug("Command Line Parameters: {0}".format(args))
 
+# Load config
+configFile = "config.yml"
+try:
+    with open(configFile, "r") as configString:
+        config = yaml.load(configString, Loader=yaml.FullLoader)
+
+except FileNotFoundError:
+    log.critical("Can't read {0}!".format(configFile))
+    exit(1)
+
+log.info("Library Name: {0}".format(config["libraryName"]))
+log.info("Locales to generate: {0}".format(config["languages"]))
+log.info("Default locale: {0}".format(config["defaultLanguage"]))
+log.info("Timezone: {0}".format(config["timezone"]))
+
 # Defaults
-sourceFile = args["source"] if args["source"] else "/tmp/library-media-inventory/inventory.csv"
-libraryName = args["name"] if args["name"] else "Metalab Library"
-log.info("Library Name: {0}".format(libraryName))
+sourceFile = args["source"] if args["source"] else "~/library-media-inventory/inventory.csv"
 log.info("Source file: {0}".format(sourceFile))
 
 ## Some variables, init jinja2
@@ -143,21 +155,8 @@ jinja2Env = Environment(
 locationTemplate = jinja2Env.get_template("_location_boilerplate.html.j2")
 
 # Generation Time
-generationTime = datetime.datetime.now().astimezone(pytz.timezone("Europe/Vienna")).replace(microsecond=0).isoformat()
+generationTime = datetime.datetime.now().astimezone(pytz.timezone(config["timezone"])).replace(microsecond=0).isoformat()
 log.info("Generation Time: {0}".format(generationTime))
-
-# Here we load the locales.json file and put it into a dictionary
-localeFile = "locales.json"
-try:
-    with open(localeFile) as localeJson:
-        localeInfo = json.load(localeJson)
-
-except FileNotFoundError:
-    log.critical("Can't read locales.json!")
-    exit(1)
-
-log.info("Locales to generate: {0}".format(localeInfo["languages"]))
-log.info("Default locale: {0}".format(localeInfo["default"]))
 
 #### End config ####
 
@@ -205,19 +204,19 @@ sharedTemplateVars = {
     "logoUrl": generateLogoUrl,
     "generationTime": generationTime,
     "locationsAndCategories": locationsAndCategories,
-    "libraryName": libraryName,
-    "locales": localeInfo["languages"],
-    "defaultLocale": localeInfo["default"]
+    "libraryName": config["libraryName"],
+    "locales": config["languages"],
+    "defaultLocale": config["defaultLanguage"]
 }
 log.debug("sharedTemplateVars: {0}".format(sharedTemplateVars))
 
 # We need to write a version of every page for every locale
-for locale in localeInfo["languages"]:
+for locale in config["languages"]:
     log.info("Generating pages for locale: {0}".format(locale))
     language = parse_locale(locale)[0]
     log.debug("Parsed language {0} from locale {1}".format(language, locale))
 
-    if (locale == localeInfo["default"]):
+    if (locale == config["defaultLanguage"]):
         fileNamePrefix = ""
     else:
         fileNamePrefix = locale
