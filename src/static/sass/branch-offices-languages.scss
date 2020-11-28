@@ -26,7 +26,7 @@
   }
 
   .title, .subtitle {
-    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red) no-repeat;
     color: transparent;
     background-clip: text;
   }
