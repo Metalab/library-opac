@@ -21,30 +21,40 @@
 #ebu_KE {
   font-family: "Comic Sans MS", cursive, sans-serif !important;
 
-  p, .title, .subtitle {
+  .subtitle,
+  .title,
+  p {
     font-family: "Comic Sans MS", cursive, sans-serif !important;
   }
 
-  .title, .subtitle {
-    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red) no-repeat;
+  .title {
+    color: black;
+    text-shadow: -4px 4px #ef3550, -8px 8px #f48fb1, -12px 12px #7e57c2, -16px 16px #2196f3, -20px 20px #26c6da, -24px 24px #43a047, -28px 28px #eeff41, -32px 32px #f9a825, -36px 36px #ff5722;
+  }
+
+  .subtitle {
+    background: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
     color: transparent;
     background-clip: text;
   }
 
-  footer, .navbar {
+  .navbar,
+  footer {
     background: linear-gradient(to bottom,#e2453c 0,#e2453c 16%,#e07e39 16%,#e07e39 32%,#e5d667 32%,#e5d667 48%,#51b95b 48%,#51b95b 66%,#1e72b7 66%,#1e72b7 86%,#6f5ba7 86%) no-repeat;
 
-    a:link, a:hover, a:visited {
+    a:hover,
+    a:link,
+    a:visited {
       color: black;
     }
   }
 
   .active {
-    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red) !important;
+    background: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red) !important;
   }
 
   .shadow {
-    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.5);
 
     p {
       background-color: rgba(215, 140, 255, 0.5) !important;
@@ -53,7 +63,7 @@
 
   .has-hover {
     &:hover {
-      box-shadow: inset 0px 0px 1px 1px rgba(59, 178, 109, 0.5);
+      box-shadow: inset 0 0 1px 1px rgba(59, 178, 109, 0.5);
     }
   }
 }
