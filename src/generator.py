@@ -203,7 +203,8 @@ sharedTemplateVars = {
     "generationTime": generationTime,
     "locationsAndCategories": locationsAndCategories,
     "libraryName": libraryName,
-    "locales": localeInfo["languages"]
+    "locales": localeInfo["languages"],
+    "defaultLocale": localeInfo["default"]
 }
 log.debug("sharedTemplateVars: {0}".format(sharedTemplateVars))
 
