@@ -3,3 +3,4 @@ python-stdnum
 pytz
 logzero
 babel
+pyyaml

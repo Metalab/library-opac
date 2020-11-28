@@ -1,0 +1,8 @@
+---
+  libraryName: "Metalab Library"
+  languages:
+    - "de_AT"
+    - "ebu_KE"
+    - "en_UK"
+  defaultLanguage: "de_AT"
+  timezone: "Europe/Vienna"
