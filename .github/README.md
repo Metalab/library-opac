@@ -18,6 +18,8 @@ npm install
 ```
 in the src folder.
 
+Edit the config.yml file to fit your needs.
+
 #### Generate the pages
 
 Have a look at what is done in the .travis.yml file, or run the following commands (also in the src folder):
@@ -27,7 +29,7 @@ rsync -aq --delete --exclude "js" --exclude "sass" ./static/ ./upload/
 $(npm bin)/jsonlint -q locales.json
 pybabel compile --directory=locale
 $(npm bin)/gulp compile
-./generator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv --name "Metalab Library"
+./generator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv
 $(npm bin)/gulp subresource-integrity
 ```
 
