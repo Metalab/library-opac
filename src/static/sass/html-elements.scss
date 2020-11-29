@@ -41,6 +41,7 @@ footer {
   z-index: 35;
   background-color: $footer-background-color;
   height: $footer-height;
+  padding-top: 5px;
 
   .is-pulled-left {
     margin-left: 15px;
@@ -52,7 +53,7 @@ footer {
     .locale-flag {
       img {
         width: auto;
-        height: 25px;
+        height: 20px;
       }
     }
   }
