@@ -33,6 +33,8 @@ $green: darkgreen;
 $family-primary: "EB Garamond", "Times New Roman", Times, serif;
 $family-secondary: $family-primary;
 
+$random: (random(10)+2);
+
 .tag:not(body) {
   font-size: $size-small;
 }
