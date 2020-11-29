@@ -26,7 +26,6 @@ Have a look at what is done in the .travis.yml file, or run the following comman
 
 ```bash
 rsync -aq --delete --exclude "js" --exclude "sass" ./static/ ./upload/
-$(npm bin)/jsonlint -q locales.json
 pybabel compile --directory=locale
 $(npm bin)/gulp compile
 ./generator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv
@@ -75,7 +74,7 @@ where localehere can be any locale shown by
 pybabel --list-locales
 ```
 
-After you have translated the new locale (See the "Adding new messages" section), add the new locale to the locales.json file. Add an image for the new language that will be shown in the language switcher to static/img/locales. You can now generate the pages by running the script.
+After you have translated the new locale (See the "Adding new messages" section), add the new locale to the config.yml file. Add an image for the new language that will be shown in the language switcher to static/img/locales. You can now generate the pages by running the script.
 
 ## License
 
