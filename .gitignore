@@ -7,3 +7,5 @@ cypress/video
 cypress/screenshot
 
 *.mo
+
+docs/docs

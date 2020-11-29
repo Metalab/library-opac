@@ -4,3 +4,6 @@ pytz
 logzero
 babel
 pyyaml
+mkdocs
+mkdocs-material
+mkdocs-macros-plugin
