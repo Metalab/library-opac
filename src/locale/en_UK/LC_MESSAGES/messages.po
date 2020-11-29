@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: library-opac 1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-21 21:04+0100\n"
+"POT-Creation-Date: 2020-11-29 20:05+0100\n"
 "PO-Revision-Date: 2020-11-21 17:56+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en_UK\n"
@@ -37,8 +37,12 @@ msgstr ""
 msgid "Source Code"
 msgstr ""
 
-#: templates/_menu.html.j2:53 templates/_page_boilerplate.html.j2:59
+#: templates/_menu.html.j2:53 templates/_page_boilerplate.html.j2:63
 msgid "Generation Time"
+msgstr ""
+
+#: templates/_page_boilerplate.html.j2:49
+msgid "Documentation"
 msgstr ""
 
 #: templates/_page_boilerplate.html.j2:49
@@ -135,7 +139,7 @@ msgstr ""
 msgid "Order by fax"
 msgstr ""
 
-#: templates/medium/_medium-location-details.html.j2:1
+#: templates/medium/_medium-location-details.html.j2:2
 msgid "Media Type"
 msgstr ""
 
@@ -154,3 +158,4 @@ msgstr ""
 #: templates/medium/_year.html.j2:2
 msgid "Year"
 msgstr ""
+
