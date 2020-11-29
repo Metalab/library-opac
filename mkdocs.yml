@@ -2,7 +2,7 @@ site_name: "Metalab Library OPAC"
 repo_url: "https://github.com/Metalab/library-opac"
 site_author: "Sebastian Elisa Pfeifer"
 docs_dir: "docs"
-site_dir: "docs/docs"
+site_dir: "docs_for_upload"
 copyright: "MIT License 2020 Metalab"
 
 markdown_extensions:

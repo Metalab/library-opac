@@ -25,6 +25,11 @@ after_success:
   - $(npm bin)/http-server upload & $(npm bin)/wait-on http://localhost:8080
   - cd $TRAVIS_BUILD_DIR/tests && ../src/node_modules/.bin/cypress run --record --key $CYPRESS_RECORD_KEY
 
+before_deploy:
+  - cd $TRAVIS_BUILD_DIR
+  - mkdocs build --clean
+  - rsync -aq --delete ./docs_for_upload/ ./src/upload/docs/
+
 deploy:
   provider: pages
   token: $GITHUB_TOKEN
