@@ -35,7 +35,7 @@ msgstr "Impressum"
 
 #: templates/_menu.html.j2:30 templates/_page_boilerplate.html.j2:49
 msgid "Source Code"
-msgstr "Source Code"
+msgstr "Quellcode"
 
 #: templates/_menu.html.j2:53 templates/_page_boilerplate.html.j2:63
 msgid "Generation Time"

@@ -37,7 +37,7 @@ msgstr "Impwessum"
 
 #: templates/_menu.html.j2:30 templates/_page_boilerplate.html.j2:49
 msgid "Source Code"
-msgstr "Souwce Code"
+msgstr "Quewwcode"
 
 #: templates/_menu.html.j2:53 templates/_page_boilerplate.html.j2:63
 msgid "Generation Time"
