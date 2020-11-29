@@ -348,7 +348,7 @@ in the src folder.</p>
 </code></pre></div>
 <h3 id="generate-the-pages">Generate the pages</h3>
 <p>Have a look at what is done in the .travis.yml file, or run the following commands (also in the src folder):</p>
-<div class="highlight"><pre><span></span><code>rsync -aq --delete --exclude <span class="s2">&quot;js&quot;</span> --exclude <span class="s2">&quot;sass&quot;</span> ./static/ ./upload/
+<div class="highlight"><pre><span></span><code>rsync -aP --delete --exclude <span class="s2">&quot;js&quot;</span> --exclude <span class="s2">&quot;sass&quot;</span> ./static/ ./upload/
 pybabel compile --directory<span class="o">=</span>locale
 <span class="k">$(</span>npm bin<span class="k">)</span>/gulp compile
 ./generator.py --loglevel INFO --source <span class="nv">$HOME</span>/library-media-inventory/inventory.csv
