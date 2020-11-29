@@ -13,7 +13,7 @@ install:
   - ./update.sh
 
 script:
-  - rsync -aq --delete --exclude "js" --exclude "sass" ./static/ ./upload/
+  - rsync -aP --delete --exclude "js" --exclude "sass" ./static/ ./upload/
   - pybabel compile --directory=locale
   - $(npm bin)/gulp compile
   - ./generator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv
@@ -28,7 +28,7 @@ after_success:
 before_deploy:
   - cd $TRAVIS_BUILD_DIR
   - mkdocs build --clean
-  - rsync -aq --delete ./docs_for_upload/ ./src/upload/docs/
+  - rsync -aP --delete ./docs_for_upload/ ./src/upload/docs/
 
 deploy:
   provider: pages

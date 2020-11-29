@@ -20,7 +20,7 @@ Edit the config.yml file to fit your needs.
 Have a look at what is done in the .travis.yml file, or run the following commands (also in the src folder):
 
 ``` bash
-rsync -aq --delete --exclude "js" --exclude "sass" ./static/ ./upload/
+rsync -aP --delete --exclude "js" --exclude "sass" ./static/ ./upload/
 pybabel compile --directory=locale
 $(npm bin)/gulp compile
 ./generator.py --loglevel INFO --source $HOME/library-media-inventory/inventory.csv
