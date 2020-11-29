@@ -30,6 +30,17 @@
               {{ _( "Source Code" ) }}
             </a>
           </div>
+          <div class="is-inline-block">
+            {% for locale_flag in locales %}
+              {% if locale_flag == defaultLocale %}
+                <a class="navbar-item is-inline-block" href="{{targetFilenameWithoutPrefix}}">
+              {% else %}
+                <a class="navbar-item is-inline-block" href="{{locale_flag}}{{targetFilenameWithoutPrefix}}">
+              {% endif %}
+                <img src="img/locales/{{locale_flag}}.png" alt="{{locale_flag}}">
+              </a>
+            {% endfor %}
+          </div>
         </div>
         {% for menuLocation in locations %}
           <div class="navbar-item has-dropdown is-hoverable {% if location == menuLocation %}active{% else %}not-active{% endif %}">
