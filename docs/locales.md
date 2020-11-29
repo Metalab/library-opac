@@ -2,7 +2,7 @@
 
 The locale "ebu_KE" is used, but it's not actually the language "Embu" spoken in Kenya. In fact it's the "uwu-ified" version of de_AT, but Babel does not support using custom locales such es de_UWU.
 
-### Adding new messages
+## Adding new messages
 
 In the src folder, run the following command:
 
@@ -21,7 +21,7 @@ pybabel compile --directory=locale
 ```
 to generate the .mo files used by the script later.
 
-### Adding a new translation
+## Adding a new translation
 
 In the src folder, run the following command:
 ``` bash
