@@ -29,7 +29,7 @@
 
   .title {
     color: black;
-    text-shadow: -4px 4px #ef3550, -8px 8px #f48fb1, -12px 12px #7e57c2, -16px 16px #2196f3, -20px 20px #26c6da, -24px 24px #43a047, -28px 28px #eeff41, -32px 32px #f9a825, -36px 36px #ff5722;
+    text-shadow: -1px 1px #ef3550, -3px 3px #f48fb1, -5px 5px #7e57c2, -7px 7px #2196f3, -9px 9px #26c6da, -11px 11px #43a047, -13px 13px #eeff41, -15px 15px #f9a825, -17px 17px #ff5722;
     transform: rotate(-$random+deg);
   }
 
@@ -52,7 +52,7 @@
   }
 
   .logo {
-    transform: rotate(($random+25)+deg);
+    transform: rotate(180deg);
   }
 
   .active {
