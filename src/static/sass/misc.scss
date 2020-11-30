@@ -1,11 +1,10 @@
-#MetalabLibrary,
 #Impressum,
+#MetalabLibrary,
 #Suche {
   max-height: 275px;
-  margin: 0 auto 15px auto;
+  margin: 0 auto 15px;
   display: block;
 }
-
 /* Icons */
 .icon-email {
   content: url("img/icons/email.png");
@@ -26,7 +25,7 @@
 
     .order-option-container {
       width: 450px;
-      margin: 15px auto 0 auto;
+      margin: 15px auto 0;
       text-align: center;
 
       .order-option {
@@ -40,11 +39,10 @@
   }
 }
 
-.rotate,
-#Error404 {
+#Error404,
+.rotate {
   animation: rotation 5s infinite linear;
 }
-
 @keyframes rotation {
   from {
     transform: rotate(0deg);
@@ -57,4 +55,43 @@
 
 .is-anchor {
   scroll-margin-top: 100px;
+}
+
+#backToTop {
+  display: inline-block;
+  background-color: $metalab-orange;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 4px;
+  position: fixed;
+  bottom: ($footer-height+25px);
+  right: 30px;
+  transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+
+  &::after {
+    content: "🡅";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 2em;
+    line-height: 50px;
+    color: #fff;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $metalab-lightblue;
+  }
+
+  &:active {
+    background-color: $metalab-darkblue;
+  }
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
 }

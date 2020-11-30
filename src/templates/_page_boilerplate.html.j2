@@ -27,6 +27,7 @@
     <script src="js/jquery-3.5.1.js"></script>
     <script src="js/menu.js"></script>
     <script src="js/mail.js"></script>
+    <script src="js/backToTop.js"></script>
   </head>
 
   <body class="has-navbar-fixed-top" id="{{locale}}">
@@ -43,6 +44,7 @@
       <img src="{% block logoFileName %}{% endblock %}" alt="{{libraryName}} {{self.title()}} Logo" class="logo" id="{{self.title() | replace(" ", "")}}">
       {% block content %}{% endblock %}
     </div>
+    <a id="backToTop"></a>
     <footer class="is-hidden-mobile">
       <div class="content">
         <div class="is-pulled-left">
