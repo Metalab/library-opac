@@ -25,8 +25,8 @@ to generate the .mo files used by the script later.
 
 In the src folder, run the following command:
 ``` bash
-pybabel init --input-file=locale/messages.pot --output-dir=locale --locale=*localehere*
+pybabel init --input-file=locale/messages.pot --output-dir=locale --locale=ja_JP
 ```
-where localehere can be any locale shown by `#!bash pybabel --list-locales`
+where `ja_JP` can be any locale shown by `#!bash pybabel --list-locales`
 
 After you have translated the new locale (See the "Adding new messages" section), add the new locale to the config.yml file. Add an image for the new language that will be shown in the language switcher to static/img/locales. You can now generate the pages by [running the script](howtouse.md).
