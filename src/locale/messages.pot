@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: library-opac 1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-01 18:08+0100\n"
+"POT-Creation-Date: 2020-12-01 18:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,37 +96,31 @@ msgstr ""
 msgid "No results"
 msgstr ""
 
-#: templates/medium/_author.html.j2:2
+#: templates/medium/_base.html.j2:7
 msgid "By"
 msgstr ""
 
-#: templates/medium/_is-lendable.html.j2:3
-msgid "Lendable"
+#: templates/medium/_base.html.j2:14
+msgid "Publisher"
 msgstr ""
 
-#: templates/medium/_is-lendable.html.j2:5
-#: templates/medium/_metalab-pickup.html.j2:6
-msgid "Yes"
+#: templates/medium/_base.html.j2:19
+msgid "Year"
 msgstr ""
 
-#: templates/medium/_is-lendable.html.j2:7
-#: templates/medium/_metalab-pickup.html.j2:8
-msgid "No"
-msgstr ""
-
-#: templates/medium/_isbn.html.j2:2
+#: templates/medium/_base.html.j2:24
 msgid "International Standard Book Number"
 msgstr ""
 
-#: templates/medium/_isbn.html.j2:2
+#: templates/medium/_base.html.j2:24
 msgid "ISBN"
 msgstr ""
 
-#: templates/medium/_issn.html.j2:2
+#: templates/medium/_base.html.j2:31
 msgid "International Standard Serial Number"
 msgstr ""
 
-#: templates/medium/_issn.html.j2:2
+#: templates/medium/_base.html.j2:31
 msgid "ISSN"
 msgstr ""
 
@@ -146,19 +140,25 @@ msgstr ""
 msgid "Media Type"
 msgstr ""
 
-#: templates/medium/_metalab-pickup.html.j2:4
+#: templates/medium/_medium-location-details.html.j2:6
+msgid "Lendable"
+msgstr ""
+
+#: templates/medium/_medium-location-details.html.j2:8
+#: templates/medium/_medium-location-details.html.j2:19
+msgid "Yes"
+msgstr ""
+
+#: templates/medium/_medium-location-details.html.j2:10
+#: templates/medium/_medium-location-details.html.j2:21
+msgid "No"
+msgstr ""
+
+#: templates/medium/_medium-location-details.html.j2:17
 msgid "Is Metalab pickup possible"
 msgstr ""
 
-#: templates/medium/_metalab-pickup.html.j2:10
+#: templates/medium/_medium-location-details.html.j2:23
 msgid "Unknown"
-msgstr ""
-
-#: templates/medium/_publisher.html.j2:2
-msgid "Publisher"
-msgstr ""
-
-#: templates/medium/_year.html.j2:2
-msgid "Year"
 msgstr ""
 
