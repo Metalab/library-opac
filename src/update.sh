@@ -10,7 +10,7 @@ if [ -d ${targetFolder} ]; then
   cd ${targetFolder}
   git pull
 else
-  echo "Repo is not clonded."
+  echo "Repo is not cloned."
   git clone ${sourceRepo} ${targetFolder}
 fi
 
