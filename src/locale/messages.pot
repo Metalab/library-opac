@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: library-opac 1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-29 20:05+0100\n"
+"POT-Creation-Date: 2020-12-01 18:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,29 +22,33 @@ msgstr ""
 msgid "The requested page was not found."
 msgstr ""
 
-#: templates/_menu.html.j2:20 templates/_menu.html.j2:59
+#: templates/_menu.html.j2:20 templates/_menu.html.j2:70
 #: templates/search.html.j2:2
 msgid "Search"
 msgstr ""
 
-#: templates/_menu.html.j2:25 templates/_page_boilerplate.html.j2:49
+#: templates/_menu.html.j2:25 templates/_page_boilerplate.html.j2:54
 #: templates/imprint.html.j2:2
 msgid "Imprint"
 msgstr ""
 
-#: templates/_menu.html.j2:30 templates/_page_boilerplate.html.j2:49
+#: templates/_menu.html.j2:30 templates/_page_boilerplate.html.j2:54
 msgid "Source Code"
 msgstr ""
 
-#: templates/_menu.html.j2:53 templates/_page_boilerplate.html.j2:63
+#: templates/_menu.html.j2:64 templates/_page_boilerplate.html.j2:68
 msgid "Generation Time"
 msgstr ""
 
 #: templates/_page_boilerplate.html.j2:49
+msgid "Back to top"
+msgstr ""
+
+#: templates/_page_boilerplate.html.j2:54
 msgid "Documentation"
 msgstr ""
 
-#: templates/_page_boilerplate.html.j2:49
+#: templates/_page_boilerplate.html.j2:54
 msgid "Build Status"
 msgstr ""
 

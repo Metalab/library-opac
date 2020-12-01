@@ -72,13 +72,9 @@
   visibility: hidden;
   z-index: 1000;
 
-  &::after {
-    content: "🡅";
-    font-weight: normal;
-    font-style: normal;
-    font-size: 2em;
-    line-height: 50px;
-    color: #fff;
+  img {
+    height: 40px;
+    margin: 5px auto 5px auto;
   }
 
   &:hover {

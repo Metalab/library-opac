@@ -45,7 +45,9 @@
       <img src="{% block logoFileName %}{% endblock %}" alt="{{libraryName}} {{self.title()}} Logo" class="logo" id="{{self.title() | replace(" ", "")}}">
       {% block content %}{% endblock %}
     </div>
-    <a id="backToTop"></a>
+    <a id="backToTop">
+      <img src="img/icons/arrow.png" alt="{{ _( "Back to top" ) }}">
+    </a>
     <footer class="is-hidden-mobile">
       <div class="content">
         <div class="is-pulled-left">
