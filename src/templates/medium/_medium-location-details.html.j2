@@ -1,6 +1,31 @@
 <p class="mt-0 mb-0"><!-- _medium-location-details.j2 start -->
   {{ _( 'Media Type' ) }}: {{medium.mediaType}}<br>
 </p>
-  {% include "medium/_is-lendable.html.j2" %}
-  {% include "medium/_metalab-pickup.html.j2" %}
+<div class="is-block">
+  <span class="tags has-addons mt-2">
+    <span class="tag">{{ _( 'Lendable' ) }}?</span>
+    {% if medium.isLendable.lower() == "ja" %}
+      <span class="tag is-success">{{ _( 'Yes' ) }}</span>
+    {% else %}
+      <span class="tag is-danger">{{ _( 'No' ) }}</span>
+    {% endif %}
+  </span>
+</div>
+{% if medium.location.lower() | replace(" ", "") != "hauptstellemetalab" %}
+  <div class="is-block">
+    <span class="tags has-addons mt-2">
+      <span class="tag">{{ _( 'Is Metalab pickup possible' ) }}?</span>
+      {% if medium.isMetalabPickupPossible.lower() == "ja" %}
+        <span class="tag is-success">{{ _( 'Yes' ) }}</span>
+      {% elif (medium.isMetalabPickupPossible.lower() == "nein") or ((medium.isLendable.lower() == "nein")) %}
+        <span class="tag is-danger">{{ _( 'No' ) }}</span>
+      {% else %}
+        <span class="tag is-warning">{{ _( 'Unknown' ) }}</span>
+      {% endif %}
+    </span>
+  </div>
+  {% if medium.isMetalabPickupPossible.lower() == "ja" %}
+    {% include "medium/_lightbox.html.j2" %}
+  {% endif %}
+{% endif %}
 <!-- _medium-location-details.j2 end -->
