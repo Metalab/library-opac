@@ -343,9 +343,9 @@ to update the files for each locale. Proceed to translate the new messages, then
 to generate the .mo files used by the script later.</p>
 <h2 id="adding-a-new-translation">Adding a new translation</h2>
 <p>In the src folder, run the following command:
-<div class="highlight"><pre><span></span><code>pybabel init --input-file<span class="o">=</span>locale/messages.pot --output-dir<span class="o">=</span>locale --locale<span class="o">=</span>*localehere*
+<div class="highlight"><pre><span></span><code>pybabel init --input-file<span class="o">=</span>locale/messages.pot --output-dir<span class="o">=</span>locale --locale<span class="o">=</span>ja_JP
 </code></pre></div>
-where localehere can be any locale shown by <code class="highlight">pybabel --list-locales</code></p>
+where <code>ja_JP</code> can be any locale shown by <code class="highlight">pybabel --list-locales</code></p>
 <p>After you have translated the new locale (See the "Adding new messages" section), add the new locale to the config.yml file. Add an image for the new language that will be shown in the language switcher to static/img/locales. You can now generate the pages by <a href="../howtouse/">running the script</a>.</p>
                 
               

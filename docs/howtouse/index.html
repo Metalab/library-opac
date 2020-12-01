@@ -199,18 +199,12 @@
     Requirements
   </a>
   
-    <nav class="md-nav" aria-label="Requirements">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#generate-the-pages" class="md-nav__link">
     Generate the pages
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -297,18 +291,12 @@
     Requirements
   </a>
   
-    <nav class="md-nav" aria-label="Requirements">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#generate-the-pages" class="md-nav__link">
     Generate the pages
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -331,7 +319,7 @@
                 
                 <h1 id="how-to-use-it">How to use it?</h1>
 <h2 id="requirements">Requirements</h2>
-<p>If you want to use the Metalab Library Media Inventory<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, run src/update.sh. It will clone/pull the repo to your home folder, install some npm modules and validate the csv. Install the python dependencies in requirements.json and the node.js ones from the package.json. To do so run</p>
+<p>If you want to use the Metalab Library Media Inventory<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, run src/update.sh. It will clone/pull the repo to your home folder, install some npm modules and validate the csv. Install the python dependencies in requirements.json and the node.js ones from package.json. To do so run</p>
 <p><div class="highlight"><pre><span></span><code>pip install -r requirements.txt
 npm install
 </code></pre></div>
@@ -346,7 +334,7 @@ in the src folder.</p>
   <span class="nt">defaultLanguage</span><span class="p">:</span> <span class="s">&quot;de_AT&quot;</span>
   <span class="nt">timezone</span><span class="p">:</span> <span class="s">&quot;Europe/Vienna&quot;</span>
 </code></pre></div>
-<h3 id="generate-the-pages">Generate the pages</h3>
+<h2 id="generate-the-pages">Generate the pages</h2>
 <p>Have a look at what is done in the .travis.yml file, or run the following commands (also in the src folder):</p>
 <div class="highlight"><pre><span></span><code>rsync -aP --delete --exclude <span class="s2">&quot;js&quot;</span> --exclude <span class="s2">&quot;sass&quot;</span> ./static/ ./upload/
 pybabel compile --directory<span class="o">=</span>locale
