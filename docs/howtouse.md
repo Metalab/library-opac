@@ -1,7 +1,7 @@
 # How to use it?
 
 ## Requirements
-If you want to use the Metalab Library Media Inventory[^1], run src/update.sh. It will clone/pull the repo to your home folder, install some npm modules and validate the csv. Install the python dependencies in requirements.json and the node.js ones from the package.json. To do so run
+If you want to use the Metalab Library Media Inventory[^1], run src/update.sh. It will clone/pull the repo to your home folder, install some npm modules and validate the csv. Install the python dependencies in requirements.json and the node.js ones from package.json. To do so run
 
 ``` bash
 pip install -r requirements.txt
@@ -15,7 +15,7 @@ Edit the config.yml file to fit your needs.
 --8<-- "src/config.yml"
 ```
 
-### Generate the pages
+## Generate the pages
 
 Have a look at what is done in the .travis.yml file, or run the following commands (also in the src folder):
 

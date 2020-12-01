@@ -13,7 +13,7 @@ src/static/favicon.ico                                   | Unknown License      
 src/static/img/icons/favicon/*                           | Unknown License                  | Metalab[^2]
 src/static/img/libary.png                                | CC BY-SA 4.0[^14]                | JoaK[^1]
 src/static/img/metalab.png                               | Unknown License                  | Metalab[^2]
-src/static/sass/3rdparty/featherlight.scss               | MIT License[^16]                 | Noël Raoul Bossart[^3]
+src/static/sass/3rdparty/featherlight.scss               | MIT License[^16]                 | Noël Raoul Bossart[^4]
 src/static/sass/3rdparty/bulma/*                         | MIT License[^16]                 | Jeremy Thomas[^5]
 src/static/sass/*                                        | MIT License[^16]                 | Metalab[^2]
 src/static/js/es5-sham.js                                | MIT License[^16]                 | Kristopher Michael Kowal et al[^9]
