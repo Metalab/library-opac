@@ -5,9 +5,9 @@ os: linux
 before_install:
   - cd $TRAVIS_BUILD_DIR/src
   - curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -
-  - sudo apt-get install -y rsync minify nodejs > /dev/null
-  - pip install -r requirements.txt > /dev/null
-  - npm install > /dev/null
+  - sudo apt-get install -y rsync minify nodejs
+  - pip install -r requirements.txt
+  - npm install
 
 install:
   - ./update.sh
