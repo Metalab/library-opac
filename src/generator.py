@@ -90,9 +90,7 @@ def writeLocation(location, locale, language, fileNamePrefix):
 
     templateVars = {
         "location": location,
-        "media": media,
         "categories": locationsAndCategories[location],
-        "formatIdentifier": formatIdentifier,
         "locale": locale,
         "language": language,
         "fileNamePrefix": fileNamePrefix,
@@ -184,7 +182,6 @@ log.debug("Media: {0}".format(media))
 #   -> category 1
 #   -> category 2
 # ...
-
 locationsAndCategories = {}
 for record in media: # Loop through all records
     if not record["location"] in locationsAndCategories: # ... if we don't have the location (branch office)
@@ -193,7 +190,17 @@ for record in media: # Loop through all records
     if not record["category"] in locationsAndCategories[record["location"]]: # now we do the same with the categories
         locationsAndCategories[record["location"]][record["category"]] = {}
 
-log.debug("Records: {0}".format(locationsAndCategories))
+log.debug("Locations and Categories: {0}".format(locationsAndCategories))
+
+# We also need a list of all categories
+allCategories = {}
+for record in media: # Loop through all records
+    if not record["category"] in allCategories: # ... if we don't have the location (branch office)
+        allCategories[record["category"]] = {} # ... add it do the dict
+
+allCategories = sorted(allCategories)
+
+log.debug("Categories: {0}".format(allCategories))
 
 # Reverse Locations as a quick fix for issue #1
 reversedLocations = sorted(locationsAndCategories, reverse=True)
@@ -206,7 +213,10 @@ sharedTemplateVars = {
     "locationsAndCategories": locationsAndCategories,
     "libraryName": config["libraryName"],
     "locales": config["languages"],
-    "defaultLocale": config["defaultLanguage"]
+    "defaultLocale": config["defaultLanguage"],
+    "allCategories": allCategories,
+    "media": media,
+    "formatIdentifier": formatIdentifier
 }
 log.debug("sharedTemplateVars: {0}".format(sharedTemplateVars))
 

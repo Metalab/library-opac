@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: library-opac 1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-01 18:16+0100\n"
+"POT-Creation-Date: 2020-12-08 19:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,6 +80,10 @@ msgstr ""
 msgid "Branch offices"
 msgstr ""
 
+#: templates/mediabycategory.html.j2:2
+msgid "Media by Category"
+msgstr ""
+
 #: templates/search.html.j2:9
 msgid "Search term..."
 msgstr ""
@@ -122,6 +126,10 @@ msgstr ""
 
 #: templates/medium/_base.html.j2:31
 msgid "ISSN"
+msgstr ""
+
+#: templates/medium/_base.html.j2:37
+msgid "Location"
 msgstr ""
 
 #: templates/medium/_lightbox.html.j2:2 templates/medium/_lightbox.html.j2:9
