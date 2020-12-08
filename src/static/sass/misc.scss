@@ -39,6 +39,16 @@
   }
 }
 
+.medium-location {
+  display: none;
+}
+
+.display-location {
+  .medium-location {
+    display: block;
+  }
+}
+
 #Error404,
 .rotate {
   animation: rotation 5s infinite linear;
