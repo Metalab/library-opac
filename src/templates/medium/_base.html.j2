@@ -4,37 +4,37 @@
   </h3>
   {% if (medium.authorFirstName) and (medium.authorLastName) %}
     <p class="mt-0 mb-0 medium-author">
-      {{ _( 'By' ) }}: <strong><a href="http://gnd.eurospider.com/s?q={{medium.authorFirstName | urlencode}}+{{medium.authorLastName | urlencode}}" target="_blank">
+      {{ _( "By" ) }}: <strong><a href="http://gnd.eurospider.com/s?q={{medium.authorFirstName | urlencode}}+{{medium.authorLastName | urlencode}}" target="_blank">
         {{medium.authorFirstName}} {{medium.authorLastName}}
       </a></strong>
     </p>
   {% endif %}
   {% if medium.publisher %}
     <p class="mt-0 mb-0 medium-publisher">
-      {{ _( 'Publisher' ) }}: {{medium.publisher}}
+      {{ _( "Publisher" ) }}: {{medium.publisher}}
     </p>
   {% endif %}
   {% if medium.year %}
     <p class="mt-0 mb-0">
-      {{ _( 'Year' ) }}: {{medium.year}}
+      {{ _( "Year" ) }}: {{medium.year}}
     </p>
   {% endif %}
   {% if medium.isbn %}
     <p class="mt-0 mb-0 medium-isbn">
-      <abbr title="{{ _( 'International Standard Book Number' ) }}">{{ _( 'ISBN' ) }}</abbr>: <a href="https://www.justbooks.de/search/?isbn={{medium.isbn}}&new_used=*&destination=at&currency=EUR&mode=basic&st=sr&ac=qr" target="_blank">
+      <abbr title="{{ _( "International Standard Book Number" ) }}">{{ _( "ISBN" ) }}</abbr>: <a href="https://www.justbooks.de/search/?isbn={{medium.isbn}}&new_used=*&destination=at&currency=EUR&mode=basic&st=sr&ac=qr" target="_blank">
           {{formatIdentifier(medium.isbn, "isbn")}}
       </a>
     </p>
   {% endif %}
   {% if medium.issn %}
     <p class="mt-0 mb-0 medium-issn">
-      <abbr title="{{ _( 'International Standard Serial Number' ) }}">{{ _( 'ISSN' ) }}</abbr>: <a href="https://portal.issn.org/resource/ISSN/{{medium.issn}}" target="_blank">
+      <abbr title="{{ _( "International Standard Serial Number" ) }}">{{ _( "ISSN" ) }}</abbr>: <a href="https://portal.issn.org/resource/ISSN/{{medium.issn}}" target="_blank">
         {{formatIdentifier(medium.issn, "issn")}}
       </a>
     </p>
   {% endif %}
   <p class="mt-0 mb-0 medium-location">
-    {{ _( 'Location' ) }}: {{medium.location}}
+    {{ _( "Location" ) }}: {{medium.location}}
   </p>
   {% include "medium/_medium-location-details.html.j2" %}
 </div><!-- medium end -->
