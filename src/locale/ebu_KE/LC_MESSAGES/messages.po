@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: library-opac 1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-01 18:16+0100\n"
+"POT-Creation-Date: 2020-12-08 19:23+0100\n"
 "PO-Revision-Date: 2020-11-21 18:14+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ebu_KE\n"
@@ -83,6 +83,10 @@ msgstr "ZVR (・`ω´・) Zahw"
 msgid "Branch offices"
 msgstr "Außenstewwen ☜(⌒▽⌒)☞"
 
+#: templates/mediabycategory.html.j2:2
+msgid "Media by Category"
+msgstr "Medien nyach Kategowie"
+
 #: templates/search.html.j2:9
 msgid "Search term..."
 msgstr "Suchbegwiff UwU..."
@@ -127,6 +131,11 @@ msgstr "intewnyationyawe *sweats* Standawdnyummew füw f-fowtwaufende Sammewwewk
 msgid "ISSN"
 msgstr "ISSN (｡◕‿◕｡)"
 
+#: templates/medium/_base.html.j2:37
+#, fuzzy
+msgid "Location"
+msgstr "Standowt"
+
 #: templates/medium/_lightbox.html.j2:2 templates/medium/_lightbox.html.j2:9
 msgid "Order"
 msgstr "Bestewwung"
@@ -164,4 +173,3 @@ msgstr "Wiefewung zuw *sees buldge* Haupstewwe"
 #: templates/medium/_medium-location-details.html.j2:23
 msgid "Unknown"
 msgstr "Fwagwich"
-

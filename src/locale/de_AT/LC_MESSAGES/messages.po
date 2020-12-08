@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: library-opac 1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-01 18:16+0100\n"
+"POT-Creation-Date: 2020-12-08 19:23+0100\n"
 "PO-Revision-Date: 2020-11-21 16:37+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: de_AT\n"
@@ -81,6 +81,10 @@ msgstr "ZVR Zahl"
 msgid "Branch offices"
 msgstr "Außenstellen"
 
+#: templates/mediabycategory.html.j2:2
+msgid "Media by Category"
+msgstr "Medien nach Kategorie"
+
 #: templates/search.html.j2:9
 msgid "Search term..."
 msgstr "Suchbegriff..."
@@ -125,6 +129,11 @@ msgstr "Internationale Standardnummer für fortlaufende Sammelwerke"
 msgid "ISSN"
 msgstr "ISSN"
 
+#: templates/medium/_base.html.j2:37
+#, fuzzy
+msgid "Location"
+msgstr "Standort"
+
 #: templates/medium/_lightbox.html.j2:2 templates/medium/_lightbox.html.j2:9
 msgid "Order"
 msgstr "Bestellung"
@@ -162,4 +171,3 @@ msgstr "Lieferung zur Hauptstelle"
 #: templates/medium/_medium-location-details.html.j2:23
 msgid "Unknown"
 msgstr "Fraglich"
-
