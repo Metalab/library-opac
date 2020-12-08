@@ -1,0 +1,21 @@
+{% extends "_page_boilerplate.html.j2" %}
+{% block title %}{% trans %}Media by Category{% endtrans %}{% endblock %}
+{% block logoFileName %}img/library.png{% endblock %}
+
+{% block content %}
+  <script src="js/featherlight.js"></script>
+  {% for category in allCategories %}
+    <div class="categoryContainer is-anchor">
+      <h2 class="has-text-weight-normal subtitle is-2 has-text-centered">
+        {{category}}
+      </h2>
+      {% for medium in media %}
+        {% if (medium.category == category) %}
+          <p>
+            {{ medium }}
+          </p>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+{% endblock content %}

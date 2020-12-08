@@ -90,9 +90,7 @@ def writeLocation(location, locale, language, fileNamePrefix):
 
     templateVars = {
         "location": location,
-        "media": media,
         "categories": locationsAndCategories[location],
-        "formatIdentifier": formatIdentifier,
         "locale": locale,
         "language": language,
         "fileNamePrefix": fileNamePrefix,
@@ -216,7 +214,9 @@ sharedTemplateVars = {
     "libraryName": config["libraryName"],
     "locales": config["languages"],
     "defaultLocale": config["defaultLanguage"],
-    "allCategories": allCategories
+    "allCategories": allCategories,
+    "media": media,
+    "formatIdentifier": formatIdentifier
 }
 log.debug("sharedTemplateVars: {0}".format(sharedTemplateVars))
 
