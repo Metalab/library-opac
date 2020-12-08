@@ -200,6 +200,8 @@ for record in media: # Loop through all records
     if not record["category"] in allCategories: # ... if we don't have the location (branch office)
         allCategories[record["category"]] = {} # ... add it do the dict
 
+allCategories = sorted(allCategories)
+
 log.debug("Categories: {0}".format(allCategories))
 
 # Reverse Locations as a quick fix for issue #1
