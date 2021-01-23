@@ -4,5 +4,6 @@
     - "de_AT"
     - "ebu_KE"
     - "en_UK"
+    - "eo"
   defaultLanguage: "de_AT"
   timezone: "Europe/Vienna"
