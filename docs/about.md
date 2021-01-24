@@ -33,3 +33,10 @@
 * [deadda7a](https://github.com/deadda7a)
 * [eest9](https://github.com/eest9)
 * [joak](https://github.com/joak)
+
+## Translated by
+
+(in alphabetical order)
+
+* Ikar' Akimenko
+* [Phantasus](https://github.com/Phantasus)
