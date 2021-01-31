@@ -11,6 +11,7 @@ markdown_extensions:
   - "pymdownx.inlinehilite"
   - "pymdownx.snippets"
   - "footnotes"
+  - "markdown_include.include"
 
 plugins:
   - "macros"

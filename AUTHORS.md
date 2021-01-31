@@ -1,5 +1,14 @@
 # Authors
 
+## Programmers
+
+(in alphabetical order)
+
+* [anlumo](https://github.com/anlumo)
+* [coldice4](https://github.com/coldice4)
+* [deadda7a](https://github.com/deadda7a)
+* [eest9](https://github.com/eest9)
+* [joak](https://github.com/joak)
 
 ## Translators
 
@@ -17,6 +26,8 @@ eo: Jen ni kolektas la tradukistoj de tiu programo. Do la
     ili estas inkluzivita en tiu dosiero kaj ne perdita en
     la historio.
 
-Thanks too (kaj dankon al):
+(in alphabetical order)
 
-- Ikar' Akimenko (ru, 2021-01-04)
+* Ikar' Akimenko (RU)
+* [Phantasus](https://github.com/Phantasus) (EO)
+* Sebastian Elisa Pfeifer (DE, EN, UwU)

@@ -24,19 +24,5 @@
 > OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 > SOFTWARE.
 
-## Developed by
-
-(in alphabetical order)
-
-* [anlumo](https://github.com/anlumo)
-* [coldice4](https://github.com/coldice4)
-* [deadda7a](https://github.com/deadda7a)
-* [eest9](https://github.com/eest9)
-* [joak](https://github.com/joak)
-
-## Translated by
-
-(in alphabetical order)
-
-* Ikar' Akimenko
-* [Phantasus](https://github.com/Phantasus)
+## Contributors
+{!AUTHORS.md!}
