@@ -6,5 +6,6 @@
     - "en_UK"
     - "eo"
     - "ru"
+    - "ca"
   defaultLanguage: "de_AT"
   timezone: "Europe/Vienna"

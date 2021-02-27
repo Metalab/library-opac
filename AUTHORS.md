@@ -29,5 +29,6 @@ eo: Jen ni kolektas la tradukistoj de tiu programo. Do la
 (in alphabetical order)
 
 * Ikar' Akimenko (RU)
-* [Phantasus](https://github.com/Phantasus) (EO)
+* Chus (Jesús García Cano) of the [Kataluna Esperanto-Junularo](https://esperanto.cat) (CA)
+* Josef Philip Bernhart [Phantasus](https://github.com/Phantasus) (EO)
 * Sebastian Elisa Pfeifer (DE, EN, UwU)
