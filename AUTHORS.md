@@ -30,5 +30,7 @@ eo: Jen ni kolektas la tradukistoj de tiu programo. Do la
 
 * Ikar' Akimenko (RU)
 * Chus (Jesús García Cano) of the [Kataluna Esperanto-Junularo](https://esperanto.cat) (CA)
+* Michael Happl [MetaRipper](https://twitter.com/MetaRipper) (CS)
 * Josef Philip Bernhart [Phantasus](https://github.com/Phantasus) (EO)
 * Sebastian Elisa Pfeifer (DE, EN, UwU)
+
