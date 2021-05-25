@@ -8,8 +8,6 @@ var cleancss = require("gulp-clean-css");
 var sriHash = require("gulp-sri-hash");
 var terser = require("gulp-terser");
 
-sass.compiler = require("node-sass");
-
 gulp.task("sass", function() {
   return gulp.src(["static/sass/all.scss"])
     .pipe(sourcemaps.init())
