@@ -1,7 +1,7 @@
 "use strict";
 
 var gulp = require("gulp");
-var sass = require("gulp-sass");
+var sass = require('gulp-dart-sass');
 var sourcemaps = require("gulp-sourcemaps");
 var autoprefixer = require("gulp-autoprefixer");
 var cleancss = require("gulp-clean-css");
@@ -14,8 +14,8 @@ gulp.task("sass", function() {
   return gulp.src(["static/sass/all.scss"])
     .pipe(sourcemaps.init())
     .pipe(sass.sync({
-      outputStyle: "compressed"
-    }).on("error", sass.logError))
+      outputStyle: 'compressed'
+    }).on('error', sass.logError))
     .pipe(autoprefixer("last 2 versions"))
     .pipe(cleancss())
     .pipe(sourcemaps.write("."))
