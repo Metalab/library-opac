@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "cypress": "7.4.0",
+    "cypress": "7.6.0",
     "dart-sass": "^1.25.0",
     "gulp": "4.0.2",
     "gulp-autoprefixer": "7.0.1",
