@@ -1,1 +1,1 @@
-[https://gitlab.com/metalab-library/opac](Moved to Gitlab)
+[Moved to Gitlab](https://gitlab.com/metalab-library/opac)
